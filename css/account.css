@@ -11,23 +11,23 @@ div.content_area {
   padding-top: 10px;
 }
 
-select {
-  width: 300px;
-  padding: 5px;
-  border: 1px solid #999;
-  border-radius: 3px;
+select{
+  width:300px;
+  padding:5px;
+  border:1px solid #999;
+  border-radius:3px;
 }
 
-div.input_item {
+div.input_item{
   border-bottom: 1px solid rgb(205, 205, 205);
   padding-bottom: 50px;
   width: 50%;
 }
 
-p.input_error {
+p.input_error{
   display: none;
 }
 
-input.accountNum {
-  width: 300px;
+input.accountNum{
+  width:300px;
 }
