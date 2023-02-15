@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>주소록</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/basic.css"
+    />
+    <link
+      data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/address.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <script src="../js/basic.js"></script>
+    <script src="../js/address.js"></script>
+  </head>
+  <body>
+    <!-- header import start -->
+    <div id="header"></div>
+    <!-- header import end -->
+    <section>
+      <div class="snb_area">
+        <a href="./memberdetail.html" class="nuxt-link-active"
+          ><h2 class="snb_main_title">마이 페이지</h2></a
+        >
+        <nav class="snb">
+          <div class="snb_list">
+            <strong class="snb_title">쇼핑 정보</strong>
+            <ul data-v-7bcac446="" class="snb_menu">
+              <li class="menu_item menu_on">
+                <a href="./orderList.html" aria-current="page" class="menu_link">
+                  구매 내역
+                </a>
+              </li>
+              <li class="menu_item">
+                <a href="./mypageingList.html" class="menu_link"> 입찰 내역 </a>
+              </li>
+              <li class="menu_item">
+                <a
+                  href="./inventory.html"
+                  class="menu_link"
+                  style="font-weight: bold"
+                >
+                  판매 내역
+                </a>
+              </li>
+              <li class="menu_item">
+                <a href="./mypage_zzimlist.html" class="menu_link"> 관심 상품 </a>
+              </li>
+            </ul>
+          </div>
+          <div class="snb_list">
+            <strong class="snb_title">내 정보</strong>
+            <ul class="snb_menu">
+              <li class="menu_item">
+                <a href="./memberdetail.html" class="menu_link"> 프로필 정보 </a>
+              </li>
+              <li class="menu_item">
+                <a href="./address.html" class="menu_link" style="font-weight: bold"> 주소록 </a>
+              </li>
+              <li class="menu_item">
+                <a href="" class="menu_link"> 판매 정산 계좌 </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="addrList_all">
+        <div class="title">
+          <h2>주소록
+          <div class="btn_box">
+            <a href="#modal1" rel="modal:open" class="modalbtn">
+              <span class="btn_txt" id="UpdateOnClick"
+              >+ 새 배송지 추가</span
+              >
+            </a>
+          </div>
+        </h2>
+        </div>
+            <div class="addresslist">
+              <div class="address">
+                <div class="addressShowList">
+                  <!--주소 목록-->
+                  <div class="a">
+                    <div class="btn_addr">
+                      <input type="button" class="btn outlinegrey small edit" id="modifyDefalt" value="수정">
+                      <!-- <input type="button" class="btn outlinegrey small delete" id="deleteDefalt" value="삭제"> -->
+                      <p class="del_modal"><a href="#ex2" rel="modal:open">
+                        <input type="button" class="btn outlinegrey small test" id="deleteDefalt" value="삭제">
+                      </a></p>
+                    </div>
+                    <div class="addr_block">
+                      <div class="addrNum" style="display: none;"></div>
+                      <div class="addrRecipient">
+                        수령인
+                      </div>
+                      <div class="addrTel">휴대폰</div>
+                      <div class="addr">주소지</div>
+                      
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+        <!-- </div> -->
+      </section>
+      <!--footer import start-->
+      <div id="footer"></div>
+      <!--footer import end-->
+    </div>
+    <!---------------------------------------------------- js ---------------------------------------------------->
+    <!-- 새 주소록 추가 팝업창 START -->
+    <div id="modal1" class="modal">
+    <div class="layer_delivery layer lg" id="popupDiv">
+      <div class="layer_container">
+        <!-- 새 배송지 등록 -->
+        <div class="layer_header">
+          <div class="new_address_title" id="new_address_title">새 배송지 등록</div>
+          <div class="edit_address_title" id="edit_address_title">배송지 수정</div>
+        </div>
+        <div class="delivery_bind">
+          <!-- 이름 -->
+          <div class="input_box" id="name_input_box">
+            <div class="input_title" id="input_title_name">이름</div>
+            <div class="input_title_error" id="input_title_name_error" style="display:none">이름</div>
+            <input type="text" id="num_input" hidden/>
+            <input type="text" placeholder="수령인 이름" class="input_txt" id="name_input" />
+            <p class="input_error" id="name_input_error"></p>
+          </div>
+          <!-- 휴대폰 번호 -->
+          <div class="input_box" id="hp_input_box">
+            <div class="input_title" id="input_title_hp">휴대폰 번호</div>
+            <div class="input_title_error" id="input_title_hp_error" style="display: none;">휴대폰 번호</div>
+            <input type="text" placeholder="- 없이 입력" class="input_txt" id="hp_input"/>
+            <p class="input_error" id="hp_input_error"></p>
+          </div>
+          <!-- 우편 번호 -->
+          <div class="input_box">
+            <div class="input_title">우편번호</div>
+            <div class="input_zipcode">
+              <!-- 우편 번호를 검색하세요 -->
+              <input type="text" class="input_txt" id="zipcode_input"/>
+              <!-- <input
+                type="button"
+                value="우편번호"
+                class="btn btn_zipcode outline small outlinegrey"
+                onclick="sample6_execDaumPostcode()"
+              /> -->
+            </div>
+          </div>
+          <!-- 배송지명 -->
+          <div class="input_box">
+            <div class="input_title">배송지명</div>
+            <input type="text" class="input_txt" id="addressname_input" />
+          </div>
+          <!-- 주소 -->
+          <div class="input_box">
+            <div class="input_title">주소</div>
+            <!-- 우편 번호 검색 후, 자동입력됩니다. -->
+            <input type="text"class="input_txt"id="address1_input" />
+          </div>
+          <!-- 상세주소 -->
+          <div class="input_box" id="address2_input_box">
+            <div class="input_title">상세 주소</div>
+            <input type="text" placeholder="건물, 아파트, 동/호수 입력" class="input_txt" id="address2_input"/>
+            <p class="input_error" id="address2_input_error"></p>
+          </div>
+          <!-- 기본 배송지로 설정 -->
+          <div class="input_button">
+            <input
+              type="checkbox"
+              id="input_button_check"
+              name="delivery_flag" 
+            />
+            <label for="input_button_check"
+              ><span id="button_check_text">기본 배송지로 설정</span></label
+            >
+          </div>
+        </div>
+        <!-- 하단 저장하기 버튼 -->
+        <div class="bottom_button">
+          <p><a href="#ex1" rel="modal:open">
+          <button id="save_btn" class="btn btn_save solid disabled">저장하기</button>
+          </a></p>
+          <p><a href="#ex1" rel="modal:open">
+            <button id="edit_btn" class="btn btn_save solid disabled">수정하기</button>
+          </a></p>
+          <div id="ex1" class="modal">
+            <p>저장하시겠습니까?</p>
+            <button id="save" class="btn btn_save solid disabled">확인</button>
+            <button id="edit" class="btn btn_save solid disabled">확인</button>
+          </div> 
+        </div>
+        <!-- 하단 저장하기 버튼 -->
+        <!-- 삭제하기 눌렀을 때 나오는 모달창  -->
+        <div id="ex2" class="modal">
+          <p>삭제하시겠습니까?</p>
+          <input type="text" id="del_addrnum_input" hidden/>
+          <button id="delete_addr" class="btn btn_save solid disabled_del">확인</button>
+        </div>
+        <!-- 삭제하기 눌렀을 때 나오는 모달창  -->
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
