@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RELO</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/basic.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/mypageBasic.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/memberprofile.css"
+    />
+    <link
+      data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/memberprofile.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header"></div>
+
+      <section>
+        <div class="snb_area">
+          <a href="/my" class="nuxt-link-active"
+            ><h2 class="snb_main_title">마이 페이지</h2></a
+          >
+          <nav class="snb">
+            <div class="snb_list">
+              <strong class="snb_title">쇼핑 정보</strong>
+              <ul data-v-7bcac446="" class="snb_menu">
+                <li class="menu_item menu_on">
+                  <a href="/my/buying" aria-current="page" class="menu_link">
+                    구매 내역
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="/my/selling" class="menu_link"> 입찰 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a
+                    href="./inventory.html"
+                    class="menu_link"
+                    style="font-weight: bold"
+                  >
+                    판매 내역
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="/my/wish" class="menu_link"> 관심 상품 </a>
+                </li>
+              </ul>
+            </div>
+            <div class="snb_list">
+              <strong class="snb_title">내 정보</strong>
+              <ul class="snb_menu">
+                <li class="menu_item">
+                  <a href="/my/profile" class="menu_link"> 프로필 정보 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="/my/address" class="menu_link"> 주소록 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="/my/account" class="menu_link"> 판매 정산 계좌 </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="content_area">
+          <h1 id="title">프로필 정보</h1>
+          <div class="user_profile">
+            <img src="../imgs/defaultProfileImg.png" id="user_img" />
+            <div class="user_detail">
+              <strong id="accent">name</strong>
+              <div class="profile_btn_box">
+                <a class="btn" id="change_img">이미지 변경</a>
+                <input type="file" id="real_change_img" />
+                <a class="btn" id="del_btn">삭제</a>
+              </div>
+            </div>
+          </div>
+          <div class="profile_info">
+            <div class="profile_group">
+              <!-- 로그인 정보 start -->
+              <h4 class="title_big">로그인 정보</h4>
+              <div class="unit" id="show_email">
+                <h5 class="title_small">이메일 주소</h5>
+                <p class="desc_email"></p>
+                <button class="modify_info" id="btn_modify0">변경</button>
+              </div>
+              <div id="form_email">
+                <div class="input_item">
+                  <h5 class="notice_label" id="email_txt">이메일 주소 변경</h5>
+                  <input
+                    type="email"
+                    class="input_txt"
+                    autocomplete="off"
+                    id="new_email"
+                  />
+                  <div id="error_msg_email"></div>
+                </div>
+                <div class="btn_recheck">
+                  <button class="btn_re" id="cancle1">취소</button>
+                  <button class="btn_re" id="alarm_mail">인증 메일 발송</button>
+                </div>
+              </div>
+              <div class="unit" id="notice_pwd">
+                <h5 class="title_small" id="pwd">비밀번호</h5>
+                <p class="desc_pwd"></p>
+                <button class="modify_info" id="btn_modify1">변경</button>
+              </div>
+              <div id="form_pwd">
+                <div class="input_item">
+                  <h5 class="notice_label">비밀번호 변경</h5>
+                  <h6 class="new_notice" id="pre_input_pwd">이전 비밀번호</h6>
+                  <input
+                    type="password"
+                    class="input_txt"
+                    id="check_pwd"
+                    autocomplete="off"
+                    placeholder="영문, 숫자, 특수문자 조합 8-16자"
+                  />
+                  <div id="error_msg_pwd1"></div>
+                  <h6 class="new_notice" id="new_input_pwd">새 비밀번호</h6>
+                  <input
+                    type="password"
+                    class="input_txt"
+                    id="new_pwd"
+                    autocomplete="off"
+                    placeholder="영문, 숫자, 특수문자 조합 8-16자"
+                  />
+                  <div id="error_msg_pwd2"></div>
+                </div>
+                <div class="btn_recheck">
+                  <button class="btn_re1" id="cancle2">취소</button>
+                  <button class="btn_re1" id="store1">저장</button>
+                </div>
+              </div>
+              <!-- 로그인 정보 end -->
+              <!-- 개인 정보 start -->
+              <h4 class="title_big" id="private_info">개인 정보</h4>
+              <div class="unit" id="desc_name">
+                <h5 class="title_small">이름</h5>
+                <p class="desc_name"></p>
+              </div>
+              <div class="unit" id="notice_tel">
+                <h5 class="title_small" id="tel">휴대폰 번호</h5>
+                <p class="desc_tel"></p>
+                <but ton class="modify_info" id="btn_modify2">변경</but>
+              </div>
+              <div id="form_tel">
+                <div class="input_item">
+                  <h5 class="notice_label">휴대폰 번호 변경</h5>
+                  <h6 class="new_notice" id="new_input_tel">새 휴대폰 번호</h6>
+                  <input
+                    type="text"
+                    class="input_txt"
+                    id="new_tel"
+                    autocomplete="off"
+                    placeholder="' - '제외 후 입력"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                  />
+                  <div id="error_msg_tel"></div>
+                </div>
+                <div class="btn_recheck">
+                  <button class="btn_re1" id="cancle3">취소</button>
+                  <button class="btn_re1" id="store3">저장</button>
+                </div>
+              </div>
+              <div class="unit" id="notice_birth">
+                <h5 class="title_small" id="birth">생일</h5>
+                <p class="desc_birth"></p>
+              </div>
+              <!-- 개인 정보 end -->
+            </div>
+            <a id="withdraw" href="./getout.html">회원탈퇴</a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- password 입력창 start -->
+    <div id="alert_check_password">
+      <p id="input_pwd">비밀번호를 입력해주세요.</p>
+      <div class="withdrawal_check">
+        <input type="password" id="input06" autocomplete="off" />
+      </div>
+      <div class="btn_items">
+        <a class="check_btn" id="ok_input_pwd">확인</a>
+      </div>
+    </div>
+    <!-- password 입력창 start -->
+
+    <!-- 비밀번호 미입력시 start -->
+    <div class="alert-box">
+      <i class="fa fa-circle-exclamation"></i>
+      회원탈퇴 내용을 모두 동의해 주셔야 탈퇴가 가능합니다.
+    </div>
+    <!-- 비밀번호 미입력시 end -->
+    <div id="footer"></div>
+  </body>
+</html>

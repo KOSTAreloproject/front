@@ -1,0 +1,23 @@
+div.content_area {
+    float: right;
+    width: 75%;
+  }
+  
+  img.sFile {
+    width: 100px;
+    height: 100px;
+  }
+  
+  div.inventory {
+    border-top-style: solid;
+  }
+  
+  div.f {
+    padding-top: 30px;
+    display: inline-block;
+  }
+  
+  div.desc {
+    display: inline-block;
+    margin-left: 50px;
+  }

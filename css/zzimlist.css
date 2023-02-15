@@ -1,0 +1,57 @@
+h3{
+    font-size: 25px;
+}
+div.wish{
+    
+   background-color: rgb(246, 246, 246);
+    width:100%;
+    height: auto;
+}
+div.wishlist{
+    width:100%;
+    padding-bottom: 15px;
+    height: auto;
+}
+div.wishlist>div.left{
+    float: left;
+    width: 20%;
+}
+div.wishlist>div.right{
+     width: 80%;
+    padding-top: 20px;
+     padding-bottom: 20px;
+    float: right;
+}
+div.simg{
+    padding-right: 50px;
+}
+
+div.sbrand{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+div.sname, div.scolor, div.sizecategoryname,div.sgrade, div.maxprice{ 
+    font-size :15px;
+    display:inline-block;
+    padding-right: 30px;
+}
+div.enddate{
+     font-size :15px;
+}
+div.deletezzim, div.gotender{
+     display:inline-block;
+     padding-right: 50px;
+}
+div.empty_area{
+    padding-top: 60px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+a.goshop{
+    text-align: center;
+
+}
+div.pnum{
+    display: none;
+}

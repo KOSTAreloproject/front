@@ -1,0 +1,108 @@
+#label_txt {
+    width: 800px;
+    border-bottom: 2px solid;
+    padding-bottom: 15px;
+  }
+  
+  #big_title {
+    margin-bottom: -38px;
+  }
+  
+  /* 수정&삭제 버튼 start */
+  div.btn_edit {
+    display: inline-block;
+    margin-bottom: -15px;
+    margin-left: 700px;
+  }
+  
+  #edit,
+  #del {
+    float: right;
+    width: 40px;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    background-color: #000000;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  #edit:active,
+  #del:active {
+    opacity: 0.7;
+    color: #fff;
+    transition: 0.4s;
+  }
+  
+  /* 수정&삭제 버튼 end */
+  
+  .date {
+    font-size: 12px;
+  }
+  
+  .title {
+    font-size: 15px;
+    margin-top: -1px;
+  }
+  
+  div.content {
+    width: 800px;
+    height: 400px;
+    background-color: #fafafa;
+  }
+  
+  div.btn_list {
+    text-align: center;
+    padding: 0px 18px;
+  }
+  
+  /* '목록보기' 버튼 start */
+  #show_list {
+    display: block;
+    width: 80px;
+    line-height: 30px;
+    color: #000000;
+    font-size: 16px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    margin-left: 37%;
+    margin-top: 25px;
+    min-height: 30px;
+    min-width: 120px;
+    cursor: pointer;
+  }
+  
+  #show_list:hover {
+    background-color: #000000;
+    color: #fff;
+    transition: 0.4s;
+  }
+  #show_list:active {
+    opacity: 0.7;
+  }
+  
+  /* '목록보기' 버튼 end */
+  
+  .pre_and_next {
+    margin-left: 50px;
+  }
+  
+  #pre_box {
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  #pre_content,
+  #next_content {
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  #pre,
+  #next {
+    cursor: default;
+    padding-right: 10px;
+  }

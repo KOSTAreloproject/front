@@ -1,0 +1,238 @@
+body {
+    cursor: default;
+  }
+  
+  #label_txt {
+    width: 800px;
+    border-bottom: 2px solid;
+    padding-bottom: 15px;
+  }
+  
+  .form_itmes {
+    width: 100%;
+    height: 445px;
+    text-align: center;
+  }
+  
+  .title {
+    margin-bottom: 5px;
+  }
+  
+  #label_title,
+  #label_file,
+  #category,
+  #small_title {
+    display: inline-flex;
+    flex-direction: column;
+    float: left;
+    clear: both;
+    margin-bottom: 35px;
+  }
+  
+  #fake_btn {
+    position: absolute;
+    top: 51.5%;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    height: 35px;
+    line-height: 33px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #222222cc;
+    cursor: pointer;
+    margin-left: 80px;
+  }
+  
+  .file {
+    display: none;
+  }
+  
+  input[type='text'] {
+    position: absolute;
+    top: 43%;
+    left: 34.2%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #000000;
+    background-color: #fff;
+    font-size: 15px;
+    width: 50%;
+    height: 35px;
+  }
+  
+  input::placeholder {
+    color: #bfbbbb;
+  }
+  
+  input[type='file'] {
+    width: 90%;
+  }
+  
+  textarea {
+    position: absolute;
+    top: 70%;
+    right: 15.8%;
+    resize: none;
+    /* overflow-y: hidden; */
+    width: 50%;
+    height: 250px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #fafafa;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+  }
+  
+  .filter_box {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .filter {
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+    line-height: 30px;
+    color: #000000;
+    font-size: 13px;
+    background-color: #fff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3px;
+    cursor: pointer;
+  }
+  
+  #selected {
+    background-color: #000000;
+    color: #fff;
+  }
+  
+  .filter:hover {
+    color: #fff;
+    background-color: #000000;
+    transition: 0.4s;
+  }
+  
+  .filter:active {
+    transform: scale(0.98);
+  }
+  
+  #filter_items {
+    position: absolute;
+    top: 60%;
+    left: 34%;
+  }
+  
+  div.btn_complete {
+    position: absolute;
+    bottom: -18%;
+    left: 73%;
+    text-align: center;
+  }
+  
+  #write,
+  #cancle {
+    display: block;
+    width: 70px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 13px;
+    background-color: #000000;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    margin: 6px;
+    float: right;
+    /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06); */
+    cursor: pointer;
+  }
+  
+  #write:hover,
+  #cancle:hover {
+    opacity: 0.7;
+  }
+  
+  #write:active,
+  #cancle:active {
+    transform: scale(0.98);
+  }
+  
+  /* popup 뒷배경 start */
+  #popup_background {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(34, 34, 34, 0.5);
+    z-index: 9999;
+  }
+  /* popup 뒷배경 end */
+  
+  /* popup start */
+  #popup {
+    display: none;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    box-shadow: 0 0.4rem 1rem 0 rgb(0 0 0/ 10%);
+    width: 300px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+    z-index: 500;
+  }
+  
+  #ask {
+    position: absolute;
+    top: 6%;
+    left: 10%;
+    font-weight: bold;
+  }
+  
+  .btn_confirm {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  
+  #ok_btn,
+  #cancle_btn {
+    position: absolute;
+    top: 60%;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    margin: 5px;
+    font-size: 15px;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  #ok_btn {
+    right: 25%;
+  }
+  
+  #cancle_btn {
+    right: 4%;
+  }
+  
+  #ok_btn:hover,
+  #cancle_btn:hover {
+    opacity: 0.7;
+  }
+  
+  #ok_btn:active,
+  #cancle_btn:active {
+    transform: scale(0.98);
+  }
+  
+  /* popup end */

@@ -1,0 +1,43 @@
+.suceess-msg {
+    text-align: center;
+  }
+  
+  h2 {
+    display: inline-block;
+    font-size: 24px;
+    width: 400px;
+    color: #000000;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 35px;
+  }
+  
+  #notice_title {
+    font-size: 12px;
+    color: #22222280;
+  }
+  
+  #notice_txt {
+    font-size: 18px;
+    padding-top: 8px;
+    font-weight: 700;
+  }
+  
+  .btn {
+    display: inline-flex;
+    justify-content: center;
+    width: 194px;
+    line-height: 50px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #22222280;
+    color: #222222cc;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+  
+  #login {
+    margin-left: 5px;
+    background-color: #000000;
+    color: #fff;
+  }

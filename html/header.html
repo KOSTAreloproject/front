@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/@kfonts/nanum-barun-gothic-yet-hangul-otf/index.css" />
+    <link rel="stylesheet" href="../css/search.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="../js/search.js"></script> 
+<style>
+  a{
+    text-decoration: none;
+  }
+  li > a {
+  color: black;
+}
+</style>  
+</head>
+  <body>
+      <header>
+      <div class="top">
+        <nav>
+        <ul>
+          <li class="notice">공지사항</li>
+          <li class="mypage"><a href="./memberdetail.html">마이페이지</a></li>
+          <li class="join"><a href="./join.html">회원가입</a></li>
+          <li class="login"><a href="./login.html">로그인</a></li>
+          <li class="logout">로그아웃</li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <div class="img"></div>
+        <nav>
+        <ul>
+          <li class="home"><a href="./index.html">HOME</a></li>
+          <li class="seller"><a href="./StockAdd.html">SELL</a></li>
+          <li class="shop"><a href="./shoplist.html">SHOP</a></li>
+          <li class="styleboard"><a href="./stylelist.html">STYLE</a></li>  
+          <li class="search"><img src="../imgs/search.png" class="search"></a></li>  
+        </ul>
+        </nav>
+      </div>
+    </header>
+      <!-- 검색창 모달 START -->
+      <div id="popup_background">
+        <img src="../imgs/search/exit.png">
+        <div id="popup">
+          <div id="searchform">
+            <img src="../imgs/search/search.png">
+            <input type="text" placeholder="상품이름을 입력하세요" title="검색창">
+          </div>
+          <hr id="hr1">
+          <div id="category">
+            <h3>카테고리</h3>
+            <div id="category_wrap">
+              <div id="top"><img src =../imgs/search/top.jpg>상의</div>
+              <div id="bottom"><img src =../imgs/search/bottom.jpg>하의</div>
+              <div id="shoes"><img src =../imgs/search/shoes.jpg>신발</div>
+            </div>
+          </div>
+          <hr id="hr2">
+          <div id="recentproduct">
+            <h3>최근 본 상품</h3>
+            <div id="recentproduct_wrap">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 검색창 모달 END -->
+    </div>
+  </body>
+  <script>
+    $('header>div.top>nav>ul>li.logout').on('click', function () {
+    let url = backUrl + 'member/logout.do';
+    $.ajax({
+      url: url,
+      method: 'post',
+      success: function (jsonObj) {
+        console.log(jsonObj);
+        alert('로그아웃 되었습니다.');
+      },
+      error: function (xhr) {
+        alert('오류' + xhr.status);
+      },
+    });
+  });
+  </script>
+</html>

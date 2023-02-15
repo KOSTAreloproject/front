@@ -1,0 +1,54 @@
+section {
+    width: 90%;
+  }
+  div.orderArea {
+    padding-left: 200px;
+  }
+  
+  /* div.product_area div.basic_address,
+  div.product_info {
+    padding-top: 50px;
+  } */
+  
+  div.infoArea {
+    border-bottom: 1px solid #9b9b9b;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  input#addrChange {
+    margin-left: 10px;
+  }
+  div.prods,
+  div.addrs {
+    display: inline-block;
+    padding-right: 80px;
+  }
+  
+  span.infoTitle {
+    font-weight: bold;
+    font-size: large;
+  }
+  
+  span.address {
+    display: inline-block;
+    width: 60px;
+  }
+  
+  div.addr,
+  div.prod,
+  div.order {
+    padding-bottom: 20px;
+  }
+  
+  div.order_memo {
+    padding-top: 400px;
+  }
+  
+  input {
+    outline: none;
+    border: 1;
+  }
+  input.pay_price {
+    float: right;
+  }

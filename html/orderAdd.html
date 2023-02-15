@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relo</title>
+    <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/basic.css" />
+
+    <link rel="stylesheet" href="../css/orderAdd.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="../js/basic.js"></script>
+
+    <script src="../js/orderadd.js"></script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="header"></div>
+
+      <section>
+        <div class="orderArea">
+          <div class="addressArea">
+            <div class="infoArea">
+              <span class="infoTitle">배송지 정보</span>
+
+              <input type="button" value="주소 변경" id="addrChange" />
+            </div>
+            <div class="basic_address">
+              <div class="addrs">
+                <div class="addr">
+                  <span class="address">이름</span>
+                  <input
+                    type="text"
+                    id="name"
+                    readonly
+                    placeholder="배송지 정보를 등록해주세요."
+                  />
+                </div>
+                <div class="addr">
+                  <span class="address">연락처</span>
+                  <input
+                    type="text"
+                    id="tel"
+                    readonly
+                    placeholder="배송지 정보를 등록해주세요."
+                  />
+                </div>
+              </div>
+              <div class="addrs">
+                <div class="addr">
+                  <span class="address">우편번호</span>
+                  <input
+                    type="text"
+                    id="post_num"
+                    readonly
+                    placeholder="배송지 정보를 등록해주세요."
+                  />
+                </div>
+                <div class="addr">
+                  <span class="address">주소</span>
+                  <input
+                    type="text"
+                    id="address"
+                    readonly
+                    placeholder="배송지 정보를 등록해주세요."
+                  />
+                </div>
+              </div>
+              <div class="addrs">
+                <div class="addr">
+                  <span class="address">상세주소</span>
+                  <input
+                    type="text"
+                    id="address_detail"
+                    readonly
+                    placeholder="배송지 정보를 등록해주세요."
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="productArea">
+            <div class="infoArea">
+              <span class="infoTitle">상품 정보</span>
+            </div>
+            <div class="product_info">
+              <div class="prods">
+                <div class="prod">
+                  <span class="address">브랜드명</span>
+                  <input type="text" id="brand" readonly />
+                </div>
+                <div class="prod">
+                  <span class="address">상품명</span>
+                  <input type="text" id="prod_name" readonly />
+                </div>
+              </div>
+              <div class="prods">
+                <div class="prod">
+                  <span class="address">사이즈</span>
+                  <input type="text" id="size" readonly />
+                </div>
+                <div class="prod">
+                  <span class="address">색상</span>
+                  <input type="text" id="prod_color" readonly />
+                </div>
+              </div>
+              <div class="prod">
+                <span class="address">가격</span>
+                <input type="text" id="price" readonly />
+              </div>
+            </div>
+          </div>
+
+          <div class="order_memo">
+            <span class="address">배송메모</span
+            ><input type="text" placeholder="배송메모를 입력해주세요." />
+          </div>
+          <div class="order">
+            <span class="address">총 금액</span>
+            <div class="order">
+              <span class="address">상품금액</span>
+            </div>
+            <div class="order">
+              <span class="address">배송비</span
+              ><span class="address">2,500 원</span>
+            </div>
+            <div class="order">
+              <span class="address total_price"></span>
+            </div>
+          </div>
+
+          <div class="pay_method">무통장 입금</div>
+          <div class="agree_area">동의</div>
+          <div><input type="button" value="결제하기" id="pay_price" /></div>
+        </div>
+      </section>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>

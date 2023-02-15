@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relo</title>
+    <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../css/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../css/productdetail.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/productdetail.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header"></div>
+      <section>
+        <div class="left">
+          <div class="pnum"></div>
+          <div class="sid"></div>
+          <div class="simg"></div>
+          <h3>
+            최근 입찰 내역
+            <span>(입찰가 순으로 정렬)</span>
+          </h3>
+          <div class="recenttender">
+            <table border="1" id="tender">
+              <tr>
+                <th>입찰자</th>
+                <th>입찰가</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="right">
+          <div class="sbrand"></div>
+          <div class="sname"></div>
+          <hr />
+          <div class="shopeprice"></div>
+          <hr />
+          <span>최고 입찰가 : </span> <div class="maxprice"></div><span>원</span>
+          <hr />
+          <div class ="inserttender">
+            <form id="tenderform">
+            상품입찰 : 
+            <input type="text" id = "tenderprice" name="tenderprice">
+            <button id="tsubmit">입찰하기</button>
+            </form> <hr>
+           <div class ="addzzim">
+            <button id="zsubmit">찜하기</button>
+           </div>
+          <h4>상품정보</h4>
+          <div class="smanagercomment"></div>
+          <div class="sizecategoryname"></div>
+          <div class="scolor"></div>
+          <div class="soriginprice"></div>
+          <div class="sgrade"></div>
+          <hr>
+          <div class="tendercomment">
+          <h4>구매전 꼭 확인해주세요!</h4>
+          <strong>100% 정품 보증</strong><br>
+          RELO에서 검수한 상품이 정품이 아닐 경우, 구매가의 3배를 보상합니다.<br><br>
+          <strong>엄격한 다중 검수</strong><br>
+          모든 상품은 검수센터에 도착한 후, 상품별 전문가 그룹의 체계적인 시스템을 거쳐 검수를 진행합니다.<br><br>
+          <strong>정품 인증 패키지</strong><br>
+          검수에 합격한 경우에 한하여 RELO의 정품 인증 패키지가 포함된 상품이 배송됩니다.<br><br> 
+          </div>
+        </div>
+      </section>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>
