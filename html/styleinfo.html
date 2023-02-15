@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>STYLE | RELO</title>
+    <link
+      data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+      />
+      <link rel="stylesheet" href="../css/basic.css" />
+      <link rel="stylesheet" href="../css/styleinfo.css" />
+      <link rel="stylesheet" href="../css/index.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="../js/styleinfo.js"></script>
+    <script src="../js/basic.js"></script>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <div id="header"></div>
+    <section>
+      <div class="whole">
+        <div class="styleinfo">
+          <div class="info">
+            <div class="user">
+              <span class="btn"></span>
+              <div class="id">아이디</div>     
+              <div class="styleDate">날짜</div>
+              </div>
+            <div class="img">
+              <img src="#" alt="상품이미지" />
+            </div>
+            <div class="styleNum">스타일번호</div>
+          </div>
+          <div class="tagList">
+            <div class="tag">
+              <div class="hashName"></div>
+            </div>
+          </div>
+          <div class="btn_box">
+              <span class="material-icons" id="likes">
+                favorite_border
+              </span>
+            <span class="material-icons">
+              chat_bubble_outline
+            </span>
+          </div>
+          <div class="styleLikes">좋아요</div>
+        </div>
+        <div class="repList">
+          <div class="reply">
+            <div class="repNum"></div>
+            <div class="repId"></div>
+            <div class="repDate"></div>
+          </div>
+        </div>
+        <!-- <div class="repeditForm"></div> -->
+          <div class="writeReply">
+            <div id="replyForm" >
+              <input type="text" id="reply_id" value="" hidden><br/>
+              <input type="text" id="reply_Content" class="reply_Content"placeholder="  댓글을 남기세요..">
+              <input type="button" id="myBtn" value="댓글 작성" onclick="replyWt()"/>
+            </div>
+            </div>
+        <!-- 삭제 눌렀을 때 나오는 모달창  -->
+        <div id="del_btn" class="modal">
+          <p>삭제하시겠습니까?</p>
+          <button id="delete_style" class="modal_btn">확인</button>
+        </div>
+        <!-- 삭제 눌렀을 때 나오는 모달창  -->
+        <!-- 댓글 삭제 눌렀을 때 나오는 모달창  -->
+          <div id="delRep_btn" class="modal">
+            <p>삭제하시겠습니까?</p>
+            <input type="text" id="del_repnum_input" hidden/>
+            <button id="delete_rep" class="modal_btn">확인</button>
+          </div>
+        <!-- 댓글 삭제 눌렀을 때 나오는 모달창  -->
+          </section>
+        </div>
+      </div>
+        <div id="footer"></div>
+  </body>
+  </html>
+  
