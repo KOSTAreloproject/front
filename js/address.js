@@ -115,7 +115,7 @@ $(() => {
   //--주소 수정 클릭시 폼 데이터 출력 END--
   //--폼에서 저장하기 클릭 START--
   $('#save').click(function () {
-    let url = backUrl + '/address/add.do';
+    let url = backUrl + 'address/add.do';
     let $addrName = $('#addressname_input').val();
     let $addrPostNum = $('#zipcode_input').val();
     let $addrTel = $('#hp_input').val();
@@ -144,7 +144,8 @@ $(() => {
       dataType: 'json',
       success: function () {
         // alert('주소 추가 완료');
-        $('.close-modal').click();
+        $('#ex1').hide();
+        $('.blocker').css('display','none');
         resetData();
         showList();
         $("#input_button_check").attr("checked", false);
@@ -202,11 +203,14 @@ $(() => {
   //     }
   //   })
   // });
+
+
+
   $(document).on('click',"input[class='btn outlinegrey small test']", function(){
     let addrNum = $(this).attr('id').split('_')[1];
     $('#del_addrnum_input').val(addrNum);
   })
-  $('#delete_addr').click(function(){
+  $('#delete_addr').click(function(e){
     let $addrNum = $('#del_addrnum_input').val();
     let url = backUrl + '/address/del.do';
     $.ajax({
@@ -218,8 +222,13 @@ $(() => {
       method : 'post',
       success : function(){
         // alert("삭제되었습니다.")
+        $('.blocker').css('display','none');
+        $('.modal').hide();
         showList();
-        $('.close-modal').click();
+        // $('#ex2').hide();
+        // $('.jquery-modal blocker current').css('display','none');
+        
+        
       },
       error : function(xhr){
         alert(xhr.status);
@@ -264,7 +273,8 @@ $(() => {
       dataType: 'json',
       success: function () {
         // alert('주소 수정 완료');
-        $('.close-modal').click();
+        $('.blocker').css('display','none');
+        $('.modal').hide();
         resetData();
         showList();
       },

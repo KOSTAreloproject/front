@@ -31,7 +31,9 @@ div.stylelist {
 div.style {
   width: 20%;
   padding: 10px;
-  float: left;
+  /* float: left; */
+  display: inline-block;
+  vertical-align: top;
 }
 div.style > div.img > img {
   max-width: 100%;
