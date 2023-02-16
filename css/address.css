@@ -1,0 +1,360 @@
+/* 주소록 */
+/* #input_button_check {
+  -webkit-appearance: auto;
+} */
+.btn_box {
+  margin-left: auto;
+  padding-left: 30px;
+  flex-shrink: 0;
+  float:right;
+  height: 34px;
+}
+.btn_box,
+.btn_box .btn {
+  display: flex;
+}
+span.btn_modal{
+  color: rgba(34, 34, 34, 0.8);
+}
+span.btn_txt{
+  border : 1px solid #d3d3d3;
+  border-radius: 10px;
+  font-size: 12px;
+  color: rgba(34, 34, 34, 0.8);
+  padding: 5px 14px 5px 14px; 
+}
+.btn_box .btn.btn_add {
+  margin-right: 0;
+  padding: 0 14px;
+  height: 34px;
+  line-height: 32px;
+  border-radius: 10px;
+  border: 1px solid #222;
+  font-size: 1.2rem;
+  letter-spacing: -0.06px;
+}
+.basic {
+  padding: 3rem 0 2.9rem;
+  border-bottom: 1px solid #222;
+}
+.default_mark {
+  font-size: 1.2rem;
+  letter-spacing: -0.06px;
+  font-weight: 700;
+  color: #000;
+}
+.basic .address_info {
+  padding-top: 12px;
+}
+.address_info .mark,
+.address_info .name {
+  display: inline-block;
+  font-weight: 700;
+  vertical-align: top;
+}
+.address_info .name {
+  font-size: 1.5rem;
+  letter-spacing: -0.15px;
+}
+.basic .address_info .name {
+  font-size: 16px;
+  letter-spacing: -0.16px;
+}
+.address_info .mark {
+  margin-left: 4px;
+  padding: 0 6px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 1.1rem;
+  color: #fff;
+  border-radius: 10px;
+  background-color: #bbb;
+}
+.address_info .address_box {
+  padding-top: 4px;
+  font-size: 1.4rem;
+  letter-spacing: -0.21px;
+  color: rgba(34, 34, 34, 0.8);
+}
+.basic .address_info .address_box {
+  font-size: 1.5rem;
+  letter-spacing: -0.15px;
+}
+.address_info .phone {
+  padding-top: 2px;
+  font-size: 14px;
+  color: rgba(34, 34, 34, 0.8);
+}
+.basic .address_info .phone {
+  padding-top: 2px;
+  font-size: 15px;
+}
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #fff;
+}
+.btn_bind {
+  margin-left: auto;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  font-size: 0;
+}
+.outlinegrey {
+  border: 1px solid #d3d3d3;
+  color: rgba(34, 34, 34, 0.8);  
+  padding : 6px 6px 6px 6px;
+  font-size: 12px;
+}
+.small {
+  border-radius: 10px;
+  margin-right: 5px;
+}
+.btn_bind .btn {
+  padding-left: 11px;
+  padding-right: 12px;
+}
+.btn_bind .btn + .btn {
+  margin-left: 8px;
+}
+.btn_zipcode {
+  /* position: absolute; */
+  right: 0;
+  top: -10px;
+}
+div.addrList_all{
+  content-visibility:auto;
+  padding-bottom: 30px;
+  /* position: relative; */
+  /* z-index: -1; */
+}
+div.addressShowList{
+  padding: 20px 20px;
+}
+div.btn_addr{
+  float:right;
+}
+div.addr_block{
+  border-bottom: 2px solid black;
+}
+div.addrRecipient{
+  padding-bottom: 5px;
+}
+div.addrTel{
+  padding-bottom: 5px;
+  font-size:13px;
+}
+div.addr{
+  padding-bottom: 5px;
+  font-size:13px;
+}
+span#addr_default{
+  border : 1px solid #d3d3d3;
+  border-radius: 10px;
+  font-size: 10px;
+  color: rgba(34, 34, 34, 0.8);
+  padding: 5px 2px 5px 2px; 
+  margin-left: 7px;
+}
+
+div.new_address_title{
+  text-align: center;
+  font-weight: bold;
+  margin:10px 10px;
+}
+
+div.edit_address_title{
+  text-align: center;
+  font-weight: bold;
+  margin:10px 10px;
+}
+
+div.input_title{
+  font-size: 13px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+div.input_title_error{
+  font-size: 13px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color:#f15746;
+}
+input.input_txt{
+  width: 400px;
+  border: none;
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 5px;
+}
+/* 기본 배송지로 설정 */
+.input_button #input_button_check {
+  margin-top: 1rem;
+}
+
+#button_check_text {
+  font-size: 13px;
+}
+
+/* 취소 / 저장하기 */
+.bottom_button {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+/* 저장하기 버튼 기본 설정 */
+.btn_save {
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  border : 1px solid #d3d3d3;
+  font-size: 13px;
+  color: rgba(34, 34, 34, 0.8);
+  float: right;
+}
+/* 취소하기 */
+.btn_delete {
+  background-color: #fff;
+  margin-right: 1rem;
+  color: #222;
+}
+p.input_error{
+  display: block;
+  /* position: absolute; */
+  line-height: 16px;
+  font-size: 11px;
+  color: #f15746;
+}
+p.del_modal{
+  float: right;
+  margin: auto;
+}
+/******************************************************************************/
+
+@media all and (min-width: 768px) {
+  #popupDiv {
+    transform: translate(0%, 0%);
+  }
+}
+
+@media all and (max-width: 767px) {
+  html {
+    font-size: 50%;
+  }
+
+  /* container */
+
+  .snb_area {
+    display: none;
+  }
+
+  .content_title.border .title {
+    display: none;
+  }
+
+  .content_title .btn_box {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .content_title .btn_box .btn {
+    width: 100%;
+    font-size: 16px;
+    height: 5.2rem;
+    line-height: 5.2rem;
+    border-color: #d3d3d3;
+    border-radius: 12px;
+  }
+  .content_title .btn_box .btn_txt {
+    width: 100%;
+    text-align: center;
+  }
+
+  .my_addressbook {
+    padding: 0 24px 80px;
+  }
+
+  .my_addressbook .content_title {
+    display: block;
+    padding-top: 10px;
+    padding-right: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .default_mark.mark {
+    display: none;
+  }
+
+  .address_info .mark {
+    margin-left: 4px;
+    padding: 0 6px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 11px;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #bbb;
+  }
+
+  .address_info .mark,
+  .address_info .name {
+    display: inline-block;
+    font-weight: 700;
+    vertical-align: top;
+  }
+
+  .basic .address_info .mark {
+    margin-top: 3px;
+    margin-left: 1px;
+    padding: 0 8px 0 9px;
+    display: inline-block;
+    line-height: 18px;
+  }
+
+  .basic .address_info .name {
+    font-size: 16px;
+    letter-spacing: -0.16px;
+  }
+
+  .basic .address_info .address_box {
+    padding-top: 12px;
+    font-size: 14px;
+    letter-spacing: -0.21px;
+  }
+
+  .btn_bind {
+    -ms-flex-item-align: baseline;
+    align-self: baseline;
+    margin-top: 2px;
+  }
+
+  .btn_bind .btn {
+    /* position: relative; */
+    padding: 0 9px;
+    margin: 0;
+    border: 0;
+    font-size: 1.6rem;
+    letter-spacing: -0.21px;
+    color: rgba(34, 34, 34, 0.5);
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .btn_bind .btn + .btn:before {
+    content: '';
+    /* position: absolute;   */
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    width: 1px;
+    height: 12px;
+    background-color: rgba(34, 34, 34, 0.1);
+  }
+  .btn_bind .btn + .btn {
+    margin: 0;
+  }
+  .other_list .my_item {
+    display: block;
+  }
+}

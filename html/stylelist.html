@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>STYLE | RELO</title>
+    <link
+      data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+    />
+    <link rel="stylesheet" href="../css/basic.css" />
+    <link rel="stylesheet" href="../css/stylelist.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="../js/stylelist.js"></script>
+    <script src="../js/basic.js"></script>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <div id="header"></div>
+    <section>
+      <div class="whole">
+        <div class="menuList">
+          <input type="button" id="likes" value="인기">
+        <input type="button" id="recent" value="최신">
+        <input type="button" id="myStyle" value="내 글 모아보기">
+        <input type="button" id="write" value='글쓰기' onclick=location.href="./styleadd.html">
+      </div>
+      <div class="tagList">
+      </div>
+      <div class="stylelist">
+        <div class="style">
+          <div class="img">이미지</div>
+          <div class="styleNum">상품번호</div>
+          <div class="userbox">
+            <span class="styleId">작성자</span>
+            <span class="stylelike">
+            </span>
+          </div>
+           <p class="content">
+            <span class="styleContent">내용</span>
+           </p>
+        </div>
+      </div>
+      <div class="pagegroup"></div>
+      </div>
+    </section>
+  </div>
+</div>
+<div id="footer"></div>
+  </body>
+</html>
