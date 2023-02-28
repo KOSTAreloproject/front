@@ -105,8 +105,9 @@ span.btn_txt{
 .outlinegrey {
   border: 1px solid #d3d3d3;
   color: rgba(34, 34, 34, 0.8);  
-  padding : 6px 6px 6px 6px;
+  padding : 8px;
   font-size: 12px;
+  margin-left: 10px;
 }
 .small {
   border-radius: 10px;
@@ -182,8 +183,11 @@ div.input_title_error{
   margin-top: 10px;
   color:#f15746;
 }
+div.zipcode_package{
+  display: flex;
+}
 input.input_txt{
-  width: 400px;
+  width: 300px;
   border: none;
   border-bottom: 1px solid #ebebeb;
   margin-bottom: 5px;

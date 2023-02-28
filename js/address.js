@@ -115,7 +115,7 @@ $(() => {
   //--주소 수정 클릭시 폼 데이터 출력 END--
   //--폼에서 저장하기 클릭 START--
   $('#save').click(function () {
-    let url = backUrl + 'address/add.do';
+    let url = backUrl + '/address/add.do';
     let $addrName = $('#addressname_input').val();
     let $addrPostNum = $('#zipcode_input').val();
     let $addrTel = $('#hp_input').val();
@@ -144,8 +144,7 @@ $(() => {
       dataType: 'json',
       success: function () {
         // alert('주소 추가 완료');
-        $('#ex1').hide();
-        $('.blocker').css('display','none');
+        $('.close-modal').click();
         resetData();
         showList();
         $("#input_button_check").attr("checked", false);
@@ -203,14 +202,11 @@ $(() => {
   //     }
   //   })
   // });
-
-
-
   $(document).on('click',"input[class='btn outlinegrey small test']", function(){
     let addrNum = $(this).attr('id').split('_')[1];
     $('#del_addrnum_input').val(addrNum);
   })
-  $('#delete_addr').click(function(e){
+  $('#delete_addr').click(function(){
     let $addrNum = $('#del_addrnum_input').val();
     let url = backUrl + '/address/del.do';
     $.ajax({
@@ -222,13 +218,8 @@ $(() => {
       method : 'post',
       success : function(){
         // alert("삭제되었습니다.")
-        $('.blocker').css('display','none');
-        $('.modal').hide();
         showList();
-        // $('#ex2').hide();
-        // $('.jquery-modal blocker current').css('display','none');
-        
-        
+        $('.close-modal').click();
       },
       error : function(xhr){
         alert(xhr.status);
@@ -273,8 +264,7 @@ $(() => {
       dataType: 'json',
       success: function () {
         // alert('주소 수정 완료');
-        $('.blocker').css('display','none');
-        $('.modal').hide();
+        $('.close-modal').click();
         resetData();
         showList();
       },
@@ -352,4 +342,17 @@ $(() => {
     })
   })
   //--작성 폼에서 실시간 전화번호 유효성 검사 END--
+  //--주소창 클릭시 카카오 주소 팝업 START--
+  document.getElementById("kakaoOpen").addEventListener("click", function(){ //주소입력칸을 클릭하면
+    //카카오 지도 발생
+    new daum.Postcode({
+        oncomplete: function(data) { //선택시 입력값 세팅
+            document.getElementById("address1_input").value = data.address; // 주소 넣기
+            document.getElementById("zipcode_input").value = data.zonecode; // 우편번호 넣기 
+
+        }
+    }).open();
+});
+
+  //--주소창 클릭시 카카오 주소 팝업 END--
 });

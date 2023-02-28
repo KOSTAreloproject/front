@@ -1,5 +1,5 @@
 $(() => {
-  let url = backUrl+"/style/list.do";
+  let url = backUrl+"style";
   let data = location.search.substring(1);
   let searchCode = data.split("=")[0];
 
@@ -23,9 +23,8 @@ $(() => {
       xhrFields: {
         withCredentials: true,
       },
-      url: url,
+      url: url+data,
       method: "get",
-      data: data,
       success: function (jsonObj) {
         listShow(jsonObj);
         $('#likes').css('color','#222');
@@ -34,6 +33,8 @@ $(() => {
         $('#recent').css('background-color','#fff');
         $('#myStyle').css('color','#222');
         $('#myStyle').css('background-color','#fff');
+        $('#Cnt').css('color','#222');
+        $('#Cnt').css('background-color','#fff');
       },
       error: function (xhr) {
         console.log(xhr.status);
@@ -41,6 +42,34 @@ $(() => {
     });
   }
   //--해시태그별 리스트 띄우기 END--
+  //--조회순별 출력 START--
+  $("#Cnt").click(function () {
+    let $origin = $("div.style").first();
+    $("div.style").not(":first-child").remove();
+    $origin.show();
+    $.ajax({
+      xhrFields: {
+        withCredentials: true,
+      },
+      url: url+'/list/3',
+      method: "get",
+      success: function (jsonObj) {
+        listShow(jsonObj);
+        $('#recent').css('color','#222');
+        $('#recent').css('background-color','#fff');
+        $('#myStyle').css('color','#222');
+        $('#myStyle').css('background-color','#fff');
+        $('#likes').css('color','#222');
+        $('#likes').css('background-color','#fff');
+        $('#Cnt').css('color','#fff');
+        $('#Cnt').css('background-color','#222');
+      },
+      error: function (xhr) {
+        console.log(xhr.status);
+      },
+    });
+  });
+  //--조회순별 출력 END--
 
   //--내가 쓴 글 리스트 띄우기 START--
   function myList(url, data) {
@@ -48,9 +77,8 @@ $(() => {
       xhrFields: {
         withCredentials: true,
       },
-      url: url,
+      url: url+data,
       method: "get",
-      data: data,
       success: function (jsonObj) {
         listShow(jsonObj);
         $('#myStyle').css('color','#fff');
@@ -59,6 +87,8 @@ $(() => {
         $('#likes').css('background-color','#fff');
         $('#recent').css('color','#222');
         $('#recent').css('background-color','#fff');
+        $('#Cnt').css('color','#222');
+        $('#Cnt').css('background-color','#fff');
       },
       error: function (xhr) {
         console.log(xhr.status);
@@ -68,7 +98,7 @@ $(() => {
   //--내가 쓴 글 리스트 띄우기 END--
 
   //--상품목록 요청 START--
-  function showList(url, page) {
+  function showList(url) {
     let $origin = $("div.style").first();
     // let $parent = $('div.stylelist')
     $("div.style").not(":first-child").remove();
@@ -77,9 +107,8 @@ $(() => {
       xhrFields: {
         withCredentials: true,
       },
-      url: url,
+      url: url+'/list/2',
       method: "get",
-      data: "currentPage=" + page + "&styleCode=styleLikes",
       success: function (jsonObj) {
         listShow(jsonObj);
         $('#likes').css('color','#fff');
@@ -88,6 +117,8 @@ $(() => {
         $('#recent').css('background-color','#fff');
         $('#myStyle').css('color','#222');
         $('#myStyle').css('background-color','#fff');
+        $('#Cnt').css('color','#222');
+        $('#Cnt').css('background-color','#fff');
       },
       error: function (xhr) {
         console.log(xhr.status);
@@ -95,17 +126,6 @@ $(() => {
     });
   }
   //--상품목록 요청 END--
-
-  //--페이지번호가 클릭되었을 때 할 일 START--
-  // $('div.pagegroup span').click(()=>{
-  //     alert('클릭')
-
-  // })
-  $("div.pagegroup").on("click", "span:not(.current)", (e) => {
-    let page = $(e.target).attr("class");
-    showList(url, page);
-  });
-  //--페이지번호가 클릭되었을 때 할 일 END--
 
   //--상품 클릭되었을 때 할일 START--
   $("div.stylelist").on("click", "div.style", (e) => {
@@ -123,9 +143,8 @@ $(() => {
       xhrFields: {
         withCredentials: true,
       },
-      url: url,
+      url: url+'/list/1',
       method: "get",
-      data: "currentPage=1&styleCode=style",
       success: function (jsonObj) {
         listShow(jsonObj);
         $('#recent').css('color','#fff');
@@ -134,6 +153,8 @@ $(() => {
         $('#myStyle').css('background-color','#fff');
         $('#likes').css('color','#222');
         $('#likes').css('background-color','#fff');
+        $('#Cnt').css('color','#222');
+        $('#Cnt').css('background-color','#fff');
       },
       error: function (xhr) {
         console.log(xhr.status);
@@ -144,7 +165,7 @@ $(() => {
 
   //--인기순 출력 END--
   $("#likes").click(function () {
-    showList(url, 1);
+    showList(url);
   });
   //--인기순 출력 END--
 
@@ -153,21 +174,16 @@ $(() => {
     let $origin = $("div.style").first();
     $("div.style").not(":first-child").remove();
     $origin.show();
-    let myData = "currentPage=1&id=id";
+    let myData = "/myList/id";
     myList(url, myData);
   });
   //--내 글 모아보기 클릭 이벤트 END--
 
   //--리스트 출력 START--
   function listShow(jsonObj) {
-    let pb = jsonObj.pb;
     let tagList = jsonObj.tagList;
-    let list = pb.list;
+    let list = jsonObj.list;
     let loginId = jsonObj.loginId;
-    let totalPage = pb.totalPage;
-    let currentPage = pb.currentPage;
-    let startpage = pb.startPage;
-    let endPage = pb.endPage;
     let $origin = $("div.style").first();
     let $parent = $("div.stylelist");
 
@@ -177,16 +193,26 @@ $(() => {
 
     $(list).each((index, p) => {
       let styleNum = p.styleNum;
-      let id = p.id;
-      let styleLikes = p.styleLikes;
+      let id = p.member.id;
+      let styleLikes = p.likesList.length;
       let styleFile = p.styleFile;
-      let styleContent = p.styleContent;
-      let $copy = $origin.clone();
-      let imgStr = '<img src="../imgs/style/' + styleFile + ">";
-      $copy.find("div.img").html(imgStr);
-      let $imgObj = $("<img>"); //태그용 객체를 만듬
-      $imgObj.attr("src", "../imgs/style/" + styleFile);
+      let tagList = p.tagList;
+      let content = '';
+      let hashName = '';
+      $(tagList).each((index, o) => {
+        let ste = o.ste;
+        $(ste).each((index,i)=>{
+          hashName = i.hashName;
+          content += '#'+hashName+' ';
+        })
+      });
 
+      let $copy = $origin.clone();
+      // let imgStr = '<img src="../imgs/style/' + styleFile + ">";
+      // $copy.find("div.img").html(imgStr);
+      let $imgObj = $("<img>"); //태그용 객체를 만듬
+      // $imgObj.attr("src", "../imgs/style/" + styleFile);
+      $imgObj.attr("id",styleNum);
       $copy.find("div.img").empty().append($imgObj);
       $copy.find("div.styleNum").html(styleNum).hide();
       $copy
@@ -195,27 +221,49 @@ $(() => {
         $copy.find("span.stylelike").html('<span class="material-icons" id="likes">' +
         "sentiment_satisfied_alt"
       +'</span>'+styleLikes);
-        $copy.find("span.styleContent").html(styleContent);
+        $copy.find("span.styleContent").html(content);
 
       $parent.append($copy);
+      imgShow(styleNum);
     });
     $origin.hide();
-
+    
     //--해시태그 리스트 띄우기 START--
     let $tagList = $("div.tagList");
     let tagGroupStr = "";
     $(tagList).each((index, h) => {
-      let hashName = h.hashName;
+      let hashName = h;
       tagGroupStr +=
-        '<span class="tag_' +
-        index +
-        '"id="tag"">' +
-        " #" +
-        hashName +
-        "</span>";
+      '<span class="tag_' +
+      index +
+      '"id="tag"">' +
+      " #" +
+      hashName +
+      "</span>";
     });
     $tagList.html(tagGroupStr);
     //--해시태그 리스트 띄우기 END--
+    
+    //--이미지 띄우기 START--
+    function imgShow(num){
+      $.ajax({
+        xhrFields: {
+          responseType: 'blob',
+          withCredentials: true,
+          cache: false, 
+        },
+        url: url+'/list/img/'+num,
+        method: "get",
+        success: function (result) {
+          let blobStr = URL.createObjectURL(result);
+          $('img#'+num).attr('src', blobStr);
+        },
+        error: function (xhr) {
+          console.log(xhr.status);
+        },
+      });
+    }
+    //--이미지 띄우기 END--
 
     //--해시태그 클릭되었을 때 할 일 START--
     $("div.tagList").on("click", "span:not(.current)", (e) => {
@@ -224,31 +272,10 @@ $(() => {
 
       $("div.style").not(":first-child").remove();
       $origin.show();
-      let hashData = "currentPage=1&hashName=" + hashName;
+      let hashData = '/hashList/'+hashName;
       hashList(url, hashData);
     });
     //--해시태그 클릭되었을 때 할 일 END--
-
-    // let $pageGroup = $("div.pagegroup");
-    // let pageGroupStr = "";
-    // if (startpage > 1) {
-    //   pageGroupStr += '<span class="' + (startpage - 1) + '">[PREV]</span>';
-    // }
-    // if (endPage > totalPage) {
-    //   endPage = totalPage;
-    // }
-    // for (let i = startpage; i <= endPage; i++) {
-    //   if (i == currentPage) {
-    //     pageGroupStr += '<span class="current ' + i + '">[' + i + "]</span>";
-    //   } else {
-    //     pageGroupStr += '<span class="' + i + '">[' + i + "]</span>";
-    //   }
-    // }
-    // if (endPage < totalPage) {
-    //   pageGroupStr += '<span class="' + (endPage + 1) + '">[NEXT]</span>';
-    // }
-
-    // $pageGroup.html(pageGroupStr);
   }
   //--리스트 출력 END--
 });

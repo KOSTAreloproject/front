@@ -9,7 +9,6 @@ $(() => {
     $("div>div.show>img").attr("src", blobStr);
   });
   let $form = $("div>div.form>div>form");
-  
   $form.submit((e) => {
     if (confirm("게시물을 작성하시겠습니까?") == false) {
     }
@@ -26,12 +25,12 @@ $(() => {
       contentType: false,
       success: function (jsonObj) {
         alert(jsonObj);
-        // location.href ='./stylelist.html';
       },
       error: function (xhr) {
         alert("잘못 입력하셨습니다.");
       },
     });
+    location.href ='./stylelist.html';
     return false;
   });
   // $('#write').click(function(){
