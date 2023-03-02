@@ -111,9 +111,8 @@ $(() => {
   //--인기상품 출력(찜하기순) END--//
   //--스타일게시판 출력(인기순) START--//
   function showslist() {
-    let url = backUrl + 'style/list.do';
+    let url = backUrl + 'style/list/2';
     let $origin = $('div.styleboardlist').first();
-    let condition = 'styleCode=styleLikes&currentPage=1';
     $('div.styleboardlist').not(':first-child').remove();
     $origin.show();
     $.ajax({
@@ -121,29 +120,29 @@ $(() => {
         withCredentials: true, // 클라이언트와 서버가 통신할때 쿠키와 같은 인증 정보 값을 공유하겠다는 설정
       },
       url: url,
-      data: condition,
-      method: 'get',
+      method: 'get', 
       success: function (jsonObj) {
         console.log(jsonObj);
-        let list = jsonObj.pb.list;
+        let list = jsonObj.list;
         let $origin = $('div.styleboardlist').first();
         let $parent = $('div.styleboard');
+        let styleNum = ""
+       
         $(list).each((index, p) => {
-          let styleFile = p.styleFile;
-          let id = p.id;
-          let styleNum = p.styleNum;
-          let styleLikes = p.styleLikes;
+          let id = p.member.id;
+          styleNum = p.styleNum;
+          let styleLikes = p.likesList.length;
           let $copy = $origin.clone();
-          // let imgStr = '<img src="../images/' + prodNo + '.jpg">'
-          // $copy.find('div.img').html(imgStr)
+
           let $imgObj = $('<img>');
-          $imgObj.attr('src', '../imgs/style/' + styleFile);
+          $imgObj.attr("id",styleNum);
           $imgObj.attr('height', '200px');
           $copy.find('div.simg').empty().append($imgObj);
           $copy.find('div.stid').html('글쓴이 : ' + id);
           $copy.find('div.stlike').html('좋아요 : ' + styleLikes);
           $copy.find('div.stnum').html(styleNum);
           $parent.append($copy);
+          imgShow(styleNum);
         });
         $($origin).detach();
         $('div.styleboardlist').hide();
@@ -155,6 +154,26 @@ $(() => {
     });
   }
   //--스타일게시판 출력(인기순) END--//
+  //--스타일게시판 이미지 띄우기 START--
+   function imgShow(num){
+    $.ajax({
+      xhrFields: {
+        responseType: 'blob',
+        withCredentials: true,
+        cache: false, 
+      },
+     url: backUrl+'style/list/img/'+num,
+      method: "get",
+      success: function (result) {
+      let blobStr = URL.createObjectURL(result);
+      $('img#'+num).attr('src', blobStr);
+    },
+    error: function (xhr) {
+      console.log(xhr.status);
+    },
+  });
+}
+//--스타일게시판 이미지 띄우기 END--
 
   //--홈페이지 실행 시 인기상품,STYLE 목록 보여주기--//
   showzlist();

@@ -7,7 +7,7 @@ section {
 div.whole{
   height: auto;
 }
-input#likes,input#recent,input#myStyle ,input#write{
+input#likes,input#recent,input#myStyle ,input#write,input#Cnt{
   cursor:pointer; 
   margin: 10px 10px; 
   padding: 8px 14px;

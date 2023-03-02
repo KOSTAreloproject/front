@@ -73,7 +73,7 @@ $(() => {
   // -- 로그인 start --
 
   $('#login').on('click', function () {
-    let url = backUrl + 'member/login.do';
+    let url = backUrl + 'member/login';
 
     let $id = $('#id').val();
     let $pwd = $('#pwd').val();

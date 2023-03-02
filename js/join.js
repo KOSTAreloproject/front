@@ -11,7 +11,7 @@ $(() => {
     if ($id.search(/\W|\s/g) <= 0) {
       filterByDebounce(e, (strId) => {
         $.ajax({
-          url: backUrl + 'member/idcheck.do',
+          url: backUrl + 'member/idcheck',
           xhrFields: {
             withCredentials: true,
           },

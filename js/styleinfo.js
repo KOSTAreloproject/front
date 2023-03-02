@@ -1,7 +1,7 @@
 $(() => {
-  let url = backUrl+"/style/detail.do";
+  let url = backUrl+"style/detail/"
   let data = location.search.substring(1); //?prodNo=C0001
-  let repUrl = backUrl+"/reply/add.do";
+  let repUrl = backUrl+"/style/reply/";
   let likesUrl = backUrl+"/likes/likes.do";
   let styleNum = data.split('=')[1];
   let replyCnt;
@@ -13,30 +13,42 @@ $(() => {
       xhrFields: {
         withCredentials: true,
       },
-      url: url,
+      url: url+styleNum,
       method: "get",
       data: data,
       success: function (jsonObj) {
         console.log(jsonObj);
-        let vo = jsonObj.vo;
         let likeCheck = jsonObj.likeCheck;
-        replyCnt = jsonObj.replyCnt;
+        let styleCnt = jsonObj.styleCnt;
         loginId = jsonObj.loginId;
-        let tagList = vo.tagList;
-        let repList = vo.repList;
-        let styleId = vo.id;
-        let styleContent = vo.styleContent;
-        let styleDate = vo.styleDate;
-        let styleFile = vo.styleFile;
-        let styleLikes = vo.styleLikes;
+        let tagList = jsonObj.tagList;
+        let repList = jsonObj.replyList;
+        replyCnt = jsonObj.replyList.length;
+        let styleId = jsonObj.member.id;
+        // let styleContent = vo.styleContent;
+        let styleDate = jsonObj.date;
+        // let styleFile = jsonObj.styleFile;
+        let styleLikes = jsonObj.likesList.length;
         let $origin = $("div.styleinfo");
         let $imgObj = $("div.img img");
-        $imgObj.attr("src", "../imgs/style/" + styleFile);
-        // $origin.find("div.img").html($imgObj);
-        let year = styleDate.split("-")[0];
-        let month = styleDate.split("-")[1];
-        let date = styleDate.split("-")[2];
-        
+        //--이미지 띄우기 START--
+        $.ajax({
+          xhrFields: {
+          responseType: 'blob',
+          withCredentials: true,
+          cache: false, 
+        },
+          url: url+'img/'+styleNum,
+          method: "get",
+          success: function (result) {
+          let blobStr = URL.createObjectURL(result);
+          $('div.img img').attr('src', blobStr);
+        },
+        error: function (xhr) {
+        console.log(xhr.status);
+      },
+   });
+        // --이미지 띄우기 END--
         if(likeCheck == 1){
           $("#likes").html('favorite');
         }
@@ -49,12 +61,12 @@ $(() => {
           );
         $origin
           .find("div.styleDate")
-          .html("20" + year + "년 " + month + "월 " + date + "일");
+          .html(styleDate);
         $origin
           .find("div.styleNum")
           .html("스타일번호: " + styleNum)
           .hide();
-        $origin.find("div.styleLikes").html("공감 " +styleLikes + "개  댓글 "+replyCnt +"개");
+        $origin.find("div.styleLikes").html("공감 " +styleLikes + "개  댓글 "+replyCnt +"개   조회수"+styleCnt);
         let btnStr =
           '<input type="button" id="edit" onclick=location.href="./styleedit.html?styleNum=' +
           styleNum +
@@ -77,7 +89,7 @@ $(() => {
         let $tagOrigin = $("div.tag").first();
         let $tagParent = $("div.tagList");
         $(tagList).each((index, t) => {
-          let hashName = t.hashName;
+          let hashName = t.ste.hashName;
           let $tagCopy = $tagOrigin.clone();
           let tagGroupStr =
             '<input type="button" id= "' +
@@ -93,7 +105,7 @@ $(() => {
           let hashName = $(this).attr("id");
           console.log(hashName);
           location.href =
-            "./stylelist.html?hashName=" + hashName + "&currentPage=1";
+            "./stylelist.html?hashName=" + hashName;
         });
         //--출력 되는 태그에 태그 스타일리스트 링크 걸기 END--
 
@@ -105,18 +117,15 @@ $(() => {
         let $repParent = $("div.repList");
         $(repList).each((index, r) => {
           let repNum = r.repNum;
-          let repId = r.id;
+          let repId = r.member.id;
           let repContent = r.repContent;
-          let repDate = r.repDate;
-          let repYear = repDate.split("-")[0];
-          let repMonth = repDate.split("-")[1];
-          let repdate = repDate.split("-")[2];
+          let repDate = r.date;
           let $repCopy = $repOrigin.clone();
           $repCopy.find("div.repNum").html(repNum).hide();
           $repCopy
             .find("div.repId")
             .html(repId +"<span class='repContent'>"+ repContent+"</span>");
-          $repCopy.find("div.repDate").html("20" + repYear + "년 " + repMonth + "월 " + repdate + "일");
+          $repCopy.find("div.repDate").html(repDate);
           if (loginId == repId) {
             $repCopy
               .find("div.repId")

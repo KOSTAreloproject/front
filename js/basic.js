@@ -1,5 +1,5 @@
-let backUrl = "http://192.168.0.40:8888/relo/";
-let frontUrl = "http://192.168.0.40:5500/html/";
+let backUrl = "http://192.168.0.42:8888/relo/";
+let frontUrl = "http://192.168.0.42:5500/html/";
 
 $(() => {
   
@@ -75,7 +75,7 @@ $(() => {
 
   //--60초간격으로 로그인여부확인하기 함수 START--
   function checkIntervalLogined() {
-    window.setInterval(checkLogined, 60000);
+    window.setInterval(checkLogined, 6000000);
   }
   // $(() => {   checkIntervalLogined();   }) -> 위와 같은 표현
   //--5초간격으로 로그인여부확인하기 함수 END--

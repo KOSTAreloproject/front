@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link rel="stylesheet" href="../css/mypageBasic.css" />
     <script src="../js/basic.js"></script>
     <script src="../js/address.js"></script>
@@ -151,35 +152,37 @@
             <input type="text" placeholder="- 없이 입력" class="input_txt" id="hp_input"/>
             <p class="input_error" id="hp_input_error"></p>
           </div>
-          <!-- 우편 번호 -->
-          <div class="input_box">
-            <div class="input_title">우편번호</div>
-            <div class="input_zipcode">
-              <!-- 우편 번호를 검색하세요 -->
-              <input type="text" class="input_txt" id="zipcode_input"/>
-              <!-- <input
-                type="button"
-                value="우편번호"
-                class="btn btn_zipcode outline small outlinegrey"
-                onclick="sample6_execDaumPostcode()"
-              /> -->
-            </div>
-          </div>
           <!-- 배송지명 -->
           <div class="input_box">
             <div class="input_title">배송지명</div>
             <input type="text" class="input_txt" id="addressname_input" />
           </div>
+          <!-- 우편 번호 -->
+          <div class="input_box">
+            <div class="input_title">우편번호</div>
+            <div class="zipcode_package">
+              <div class="input_zipcode">
+                <!-- 우편 번호를 검색하세요 -->
+                <input type="text" class="input_txt" id="zipcode_input" readonly/>
+              </div>
+              <input
+              type="button"
+              value="우편번호"
+              id="kakaoOpen"
+              class="btn btn_zipcode outline small outlinegrey"
+              /> 
+            </div>
+          </div>
           <!-- 주소 -->
           <div class="input_box">
             <div class="input_title">주소</div>
             <!-- 우편 번호 검색 후, 자동입력됩니다. -->
-            <input type="text"class="input_txt"id="address1_input" />
+            <input type="text"class="input_txt"id="address1_input" readonly/>
           </div>
           <!-- 상세주소 -->
           <div class="input_box" id="address2_input_box">
             <div class="input_title">상세 주소</div>
-            <input type="text" placeholder="건물, 아파트, 동/호수 입력" class="input_txt" id="address2_input"/>
+            <input type="text" placeholder="건물, 아파트, 동/호수 입력" class="input_txt" id="address2_input" />
             <p class="input_error" id="address2_input_error"></p>
           </div>
           <!-- 기본 배송지로 설정 -->
