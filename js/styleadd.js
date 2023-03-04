@@ -1,6 +1,9 @@
 $(() => {
-  let url = backUrl+"/style/add.do";
-  let link = "./stylelist.html";
+  let url = backUrl+"style/write";
+  let $form = $("div.form>div>form");
+  let formData;
+
+  //--이미지 미리보기 출력 START--
   $("div.form>div>form>input[type=file]").change((e) => {
     let imageFileObj = e.target.files[0];
     console.log(imageFileObj);
@@ -8,12 +11,16 @@ $(() => {
     let blobStr = URL.createObjectURL(imageFileObj);
     $("div>div.show>img").attr("src", blobStr);
   });
-  let $form = $("div>div.form>div>form");
-  $form.submit((e) => {
-    if (confirm("게시물을 작성하시겠습니까?") == false) {
-    }
-    let formData = new FormData($form[0]);
-    console.log(formData);
+  //--이미지 미리보기 출력 END--
+  
+  //--작성하기 버튼 클릭 START--
+  $(document).on("click", "input[class='write']", function (){
+    formData = new FormData($form[0]);
+  });
+  //--작성하기 버튼 클릭 END--
+  
+  //--모달창에서 확인 버튼 클릭 START--
+ $('#write_modal_btn').click(function(){
     $.ajax({
       xhrFields: {
         withCredentials: true,
@@ -24,23 +31,22 @@ $(() => {
       processData: false,
       contentType: false,
       success: function (jsonObj) {
-        alert(jsonObj);
+        location.href ='./stylelist.html';
       },
       error: function (xhr) {
-        alert("잘못 입력하셨습니다.");
+        alert(xhr);
       },
-    });
-    location.href ='./stylelist.html';
-    return false;
-  });
-  // $('#write').click(function(){
-  //   let formData = new FormData($form[0]);
-  //   console.log(formData)
-  // })
+     });
+     return false;
+    }); 
+  //--모달창에서 확인 버튼 클릭 END--
+  
+  //--취소 버튼 클릭 START--
   document.getElementById("del").onclick = function () {
     del();
   };
   function del() {
     location.href = "./stylelist.html";
   }
+  //--취소 버튼 클릭 END--
 });

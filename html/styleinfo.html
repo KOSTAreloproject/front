@@ -45,6 +45,9 @@
               <span class="material-icons" id="likes">
                 favorite_border
               </span>
+              <span class="material-icons" id="likesCancle">
+                favorite
+              </span>
             <span class="material-icons">
               chat_bubble_outline
             </span>
@@ -63,7 +66,10 @@
             <div id="replyForm" >
               <input type="text" id="reply_id" value="" hidden><br/>
               <input type="text" id="reply_Content" class="reply_Content"placeholder="  댓글을 남기세요..">
-              <input type="button" id="myBtn" value="댓글 작성" onclick="replyWt()"/>
+              <p class="write_rep_modal"><a href="#writeRep_btn" rel="modal:open">
+                <input type="button" id="myBtn" class="myBtn" value="댓글 작성">
+              </a></p>
+              <!-- <input type="button" id="myBtn" value="댓글 작성" onclick="replyWt()"/> -->
             </div>
             </div>
         <!-- 삭제 눌렀을 때 나오는 모달창  -->
@@ -72,13 +78,31 @@
           <button id="delete_style" class="modal_btn">확인</button>
         </div>
         <!-- 삭제 눌렀을 때 나오는 모달창  -->
+        <!-- 댓글 작성 눌렀을 때 나오는 모달창  -->
+        <div id="writeRep_btn" class="modal">
+          <p>작성하시겠습니까?</p>
+            <a href="#" rel="modal:close"><button id="write_rep" class="modal_btn">확인</button></a>
+        </div>
+        <!-- 댓글 작성 눌렀을 때 나오는 모달창  -->
+        <!-- 댓글 수정 눌렀을 때 나오는 모달창  -->
+        <div id="editRep_btn" class="modal">
+          <p>수정하시겠습니까?</p>
+            <a href="#" rel="modal:close"><button id="edit_rep" class="modal_btn">확인</button></a>
+        </div>
+        <!-- 댓글 수정 눌렀을 때 나오는 모달창  -->
         <!-- 댓글 삭제 눌렀을 때 나오는 모달창  -->
           <div id="delRep_btn" class="modal">
             <p>삭제하시겠습니까?</p>
             <input type="text" id="del_repnum_input" hidden/>
-            <button id="delete_rep" class="modal_btn">확인</button>
+            <a href="#" rel="modal:close"><button id="delete_rep" class="modal_btn">확인</button></a>
           </div>
         <!-- 댓글 삭제 눌렀을 때 나오는 모달창  -->
+        <!-- 답글 작성 눌렀을 때 나오는 모달창 -->
+        <div id="rep_writeRep_btn" class="modal">
+          <p>작성하시겠습니까?</p>
+          <a href="#" rel="modal:close"><button id="writeRep_rep" class="modal_btn">확인</button></a>
+        </div>  
+        <!-- 답글 작성 눌렀을 때 나오는 모달창 -->
           </section>
         </div>
         <div id="footer"></div>

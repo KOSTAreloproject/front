@@ -1,7 +1,7 @@
 $(() => {
   //--내 주소록 목록 불러오기 START--
   function showList() {
-    let url = backUrl + '/address/list.do';
+    let url = backUrl + 'address/list';
     let $origin = $('div.address').first();
     $('div.address').not(':first-child').remove();
     $origin.show();
@@ -12,7 +12,6 @@ $(() => {
       url: url,
       method: 'get',
       success: function (jsonObj) {
-        console.log(jsonObj);
         let list = jsonObj;
 
         let $parent = $('div.addresslist');
@@ -79,7 +78,7 @@ $(() => {
     $('#input_title_hp').css('display','');
     $('#input_title_hp_error').css("display" ,'none');
     $('#hp_input').css('border-bottom','');
-    $("#input_button_check").attr("checked", false);
+    $("#input_button_check").prop("checked", false);
   }
   //--새 주소록 추가 취소 버튼 클릭시 폼 숨기기 END--
   //--주소 수정 클릭시 폼 데이터 출력 START--
@@ -88,22 +87,19 @@ $(() => {
         xhrFields: {
           withCredentials: true,
         },
-        url: backUrl+'/address/select.do',
-        data: "addrNum=" + addrNum,
+        url: backUrl+'/address/select/'+addrNum,
         success : function(jsonObj){
-          let vo = jsonObj.vo;
-          console.log(vo.addrName)
-          $('#num_input').val(vo.addrNum);
-          $('#name_input').val(vo.addrName);
-          $('#hp_input').val(vo.addrTel);
-          $('#zipcode_input').val(vo.addrPostNum);
-          $('#addressname_input').val(vo.addrRecipient);
-          $('#address1_input').val(vo.addr);
-          $('#address2_input').val(vo.addrDetail);
-          if(vo.addrType == 0){
-         $("#input_button_check").attr("checked", true);
+          $('#num_input').val(jsonObj.addrNum);
+          $('#name_input').val(jsonObj.addrName);
+          $('#hp_input').val(jsonObj.addrTel);
+          $('#zipcode_input').val(jsonObj.addrPostNum);
+          $('#addressname_input').val(jsonObj.addrRecipient);
+          $('#address1_input').val(jsonObj.addr);
+          $('#address2_input').val(jsonObj.addrDetail);
+          if(jsonObj.addrType == 0){
+         $("#input_button_check").prop("checked", true);
           }else{
-            $("#input_button_check").attr("checked", false);
+            $("#input_button_check").prop("checked", false);
           }
         },
         error : function(xhr){
@@ -115,7 +111,7 @@ $(() => {
   //--주소 수정 클릭시 폼 데이터 출력 END--
   //--폼에서 저장하기 클릭 START--
   $('#save').click(function () {
-    let url = backUrl + '/address/add.do';
+    let url = backUrl + 'address/add';
     let $addrName = $('#addressname_input').val();
     let $addrPostNum = $('#zipcode_input').val();
     let $addrTel = $('#hp_input').val();
@@ -132,19 +128,20 @@ $(() => {
       },
       url: url,
       method: 'post',
-      data: {
-        addrName: $addrName,
-        addrPostNum: $addrPostNum,
-        addrTel: $addrTel,
-        addr: $addr,
-        addrDetail: $addrDetail,
-        addrRecipient: $addrRecipient,
-        addrType: addrType
-      },
-      dataType: 'json',
+      data: JSON.stringify({
+        "addrName": $addrName,
+        "addrPostNum": $addrPostNum,
+        "addrTel": $addrTel,
+        "addr": $addr,
+        "addrDetail": $addrDetail,
+        "addrRecipient": $addrRecipient,
+        "addrType": addrType
+      }),
+      contentType: 'application/json',
       success: function () {
-        // alert('주소 추가 완료');
-        $('.close-modal').click();
+        
+        // $('#modal1').hide();
+        // $('div.jquery-modal blocker current').hide();
         resetData();
         showList();
         $("#input_button_check").attr("checked", false);
@@ -158,7 +155,6 @@ $(() => {
   //--주소록 수정 버튼 클릭 START--
   $(document).on('click',"input[class='btn outlinegrey small edit']",function(){
     let addrNum = $(this).attr('id').split('_')[1];
-    console.log(addrNum);
     $('.modalbtn').get(0).click();
     $('#save_btn').attr('style','display:none')
     $('#edit_btn').attr('style','')
@@ -180,46 +176,24 @@ $(() => {
   })
   //--주소록 수정 버튼 클릭 END--
   // //--주소록 삭제 버튼 클릭 START--
-  // $(document).on('click',"input[class='btn outlinegrey small delete']",function(){
-  //   if (confirm("주소록을 삭제하시겠습니까?") == false) {
-  //     return;
-  //   }
-  //   let addrNum = $(this).attr('id').split('_')[1];
-  //   let url = backUrl + '/address/del.do';
-  //   $.ajax({
-  //     xhrFields: {
-  //       withCredentials: true,
-  //     },
-  //     url: url,
-  //     data: "addrNum=" + addrNum,
-  //     method : 'post',
-  //     success : function(){
-  //       alert("삭제되었습니다.")
-  //       showList();
-  //     },
-  //     error : function(xhr){
-  //       alert(xhr.status);
-  //     }
-  //   })
-  // });
   $(document).on('click',"input[class='btn outlinegrey small test']", function(){
     let addrNum = $(this).attr('id').split('_')[1];
     $('#del_addrnum_input').val(addrNum);
   })
   $('#delete_addr').click(function(){
     let $addrNum = $('#del_addrnum_input').val();
-    let url = backUrl + '/address/del.do';
+    let url = backUrl + 'address/'+$addrNum;
     $.ajax({
       xhrFields: {
         withCredentials: true,
       },
       url: url,
-      data: "addrNum=" + $addrNum,
-      method : 'post',
+      method : 'delete',
       success : function(){
-        // alert("삭제되었습니다.")
+
         showList();
-        $('.close-modal').click();
+        $('div#ex2.modal').attr("style","display:none");
+       
       },
       error : function(xhr){
         alert(xhr.status);
@@ -229,7 +203,7 @@ $(() => {
   //--주소록 삭제 버튼 클릭 END--
   //--주소록 수정 폼에서 수정하기 버튼 클릭 START--
   $('#edit').click(function () {
-    let url = backUrl + '/address/edit.do';
+    let url = backUrl + 'address/';
     let $addrNum = $('#num_input').val();
     let $addrName = $('#addressname_input').val();
     let $addrPostNum = $('#zipcode_input').val();
@@ -239,32 +213,30 @@ $(() => {
     let $addrRecipient = $('#name_input').val();
     let addrType = 1;
     if($('#input_button_check').is(":checked") == true){
-      console.log('체크된 상태');
       addrType = 0;
      }
     if($('#input_button_check').is(":checked") == false){
-      console.log('체크 안 된 상태');
     }
     $.ajax({
       xhrFields: {
         withCredentials: true,
       },
-      url: url,
-      method: 'post',
-      data: {
-        addrNum : $addrNum,
-        addrName: $addrName,
-        addrPostNum: $addrPostNum,
-        addrTel: $addrTel,
-        addr: $addr,
-        addrDetail: $addrDetail,
-        addrRecipient: $addrRecipient,
-        addrType: addrType
-      },
-      dataType: 'json',
+      url: url+$addrNum,
+      method: 'put',
+      data: JSON.stringify({
+        "addrName": $addrName,
+        "addrPostNum": $addrPostNum,
+        "addrTel": $addrTel,
+        "addr": $addr,
+        "addrDetail": $addrDetail,
+        "addrRecipient": $addrRecipient,
+        "addrType": addrType
+      }),
+      contentType: 'application/json',
       success: function () {
-        // alert('주소 수정 완료');
-        $('.close-modal').click();
+        
+        // $('div.jquery-modal blocker current').hide();
+        // $('div.jquery-modal blocker current').click();
         resetData();
         showList();
       },

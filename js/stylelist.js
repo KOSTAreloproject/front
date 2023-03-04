@@ -2,12 +2,13 @@ $(() => {
   let url = backUrl+"style";
   let data = location.search.substring(1);
   let searchCode = data.split("=")[0];
-
+  let hashName = data.split("=")[1];
+  let loginId;
 
   //--페이지 처음 불러왔을 때 url코드 보고 리스트별 뽑아내기 START--
   switch (searchCode) {
     case "hashName":
-      hashList(url, data);
+      hashList(url, hashName);
       break;
     case "id":
       myList(url, data);
@@ -23,7 +24,7 @@ $(() => {
       xhrFields: {
         withCredentials: true,
       },
-      url: url+data,
+      url: url+"/hashList/"+data,
       method: "get",
       success: function (jsonObj) {
         listShow(jsonObj);
@@ -55,6 +56,7 @@ $(() => {
       method: "get",
       success: function (jsonObj) {
         listShow(jsonObj);
+        console.log(jsonObj);
         $('#recent').css('color','#222');
         $('#recent').css('background-color','#fff');
         $('#myStyle').css('color','#222');
@@ -147,6 +149,7 @@ $(() => {
       method: "get",
       success: function (jsonObj) {
         listShow(jsonObj);
+        
         $('#recent').css('color','#fff');
         $('#recent').css('background-color','#222');
         $('#myStyle').css('color','#222');
@@ -174,7 +177,7 @@ $(() => {
     let $origin = $("div.style").first();
     $("div.style").not(":first-child").remove();
     $origin.show();
-    let myData = "/myList/id";
+    let myData = "/myList";
     myList(url, myData);
   });
   //--내 글 모아보기 클릭 이벤트 END--
@@ -183,17 +186,18 @@ $(() => {
   function listShow(jsonObj) {
     let tagList = jsonObj.tagList;
     let list = jsonObj.list;
-    let loginId = jsonObj.loginId;
+    loginId = jsonObj.loginId;
     let $origin = $("div.style").first();
     let $parent = $("div.stylelist");
 
-    if(loginId == null){
-      $('input#write').hide();
-    }
+    // if(loginId == null){
+    //   $('input#write').hide();
+    // }
 
     $(list).each((index, p) => {
       let styleNum = p.styleNum;
       let id = p.member.id;
+      let mNum = p.member.mnum;
       let styleLikes = p.likesList.length;
       let styleFile = p.styleFile;
       let tagList = p.tagList;
@@ -208,16 +212,18 @@ $(() => {
       });
 
       let $copy = $origin.clone();
-      // let imgStr = '<img src="../imgs/style/' + styleFile + ">";
-      // $copy.find("div.img").html(imgStr);
       let $imgObj = $("<img>"); //태그용 객체를 만듬
-      // $imgObj.attr("src", "../imgs/style/" + styleFile);
       $imgObj.attr("id",styleNum);
       $copy.find("div.img").empty().append($imgObj);
       $copy.find("div.styleNum").html(styleNum).hide();
+      let $profileObj = $('<img>');
+      $profileObj.attr('id',"m_"+mNum);
+      $profileObj.attr('class',"profile");
       $copy
         .find("span.styleId")
-        .html("@" +id );
+        .html("")
+        .append($profileObj)
+        .append('<span class="profileId">'+id+'</span>')
         $copy.find("span.stylelike").html('<span class="material-icons" id="likes">' +
         "sentiment_satisfied_alt"
       +'</span>'+styleLikes);
@@ -225,6 +231,7 @@ $(() => {
 
       $parent.append($copy);
       imgShow(styleNum);
+      profileImgShow(mNum);
     });
     $origin.hide();
     
@@ -264,7 +271,27 @@ $(() => {
       });
     }
     //--이미지 띄우기 END--
-
+    
+    //--프로필 이미지 띄우기 START--
+    function profileImgShow(mnum){
+      $.ajax({
+        xhrFields: {
+          responseType: 'blob',
+          withCredentials: true,
+          cache: false, 
+        },
+        url: backUrl+"member/img/"+mnum,
+        method: "get",
+        success: function (result) {
+          let blobStr = URL.createObjectURL(result);
+          $('img#m_'+mnum).attr('src', blobStr);
+        },
+        error: function (xhr) {
+          console.log(xhr.status);
+        },
+      });
+    }
+    //--프로필 이미지 띄우기 END--
     //--해시태그 클릭되었을 때 할 일 START--
     $("div.tagList").on("click", "span:not(.current)", (e) => {
       let hashName = $(e.target).html().split("#")[1];
@@ -272,7 +299,7 @@ $(() => {
 
       $("div.style").not(":first-child").remove();
       $origin.show();
-      let hashData = '/hashList/'+hashName;
+      let hashData = hashName;
       hashList(url, hashData);
     });
     //--해시태그 클릭되었을 때 할 일 END--
