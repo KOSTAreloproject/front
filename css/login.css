@@ -87,28 +87,6 @@ input[type='button'] {
   margin-top: 30px;
 }
 
-#naver {
-  display: inline-flex;
-  justify-content: center;
-  width: 400px;
-  line-height: 50px;
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 10px;
-  border: 1px solid #ebebeb;
-  color: #000000;
-  cursor: pointer;
-  margin-top: 40px;
-}
-
-#naver_logo {
-  position: relative;
-  margin-top: 2px;
-  left: -34.3%;
-  width: 45px;
-  height: 45px;
-}
-
 #label_login {
   display: inline-block;
   margin-left: -35px;

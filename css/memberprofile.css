@@ -40,6 +40,7 @@ input[type='text'] {
 
 #real_change_img {
   display: none;
+  cursor: pointer;
 }
 
 .user_profile {

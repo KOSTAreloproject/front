@@ -29,6 +29,10 @@ h3 {
   margin-top: 20px;
 }
 
+#label_email {
+  margin-top: 35px;
+}
+
 .updown {
   border: 1px solid #ebebeb;
   width: 0.1px;
@@ -58,7 +62,7 @@ input[type='text'] {
   outline: none;
   border: none;
   width: 100%;
-  height: 40px;
+  height: 33px;
   font-size: 15px;
   letter-spacing: -0.15px;
   line-height: 22px;
@@ -67,6 +71,11 @@ input[type='text'] {
 
 input:focus {
   border-bottom: 2px solid #000000;
+}
+
+.msg {
+  float: left;
+  margin-top: 5px;
 }
 
 .find-form > input::placeholder {
@@ -89,7 +98,7 @@ input[type='button'] {
 
 /* popup 뒷배경 start */
 #popup_background {
-  /* display: none; */
+  display: none;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -102,7 +111,7 @@ input[type='button'] {
 
 /* popup start */
 #popup {
-  /* display: none; */
+  display: none;
   top: 50%;
   left: 50%;
   position: absolute;

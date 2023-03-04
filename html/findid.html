@@ -34,13 +34,13 @@
       <div id="wrapper">
         <div>
           <div class="find-wrapper">
-            <h2>이메일 아이디 찾기</h2>
+            <h2>아이디 찾기</h2>
             <form>
-              <p class="notice_txt"> 가입 시 등록한 휴대폰 번호를 입력하면<br> 이메일 주소의 일부를 알려드립니다. </p>
-              <h3>휴대폰 번호</h3>
-              <input type="text" placeholder="가입하신 휴대폰 번호" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-              <span class="msg"></span>
-              <input type="button" id="findid" value="이메일 아이디 찾기" />
+              <p class="notice_txt"> 가입 시 등록한 휴대폰 번호를 입력하면<br> 아이디 일부를 알려드립니다. </p>
+              <h3 id="label_tel1">휴대폰 번호</h3>
+              <input type="text" class="input_tel" id="tel1" placeholder="가입하신 휴대폰 번호" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+              <span class="msg" id="alert_valid_tel1"></span>
+              <input type="button" id="findid" value="아이디 찾기" disabled="disabled"/>
             </form>
           </div>
           <div class="updown"></div>
@@ -49,13 +49,13 @@
             <form>
               <p class="notice_txt">가입 시 등록하신 휴대폰 번호와 이메일을 입력하시면,<br>
                 이메일로 임시 비밀번호를 전송해 드립니다.</p>
-              <h3>휴대폰 번호</h3>
-              <input type="text" placeholder="가입하신 휴대폰 번호" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-              <span class="msg"></span>
-              <h3>이메일 주소</h3>
-              <input type="text" placeholder="예) relo@relo.co.kr" />
-              <span class="msg"></span>
-              <input type="button" id="findpwd" value="이메일 비밀번호 찾기" />
+              <h3 id="label_tel2">휴대폰 번호</h3>
+              <input type="text" class="input_tel" id="tel2" autocomplete="off" placeholder="가입하신 휴대폰 번호" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+              <span class="msg"  id="alert_valid_tel2"></span>
+              <h3 id="label_email">이메일 주소</h3>
+              <input type="text" id="email" autocomplete="off" placeholder="예) relo@relo.co.kr" oninput="this.value = this.value.replace(/\s| /gi, '')"/>
+              <span class="msg"  id="alert_valid_email"></span>
+              <input type="button" id="findpwd" value="이메일 비밀번호 찾기"/>
             </form>
           </div>
         </div>
