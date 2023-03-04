@@ -91,17 +91,19 @@
         </div>
         <div class="content_area">
           <h1 id="title">프로필 정보</h1>
-          <div class="user_profile">
-            <img src="../imgs/defaultProfileImg.png" id="user_img" />
-            <div class="user_detail">
-              <strong id="accent">name</strong>
-              <div class="profile_btn_box">
-                <a class="btn" id="change_img">이미지 변경</a>
-                <input type="file" id="real_change_img" />
-                <a class="btn" id="del_btn">삭제</a>
+          <form id="form_img" enctype="multipart/form-data">
+            <div class="user_profile">
+              <img src="../imgs/defaultProfileImg.png" id="user_img" />
+              <div class="user_detail">
+                <strong id="accent">name</strong>
+                <div class="profile_btn_box">
+                  <a class="btn" id="change_img">이미지 변경</a>
+                  <input type="file" id="real_change_img" />
+                  <a class="btn" id="del_btn">삭제</a>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
           <div class="profile_info">
             <div class="profile_group">
               <!-- 로그인 정보 start -->
@@ -129,7 +131,7 @@
               </div>
               <div class="unit" id="notice_pwd">
                 <h5 class="title_small" id="pwd">비밀번호</h5>
-                <p class="desc_pwd"></p>
+                <p type="password" class="desc_pwd"></p>
                 <button class="modify_info" id="btn_modify1">변경</button>
               </div>
               <div id="form_pwd">

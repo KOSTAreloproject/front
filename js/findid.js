@@ -1,5 +1,6 @@
 $(() => {
   $('.alert-box').hide();
+  $('input[name=ok]').removeAttr('name');
 
   $('#popup_background').click(function (e) {
     if (!$('#popup').has(e.target).length) {
@@ -69,6 +70,13 @@ $(() => {
   });
 
   $('#tel2').on('input', (e) => {
+    if ($('#tel2').val() == '') {
+      $('#findpwd').attr('disabled', true);
+      $('#findpwd').css('cursor', 'default');
+      $('#findpwd').css('background-color', '#ebebeb');
+      $('#findpwd').css('color', '#fff');
+      return;
+    }
     filterByDebounce(e, (strTell) => {
       let errorMsg = '';
 
@@ -76,10 +84,12 @@ $(() => {
 
       if (!validateTell(strTell_filtered)) {
         errorMsg = "휴대폰 번호를 정확히 입력해주세요.('-'제외 후 입력)";
+        $('#tel2').attr('name', '');
         $('#label_tel2').css('color', 'tomato');
         $('#alert_valid_tel2').css('color', 'tomato');
         $(e.target).css('border-bottom', '1px solid tomato');
       } else {
+        $('#tel2').attr('name', 'ok');
         $('#label_tel2').css('color', '');
         $('#alert_valid_tel2').css('color', '');
         $(e.target).css('border-bottom', '');
@@ -103,15 +113,24 @@ $(() => {
 
   // 이메일 유효성 검사
   $('#email').on('input', (e) => {
+    if ($('#email').val() == '') {
+      $('#findpwd').attr('disabled', true);
+      $('#findpwd').css('cursor', 'default');
+      $('#findpwd').css('background-color', '#ebebeb');
+      $('#findpwd').css('color', '#fff');
+      return;
+    }
     filterByDebounce(e, (strEmail) => {
       let errorMsg = '';
       if (!validateEmail(strEmail)) {
         errorMsg = '이메일 주소를 정확히 입력해주세요.';
+        $('#email').attr('name', '');
         $('#findpwd').attr('disabled', true);
         $('#label_email').css('color', 'tomato');
         $('#alert_valid_email').css('color', 'tomato');
         $(e.target).css('border-bottom', '1px solid tomato');
       } else {
+        $('#email').attr('name', 'ok');
         $('#findpwd').attr('disabled', false);
         $('#label_email').css('color', '');
         $('#alert_valid_email').css('color', '');
@@ -127,28 +146,17 @@ $(() => {
 
   function check_valid_btn() {
     disactiveEvent();
-    if ($('#findpwd').attr('disabled') === undefined) {
-      activeEvent();
-    }
   }
 
   // -- '비밀번호 찾기' 버튼 비활성화 start --
   function disactiveEvent() {
-    if ($('#tel2').val() == '' || $('#email').val() == '') {
+    if ($('input[name=ok]').length < 2) {
       $('#findpwd').attr('disabled', true);
       $('#findpwd').css('cursor', 'default');
       $('#findpwd').css('background-color', '#ebebeb');
       $('#findpwd').css('color', '#fff');
-    }
-
-    let strTell_filtered = $('#tel2')
-      .val()
-      .replace(/[^0-9]/g, '');
-    if (!validateTell(strTell_filtered) || !validateEmail($('#email').val())) {
-      $('#findpwd').attr('disabled', true);
-      $('#findpwd').css('cursor', 'default');
-      $('#findpwd').css('background-color', '#ebebeb');
-      $('#findpwd').css('color', '#fff');
+    } else {
+      activeEvent();
     }
   }
   // -- '비밀번호 찾기' 버튼 비활성화 end --
@@ -163,13 +171,47 @@ $(() => {
   // -- '비밀번호 찾기' 버튼 비활성화 end --
 
   $('#findid').click(function () {
-    alert($('#tel1').val());
     $.ajax({
       url: backUrl + 'member/findidandpwd',
+      xhrFields: {
+        withCredentials: true,
+      },
       method: 'post',
       data: 'tel=' + $('#tel1').val(),
       success: function (result) {
         location.href = './success_find_id.html?id=' + result;
+      },
+      error: function () {
+        alert('일치하는 정보가 없습니다.');
+      },
+    });
+  });
+
+  $('#findpwd').click(function () {
+    let $tel = $('#tel2').val();
+    $.ajax({
+      url: backUrl + 'member/findidandpwd',
+      xhrFields: {
+        withCredentials: true,
+      },
+      method: 'post',
+      data: 'tel=' + $tel,
+      success: function () {
+        $.ajax({
+          url: backUrl + 'member/findpwd/emailconfig',
+          xhrFields: {
+            withCredentials: true,
+          },
+          method: 'post',
+          data: { email: $('#email').val(), tel: $tel },
+          success: function () {
+            $('#popup_background').show();
+            $('#popup').show();
+          },
+          error: function () {
+            alert('이메일 전송에 실패했습니다.');
+          },
+        });
       },
       error: function () {
         alert('일치하는 정보가 없습니다.');

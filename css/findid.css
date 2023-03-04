@@ -169,3 +169,11 @@ i.fa-solid.fa-check {
   color: #107026;
   padding-right: 20px;
 }
+#notice_list {
+  margin-top: 30px;
+  float: left;
+}
+
+.notice {
+  font-size: 12px;
+}

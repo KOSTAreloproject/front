@@ -18,8 +18,12 @@ $(() => {
         $('.desc_email').html(result.email);
         $('.desc_pwd').html(result.pwd);
         $('.desc_name').html(result.name);
-        $('.desc_tel').html(result.tel);
-        $('.desc_birth').html(result.birth);
+        $('.desc_tel').html(
+          result.tel.replace(/(\d{3})(\d{4})(\d{4})/, '$1-****-$3')
+        );
+        $('.desc_birth').html(
+          result.birth.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3')
+        );
         $('#accent').html(result.name);
 
         $('#alert_check_password').hide();
@@ -42,6 +46,7 @@ $(() => {
         responseType: 'blob', //이미지다운로드용 설정
         withCredentials: true,
       },
+      method: 'post',
       cache: false, //이미지다운로드용 설정
       success: function (result) {
         let blobStr = URL.createObjectURL(result);
@@ -54,14 +59,24 @@ $(() => {
     });
   }
 
+  $('#ok_input_pwd').click(profiledetail());
+
   $('#change_img').click(function () {
+    $('#real_change_img').click();
+    let $form = $('#form_img');
+    let formData = new FormData($form[0]);
+    formData.append('profile', $('#real_change_img')[0].files[0]);
     $.ajax({
-      url: backUrl + 'member/img/3',
+      url: backUrl + 'member/img',
       xhrFields: {
         withCredentials: true,
         responseType: 'blob', //이미지다운로드용 설정
       },
-      cache: false, //이미지다운로드용 설정
+      method: 'post',
+      data: formData,
+      processData: false, // 파일 업로드용 설정
+      contentType: false, // 파일 업로드용 설정
+      mimeType: 'multipart/form-data',
       success: function (result) {
         let blobStr = URL.createObjectURL(result);
         $('#user_img').attr('src', blobStr);
@@ -72,20 +87,6 @@ $(() => {
     });
   });
 
-  $('#ok_input_pwd').click(profiledetail());
-
-  // -- 엔터 누르면 확인 버튼 클릭됨 start --
-  $('input[type=password]').keyup(function (e) {
-    if (e.which === 13) {
-      $('#ok_input_pwd').click(profiledetail());
-    }
-  });
-  // -- 엔터 누르면 확인 버튼 클릭됨 end --
-
-  $('#change_img').click(function () {
-    $('#real_change_img').click();
-  });
-
   $('#del_btn').click(function () {
     $.ajax({
       url: backUrl + 'member/delprofile',
@@ -94,7 +95,7 @@ $(() => {
       },
       method: 'delete',
       success: function () {
-        alert('이미지 삭제 성공!');
+        $('#user_img').attr('src', '../imgs/defaultProfileImg.png');
       },
       error: function (xhr) {
         alert(xhr.status);
