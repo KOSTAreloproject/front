@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relo</title>
+    <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/basic.css" />
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <link rel="stylesheet" href="../css/myOrderDetail.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/myOrderDetail.js"></script>
+  </head>
+<body>
+    <div id="wrapper">
+        <div id="header"></div>
+  
+        <section>
+          <div class="snb_area">
+            <a href="/my" class="nuxt-link-active"
+              ><h2 class="snb_main_title">마이 페이지</h2></a
+            >
+            <nav class="snb">
+              <div class="snb_list">
+                <strong class="snb_title">쇼핑 정보</strong>
+                <ul data-v-7bcac446="" class="snb_menu">
+                  <li class="menu_item menu_on">
+                    <a
+                      href="/html/orderList.html"
+                      aria-current="page"
+                      class="menu_link"
+                      style="font-weight: bold"
+                    >
+                      구매 내역
+                    </a>
+                  </li>
+                  <li class="menu_item">
+                    <a
+                      href="/html/mypageIngList.html"
+                      class="menu_link"
+                    >
+                      입찰 내역
+                    </a>
+                  </li>
+                  <li class="menu_item">
+                    <a href="/my/inventory" class="menu_link"> 판매 내역 </a>
+                  </li>
+                  <li class="menu_item">
+                    <a href="/my/wish" class="menu_link"> 관심 상품 </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="snb_list">
+                <strong class="snb_title">내 정보</strong>
+                <ul class="snb_menu">
+                  <li class="menu_item">
+                    <a href="/my/profile" class="menu_link"> 프로필 정보 </a>
+                  </li>
+                  <li class="menu_item">
+                    <a href="/my/address" class="menu_link"> 주소록 </a>
+                  </li>
+                  <li class="menu_item">
+                    <a href="/my/payment" class="menu_link"> 결제 정보 </a>
+                  </li>
+                  <li class="menu_item">
+                    <a href="/my/account" class="menu_link"> 판매 정산 계좌 </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <div class="content_area">
+<div class="data-table-area">
+    <div class="container table_top">
+        <div class="data-table-list">
+            <div class="basic-tb-hd">
+                <h2>구매 상세 정보</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container delivery_info_container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="data-table-list">
+                    <div class="deli_info_flex">
+                        <div class="deli_info_box">
+                            <h3 class="regist_top_text">상품 정보</h3>
+                            <div><span id="pro_img"></span></div>
+                            <div><p class="delivery_info">상품명 : </p><span id="proName"></span></div>
+                            <div><p class="delivery_info">색상 : </p><span id="proColor"></span></div>
+                            <div><p class="delivery_info">브랜드 : </p><span id="brand"></span></div>
+                            <div><p class="delivery_info">사이즈 : </p><span id="size"></span></div>
+                            <div><p class="delivery_info">등급 : </p><span id="grade"></span></div>
+                            <div><p class="delivery_info">가격 : </p><span id="price"></span></div>
+                        </div>
+                    </div>
+                    <hr class="hr"/><br/>
+                    <div class="deli_info_flex">
+                        <div class="deli_info_box">
+                            <h3 class="regist_top_text">배송 정보</h3>
+                            <div><p class="delivery_info">수취인 : </p><span id="nameD"></span></div>
+                            <div><p class="delivery_info">연락처 : </p><span id="hpC"></span></div>
+                            <div><p class="delivery_info">우편번호 : </p><span id="postN"></span></div>
+                            <div><p class="delivery_info">배송지 기본 : </p><span id="address"></span></div>
+                            <div><p class="delivery_info">배송지 상세 : </p><span id="addressDetail"></span></div>
+                            <div><p class="delivery_info">배송상태 : </p><span id="statusD"></span></div>
+                            <div><p class="delivery_info">송장번호 : </p><span id="TnumD"></span></div>
+                            <div><p class="delivery_info">구매일 : </p><span id="regD"></span></div>
+                        </div>
+                    </div>
+                    <hr class="hr"/><br/>
+                    <div class="delivery_info_B"><button class="delivery_info_listB" onclick="location.href='./myOrderList.html'">목록</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+</div>
+<div id="footer"></div>
+
+</body>
+
+</html>
