@@ -57,7 +57,7 @@ $(() => {
             //복제본 만들어서 list에 추가
             for (let obj of jsonObj) {
               let dstatus = obj.od.dstatus;
-              let onum = obj.onum;
+              let anum = obj.anum;
               let oDate = obj.odate;
               let price = obj.scbid.a.aprice;
               let pnum = obj.scbid.a.product.pnum;
@@ -68,8 +68,9 @@ $(() => {
   
               // let $imgObj = $("<img>");
               // $imgObj.attr("src", "../imgs/" + sfile + ".jpg");
+              $copy.attr("id", "o_"+anum);
               $copy.find("div.product").html(sname);
-              $copy.find("div.product").attr("id", pnum);
+              $copy.find("div.product").attr("id", "p_"+pnum);
               $copy.find("div.size_name").html(sizeCategoryName);
               $copy.find("div.price").html(price);
               $copy.find("div.order_date").html(oDate);
@@ -79,14 +80,14 @@ $(() => {
               } else if (dstatus == 2) {
                 $copy.find("div.order_status").html('배송완료');
                 let $btnObj = $("<input type='button' value='구매확정' class='confirmed'>");
-                $btnObj.attr("id", onum);
+                $btnObj.attr("id", anum);
                 $copy.find("div.order_status").append($btnObj)
               } else if (dstatus == 1) {
                 $copy.find("div.order_status").html('배송 중');
               } else {
                 $copy.find("div.order_status").html('배송 준비 중');
                 let $btnObj = $("<input type='button' value='배송지 변경' class='change_addr'>");
-                $btnObj.attr("id", onum);
+                $btnObj.attr("id", anum);
                 $copy.find("div.order_status").append($btnObj)
               }
               
@@ -109,6 +110,7 @@ $(() => {
     //구매 목록 요청 작업 Start
     showOrderList(url, "aaa");
     //구매 목록 요청 작업 END
+    
     
     
   
