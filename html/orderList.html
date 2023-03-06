@@ -6,11 +6,11 @@
     <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="../css/basic.css" />
     <link rel="stylesheet" href="../css/mypageBasic.css" />
-    <link rel="stylesheet" href="../css/myauction.css" />
+    <link rel="stylesheet" href="../css/myOrderList.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     
     <script src="../js/basic.js"></script>
-    <script src="../js/myauction.js"></script>
+    <script src="../js/myOrderList.js"></script>
   </head>
 
   <body>
@@ -19,7 +19,7 @@
 
       <section>
         <div class="snb_area">
-          <a href="/my" class="nuxt-link-active"
+          <a href="./memberprofile.html" class="nuxt-link-active"
             ><h2 class="snb_main_title">마이 페이지</h2></a
           >
           <nav class="snb">
@@ -28,7 +28,7 @@
               <ul data-v-7bcac446="" class="snb_menu">
                 <li class="menu_item menu_on">
                   <a
-                    href="/html/orderList.html"
+                    href="./orderList.html"
                     aria-current="page"
                     class="menu_link"
                     style="font-weight: bold"
@@ -38,17 +38,17 @@
                 </li>
                 <li class="menu_item">
                   <a
-                    href="/html/mypageIngList.html"
+                    href="./mypageIngList.html"
                     class="menu_link"
                   >
                     입찰 내역
                   </a>
                 </li>
                 <li class="menu_item">
-                  <a href="/my/inventory" class="menu_link"> 판매 내역 </a>
+                  <a href="./inventory.html" class="menu_link"> 판매 내역 </a>
                 </li>
                 <li class="menu_item">
-                  <a href="/my/wish" class="menu_link"> 관심 상품 </a>
+                  <a href="./mypageZzimList.html" class="menu_link"> 관심 상품 </a>
                 </li>
               </ul>
             </div>
@@ -56,16 +56,13 @@
               <strong class="snb_title">내 정보</strong>
               <ul class="snb_menu">
                 <li class="menu_item">
-                  <a href="/my/profile" class="menu_link"> 프로필 정보 </a>
+                  <a href="./memberprofile.html" class="menu_link"> 프로필 정보 </a>
                 </li>
                 <li class="menu_item">
-                  <a href="/my/address" class="menu_link"> 주소록 </a>
+                  <a href="./address.html" class="menu_link"> 주소록 </a>
                 </li>
                 <li class="menu_item">
-                  <a href="/my/payment" class="menu_link"> 결제 정보 </a>
-                </li>
-                <li class="menu_item">
-                  <a href="/my/account" class="menu_link"> 판매 정산 계좌 </a>
+                  <a href="./account.html" class="menu_link"> 판매 정산 계좌 </a>
                 </li>
               </ul>
             </div>
@@ -77,9 +74,9 @@
               <h1>구매 내역</h1>
             </div>
           </div>
-          <div class="auction_tab_list">
+          <div class="delivery_tab_list">
             <div
-              class="auction_tab ing_tab"
+              class="delivery_tab ing_tab"
               style="border-bottom: 2px solid black"
             >
               <div class="tab_box">
@@ -89,49 +86,49 @@
                 >
                   0
                 </div>
-                <div class="title_ing" style="font-weight: bold; color: black ">배송 진행</div>
+                <div class="title_ing" style="font-weight: bold; color: black ">주문 배송</div>
               </div>
             </div>
-            <div class="auction_tab end_tab">
+            <div class="delivery_tab end_tab">
               <div class="tab_box">
                 <div class="count_end" style="font-weight: bold; color: black">0</div>
-                <div class="title_end">배송 완료</div>
+                <div class="title_end">반송 배송</div>
               </div>
             </div>
           </div>
-          <div class="auction_list">
+          <div class="delivery_list">
             <div class="search_by_day">
-              <input type="button" value="최근 3일" id="3days"/>
-              <input type="button" value="5일" id="5days"/>
-              <input type="button" value="7일" id="7days"/>
+              <input type="button" value="최근 2개월" id="3days"/>
+              <input type="button" value="4개월" id="5days"/>
+              <input type="button" value="6개월" id="7days"/>
               
               <input type="date" class="start_day" /> ~ <input type="date" class="end_day"/>
               <input type="button" value="조회" id="search" />
             </div>
           </div>
           <ul class="period_possible">
-            <li>한 번에 조회 가능한 기간은 최대 7일입니다.</li>
-            <li>기간별 조회 결과는 경매 마감일 기준으로 노출됩니다.</li>
+            <li>한 번에 조회 가능한 기간은 최대 6개월입니다.</li>
+            <li>기간별 조회 결과는 결제일 기준으로 노출됩니다.</li>
           </ul>
-          <div class="auction_list">
+          <div class="delivery_list">
             <div class="head_menu">
-              <div class="auction_box">이미지</div>
-              <div class="auction_boxs">상품정보</div>
-              <div class="auction_box">등급</div>
-              <div class="auction_box">입찰가</div>
-              <div class="auction_box">경매 마감일</div>
+              <div class="delivery_box">이미지</div>
+              <div class="delivery_boxs">상품정보</div>
+              <div class="delivery_box">등급</div>
+              <div class="delivery_box">구매가</div>
+              <div class="delivery_box">결제일</div>
             </div>
             <div class="list_area">
               <div class="desc">
-                <div class="item_area s_file">이미지</div>
+                <div class="item_area s_img">이미지</div>
                 <div class="item_areas">
-                  <div class="s_brand">브랜드명</div>
                   <div class="s_name">상품명</div>
+                  <div class="s_color">색상</div>
                   <div class="size_name">사이즈</div>
                 </div>
                 <div class="item_area s_grade">등급</div>
                 <div class="item_area a_price">입찰가격</div>
-                <div class="item_area end_date">마감일</div>
+                <div class="item_area o_date">입찰일</div>
               </div>
             </div>
 

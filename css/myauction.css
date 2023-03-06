@@ -64,8 +64,8 @@ div.item_area {
   text-align: center;
   display: inline-block;
   margin-right: -4px;
-  padding: 60px 20px 55px;
-  vertical-align: bottom;
+  padding: -1px 0px 25px;
+  vertical-align: top;
   /* background-color: gray; */
 }
 
@@ -74,18 +74,30 @@ div.item_areas {
   text-align: center;
   display: inline-block;
   margin-right: -4px;
-  padding: 40px 20px 35px;
-  /* vertical-align: bottom; */
+  padding: 35px 10px 30px;
+  vertical-align: top;
 }
 
-div.s_file {
-  background-size: 150px;
-  /*백그라운드 위치 옵션을 center 정중앙에 위치  */
-	background-position: center;
-	/*기본적으로 백그라운드의 옵션은 repeat이다. */
-	background-repeat: no-repeat;
-  vertical-align: top;
-  /* background-color: gray; */
+
+
+div.s_grade,
+div.a_price,
+div.a_date {
+  padding: 70px 4px 65px !important;
+}
+div.end_s_grade,
+div.end_a_price,
+div.end_a_date,
+div.status {
+  padding: 70px 4px 59px 4px !important;
+  
+}
+
+div.s_name,
+div.s_color,
+div.end_s_name,
+div.end_s_color {
+  padding-bottom: 15px;
 }
 
 div.list_area > div.desc:hover {
@@ -114,7 +126,7 @@ div.auction_list > div.search_by_day {
   background-color: #fafafa;
 }
 
-div.auction_list > div.search_by_day > input[type="button"] {
+div.auction_list > div.search_by_day > input[type="button"], input.buy, input.cancel {
   margin-left: 5px;
   color: #000000;
   font-size: 13px;
@@ -126,7 +138,7 @@ div.auction_list > div.search_by_day > input[type="button"] {
   cursor: pointer;
 }
 
-div.auction_list > div.search_by_day > input#search {
+div.auction_list > div.search_by_day > input#search, input.buy, input.cancel {
   color: #ffffff;
   background-color: #000000;
 }
@@ -194,8 +206,8 @@ div.item_end_area {
   text-align: center;
   display: inline-block;
   margin-right: -4px;
-  padding: 60px 20px 55px;
-  vertical-align: bottom;
+  /* padding: 60px 20px 55px; */
+  padding: -1px 0px 30px
   /* background-color: gray; */
 }
 
@@ -204,16 +216,13 @@ div.item_end_areas {
   text-align: center;
   display: inline-block;
   margin-right: -4px;
-  padding: 40px 20px 35px;
+  /* padding: 40px 20px 35px; */
+  padding: 36px 10px 30px;
+  vertical-align: top;
   /* vertical-align: bottom; */
 }
 
-div.end_s_file {
-  background-size: 150px;
-  /*백그라운드 위치 옵션을 center 정중앙에 위치  */
-	background-position: center;
-	/*기본적으로 백그라운드의 옵션은 repeat이다. */
-	background-repeat: no-repeat;
+div.end_s_img {
   vertical-align: top;
   /* background-color: gray; */
 }
