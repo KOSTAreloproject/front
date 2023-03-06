@@ -1,5 +1,5 @@
-let backUrl = "http://192.168.0.42:8888/relo/";
-let frontUrl = "http://192.168.0.42:5500/html/";
+let backUrl = "http://192.168.0.40:8888/relo/";
+let frontUrl = "http://192.168.0.40:5500/html/";
 
 $(() => {
   
@@ -9,32 +9,6 @@ $(() => {
   $("#footer").load("footer.html");
   $("#nav").load("nav.html");
 
-  // $('header>div.top>ul>li').click((e) => {
-  //   // $('header>div.top>nav>ul>li')
-  //   //   .css('background-color', '#fff')
-  //   //   .css('color', '#000');
-  //   $(e.target).css('background-color', '#2c2a29').css('color', '#fff');
-  //   let menu = $(e.target).attr('class');
-  //   switch (menu) {
-  //     case 'login':
-  //       $('section').load('login.html');
-  //       break;
-  //     case 'join':
-  //       $('section').load('join.html');
-  //       break;
-  //     case 'logout':
-  //       break;
-  //     case 'mypage':
-  //       // $.ajax에서 get 방식으로 요청하는 것과 동일
-  //       $('section').load('memberdetail.html');
-  //       break;
-  //     case 'notice':
-  //       break;
-  //   }
-  // });
-  //--로고가 클릭되었을 때 할 일 START--
-  
-  //--로고가 클릭되었을 때 할 일 END--
 
   //--로그인상태의 메뉴들 보여주기 함수 START--
   function showMenuAtLogined() {

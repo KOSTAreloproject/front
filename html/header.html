@@ -19,15 +19,15 @@
       <div class="top">
         <nav>
         <ul>
-          <li class="notice">공지사항</li>
-          <li class="mypage"><a href="./memberdetail.html">마이페이지</a></li>
+          <li class="notice"><a href="./noticelist.html">공지사항</a></li>
+          <li class="mypage"><a href="./memberprofile.html">마이페이지</a></li>
           <li class="join"><a href="./join.html">회원가입</a></li>
           <li class="login"><a href="./login.html">로그인</a></li>
           <li class="logout">로그아웃</li>
         </ul>
       </div>
       <div class="bottom">
-        <div class="img"></div>
+        <div class="img" id="relo"></div>
         <nav>
         <ul>
           <li class="home"><a href="./index.html">HOME</a></li>
@@ -39,13 +39,20 @@
         </nav>
       </div>
     </header>
-      <!-- 검색창 모달 START -->
-      <div id="popup_background">
+      검색창 모달 START
+     <div id="search_popup_background">
         <img src="../imgs/search/exit.png">
-        <div id="popup">
+        <div id="spopup">
           <div id="searchform">
             <img src="../imgs/search/search.png">
-            <input type="text" placeholder="상품이름을 입력하세요" title="검색창">
+            <input type="text" placeholder="검색어를 입력하세요(3글자 이상)" title="검색창" id="searchtext">
+          </div>
+          <div class="searchresults">
+            <div class="searchresultslist">
+              <div class="pname">asd</div>
+              <div class="price">asd</div>
+              <div class="psenddate">asda</div>
+            </div>
           </div>
           <hr id="hr1">
           <div id="category">
@@ -57,25 +64,44 @@
             </div>
           </div>
           <hr id="hr2">
-          <div id="recentproduct">
-            <h3>최근 본 상품</h3>
-            <div id="recentproduct_wrap">
-              
+          <div class="mywish">
+            <h3>나의 관심상품<span class="cnt"></span></h3><div class="zmoreview"><button>더보기</button></div>
+            <div class="wish">
+              <div class="wishlist">
+                <div class="zimg"></div>
+                <div class="zbrand"></div>
+                <div class="zname"></div>
+                <div class="zenddate"></div>
+                <div class="zprice"></div>
+                <div class="zpnum"></div>
+                <div class="zsnum"></div>
+              </div>
+       
             </div>
           </div>
         </div>
-      </div>
+      </div> 
       <!-- 검색창 모달 END -->
     </div>
   </body>
   <script>
+  // -- 로고 click시 메인 페이지로 이동 start --
+  $(document).on('click', $('div#relo.img'), function (e) {
+    if($(e.target).is('#relo')){
+          location.href = './index.html';
+        }
+  });
+  // -- 로고 click시 메인 페이지로 이동 end --
+
     $('header>div.top>nav>ul>li.logout').on('click', function () {
-    let url = backUrl + 'member/logout.do';
+    let url = backUrl + 'member/logout';
     $.ajax({
+      xhrFields: {
+        withCredentials: true, // 클라이언트와 서버가 통신할때 쿠키와 같은 인증 정보 값을 공유하겠다는 설정
+      },
       url: url,
-      method: 'post',
-      success: function (jsonObj) {
-        console.log(jsonObj);
+      method: 'get',
+      success: function () {
         alert('로그아웃 되었습니다.');
       },
       error: function (xhr) {
