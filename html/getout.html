@@ -24,7 +24,7 @@
       <div id="header"></div>
       <section>
         <div class="snb_area">
-          <a href="/my" class="nuxt-link-active"
+          <a href="./memberprofile.html" class="nuxt-link-active"
             ><h2 class="snb_main_title">마이 페이지</h2></a
           >
           <nav class="snb">
@@ -32,24 +32,24 @@
               <strong class="snb_title">쇼핑 정보</strong>
               <ul data-v-7bcac446="" class="snb_menu">
                 <li class="menu_item menu_on">
-                  <a href="/my/buying" aria-current="page" class="menu_link">
-                    구매 내역
+                  <a href="./myOrderList.html" class="menu_link"> 구매 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./mypageIngList.html" class="menu_link">
+                    입찰 내역
                   </a>
                 </li>
                 <li class="menu_item">
-                  <a href="/my/selling" class="menu_link"> 입찰 내역 </a>
+                  <a href="./inventory.html" class="menu_link"> 판매 내역 </a>
                 </li>
                 <li class="menu_item">
                   <a
-                    href="./inventory.html"
+                    href="./mypageZzimList.html"
                     class="menu_link"
                     style="font-weight: bold"
                   >
-                    판매 내역
+                    관심 상품
                   </a>
-                </li>
-                <li class="menu_item">
-                  <a href="/my/wish" class="menu_link"> 관심 상품 </a>
                 </li>
               </ul>
             </div>
@@ -57,13 +57,17 @@
               <strong class="snb_title">내 정보</strong>
               <ul class="snb_menu">
                 <li class="menu_item">
-                  <a href="/my/profile" class="menu_link"> 프로필 정보 </a>
+                  <a href="./memberprofile.html" class="menu_link">
+                    프로필 정보
+                  </a>
                 </li>
                 <li class="menu_item">
-                  <a href="/my/address" class="menu_link"> 주소록 </a>
+                  <a href="./address.html" class="menu_link"> 주소록 </a>
                 </li>
                 <li class="menu_item">
-                  <a href="/my/account" class="menu_link"> 판매 정산 계좌 </a>
+                  <a href="./account.html" class="menu_link">
+                    판매 정산 계좌
+                  </a>
                 </li>
               </ul>
             </div>
@@ -194,20 +198,6 @@
       </div>
     </div>
     <!-- modal window end -->
-
-    <!-- password 입력창 start -->
-    <div id="alert_check_password">
-      <p id="input_pwd">비밀번호를 입력해주세요.</p>
-      <div>
-        <input type="password" id="input06" autocomplete="off" />
-      </div>
-      <div id="pwd_input_error"></div>
-      <div class="btn_items">
-        <a class="check_btn" id="ok_input_pwd">확인</a>
-        <a class="check_btn" id="cancle_input_pwd">취소</a>
-      </div>
-    </div>
-    <!-- password 입력창 start -->
 
     <!-- 체크박스 모두 체크 안 하고 탈퇴 버튼 클릭시 start -->
     <div class="alert-box">

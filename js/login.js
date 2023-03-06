@@ -78,8 +78,8 @@ $(() => {
         id: $id,
         pwd: $pwd,
       },
-      success: function (jsonObj) {
-        location.href = document.referrer + '?type=' + jsonObj;
+      success: function () {
+        location.href = document.referrer;
       },
       error: function (xhr) {
         alert('로그인 실패');
