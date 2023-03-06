@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../js/basic.js"></script>
     <script src="../js/shoplist.js"></script>
+    <script src="../js/search.js"></script>
 </script>    
   </head>
   <body>
@@ -65,21 +66,23 @@
               <h3>필터</h3>
              <img src="../imgs/shoplist/filter.png">
             </div>
-        
+
              <div class="snb_list">
               <ul class="snb_menu">
+                <form>
                   <li class="menu_item">
-                  <a href="totallist"> 상품전체 </a>
+                 <input type="checkbox" name = "prodCate" value=""> 전체상품
                 </li>
                 <li class="menu_item">
-                  <a href="top"> 상의 </a>
+                  <input type="checkbox" name = "prodCate" value="top"> 상의
                 </li>
                 <li class="menu_item">
-                  <a href="bottom"> 하의 </a>
+                 <input type="checkbox" name = "prodCate" value="bottom"> 하의
                 </li>
                 <li class="menu_item">
-                  <a href="shoes"> 신발 </a>
+                  <input type="checkbox" name = "prodCate" value="shoes"> 신발
                 </li>
+                </form>
               </ul>
             </div>
           </div>

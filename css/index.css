@@ -1,3 +1,5 @@
+
+
 header {
   z-index: 200;
 }
@@ -120,15 +122,12 @@ div.smoreview {
   text-align: center;
 }
 
-div.pnum {
+div.dpnum, div.zpnum, div.zsnum, div.dsnum, div.stnum {
   visibility: hidden;
 }
 
-div.stnum {
-  visibility: hidden;
-}
 h1 {
-  font-size: 30px;
+  font-size: 40px;
   text-align: center;
 }
 
@@ -142,9 +141,15 @@ button {
   cursor: pointer;
 }
 
-div.sname {
-  font-size: 18px;
+div.zsname, div.dsname {
+  font-size: 25px;
   font-weight: 600;
+}
+div.stid{
+  font-size:20px;
+}
+div.stlike{
+  font-size:18px;
 }
 
 div.aprice {
@@ -159,4 +164,27 @@ div.enddate {
 
 .zzimlist{
   display: none;
+}
+
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > div > div > div.slick-slide.slick-current.slick-active{
+  margin-top:-30px;
+  width: 1200px;
+ 
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > div{
+   margin-top:-150px;
+   
+
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > div > div{
+  margin-top: 50px;
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  height: 600px;
 }

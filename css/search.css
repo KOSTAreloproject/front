@@ -4,7 +4,7 @@
     font-family: '나눔바른고딕OTF 옛한글';
 }
 
-#popup_background {
+#search_popup_background {
   display: none;
   position: fixed;
   width: 100%;
@@ -15,7 +15,7 @@
   z-index: 9999;
 }
 
-#popup_background>img{
+#search_popup_background>img{
     top:0;
     float:right;
     width:30px;
@@ -132,7 +132,7 @@ width: 150px;
   
 }
 
-#recentproduct{
+div.mywish{
     width: 100%;
     margin-left: 10px;
     margin-right: 10px;
@@ -140,26 +140,45 @@ width: 150px;
 
 }
 
-#recentproduct>h3{
+div.mywish>h3{
     font-size:20px;
-    margin-right: 20px;
     margin-bottom: 20px;
 
 }
-
-
-
-
-
+div.wish{
+  display: inline-block;
+}
+div.wishlist{
+  display: inline-block;
+}
+div.zimg{
+  cursor: pointer;
+}
+div.wishlist>div.zimg, div.zbrand, div.zname, div.enddate, div.zprice{
+  display: inline-block;
+  margin-right: 20px;
+}
+div.zpnum{
+  display: none;
+}
+div.zmoreview>button {
+  width: 100px;
+  height: inherit;
+  color: #fff;
+  font-size: 16px;
+  background-color: #000000;
+  margin-top: 20px;
+  cursor: pointer;
+}
 /* popup start */
-#popup {
+#spopup {
   display: none; 
   top: 50%;
   left: 50%;
   position: absolute;
   box-shadow: 0 0.4rem 1rem 0 rgb(0 0 0/ 10%);
-  width: 600px;
-  height: 500px;
+  width: 800px;
+  height: 800px;
   background-color: #fafafa;
   border-radius: 8px;
   transform: translate(-50%, -50%);
