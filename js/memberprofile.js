@@ -1,9 +1,4 @@
 $(() => {
-  $('.alert_check_password').hide();
-  $('.alert-box').hide();
-  $('.user_profile').hide();
-  $('.profile_info').hide();
-
   function profiledetail() {
     let url = backUrl + 'member/detail';
     $.ajax({
@@ -26,15 +21,10 @@ $(() => {
         );
         $('#accent').html(result.name);
 
-        $('#alert_check_password').hide();
         $('.user_profile').show();
         $('.profile_info').show();
 
         showProfile();
-      },
-      error: function (xhr) {
-        alert('비밀번호 다시 입력 바람');
-        $('#input06').val('');
       },
     });
   }

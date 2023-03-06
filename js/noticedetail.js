@@ -1,34 +1,32 @@
 $(() => {
-  let nNum = window.location.search.split('=')[1];
+  let nNum = window.location.search.split('?')[1];
   $.ajax({
-    url: backUrl + 'notice/detail.do',
+    url: backUrl + 'notice/detail/' + nNum,
     xhrFields: {
       withCredentials: true,
     },
     method: 'get',
-    data: { nNum: nNum },
     success: function (jsonObj) {
       console.log(jsonObj.n);
       let notice = jsonObj.n;
-      $('div.id').html('작성자: ' + notice.id);
-      $('div.title').html('제목: ' + notice.ntitle);
-      $('div.title').attr('id', notice.nnum);
-      $('div.date').html('작성일: ' + notice.ndate);
-      $('div.content').html('내용: ' + notice.ncontent);
+      // $('div.title').html('제목: ' + notice.ntitle);
+      // $('div.title').attr('id', notice.nnum);
+      // $('div.date').html('작성일: ' + notice.ndate);
+      // $('div.content').html('내용: ' + notice.ncontent);
       console.log(jsonObj.nPre);
-      let pre = jsonObj.nPre;
-      if (pre.nnum != 0) {
-        $('div.prenum').html(pre.nnum);
-        $('div.pretitle').html('이전글 제목: ' + pre.ntitle);
-      }
+      //   let pre = jsonObj.nPre;
+      //   if (pre.nnum != 0) {
+      //     $('div.prenum').html(pre.nnum);
+      //     $('div.pretitle').html('이전글 제목: ' + pre.ntitle);
+      //   }
 
-      console.log(jsonObj.nNext);
-      let next = jsonObj.nNext;
+      //   console.log(jsonObj.nNext);
+      //   let next = jsonObj.nNext;
 
-      if (next.nnum != 0) {
-        $('div.nextnum').html(next.nnum);
-        $('div.nexttitle').html('다음글 제목: ' + next.ntitle);
-      }
+      //   if (next.nnum != 0) {
+      //     $('div.nextnum').html(next.nnum);
+      //     $('div.nexttitle').html('다음글 제목: ' + next.ntitle);
+      //   }
     },
   });
   $('div.pre').on('click', 'div.pretitle', (e) => {
@@ -48,17 +46,15 @@ $(() => {
   // -- 수정 버튼 클릭시 할 일 end --
 
   // -- 삭제 버튼 클릭시 할 일 start --
-  $('#delBtn').click(function () {
-    let data = $('div.title').attr('id');
+  $('#del').click(function () {
     $.ajax({
-      url: backUrl + 'notice/del.do',
+      url: backUrl + 'notice/' + nNum,
       xhrFields: {
         withCredentials: true,
       },
-      method: 'get',
-      data: { nNum: data },
-      success: function (jsonObj) {
-        alert(jsonObj);
+      method: 'delete',
+      success: function () {
+        alert('삭제되었습니다.');
         location.href = './noticelist.html';
       },
     });

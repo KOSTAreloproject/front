@@ -150,7 +150,7 @@ $(() => {
 
   // -- '비밀번호 찾기' 버튼 비활성화 start --
   function disactiveEvent() {
-    if ($('input[name=ok]').length < 2) {
+    if ($('input[name="ok"]').length < 2) {
       $('#findpwd').attr('disabled', true);
       $('#findpwd').css('cursor', 'default');
       $('#findpwd').css('background-color', '#ebebeb');

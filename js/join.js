@@ -357,8 +357,7 @@ $(() => {
       name: $('#input_name').val(),
       birth: $('#input_birth').val(),
       tel: $('#input_tel').val(),
-      check1: $('#cbx_chkAll').is(':checked'),
-      check2: $('#agree_big2').is(':checked'),
+      check: $('#cbx_chkAll').is(':checked'),
     };
     $.ajax({
       url: backUrl + 'member/join',
