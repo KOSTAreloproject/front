@@ -1,47 +1,53 @@
 $(() => {
-  let ok_flag1 = false;
-  let ok_flag2 = false;
-  let ok_flag3 = false;
-  let ok_flag4 = false;
-  let ok_flag5 = false;
-  let ok_flag6 = false;
+  $('input[name=ok]').removeAttr('name');
 
   $('#input_id').on('keyup', function (e) {
-    let $id = $(this).val();
-    if ($id.search(/\W|\s/g) <= 0) {
-      filterByDebounce(e, (strId) => {
-        $.ajax({
-          url: backUrl + 'member/idcheck',
-          xhrFields: {
-            withCredentials: true,
-          },
-          data: { id: $id },
-          success: function (jsonObj) {
-            console.log(jsonObj);
-            $('#id_input_error').html(jsonObj.message);
-            if (jsonObj.status == 0) {
-              $('#label_id').css('color', 'tomato');
-              $('#id_input_error').css('color', 'tomato');
-              $(e.target).css('border-bottom', '1px solid tomato');
-            } else if (jsonObj.status == 1) {
-              ok_flag1 = true;
-              $('#label_id').css('color', '');
-              $('#id_input_error').css('color', 'green');
-              $(e.target).css('border-bottom', '');
-            }
-          },
-          error: function (xhr) {
-            alert('오류' + xhr.status);
-          },
-        });
-      });
-    } else {
-      $(this).val().replace(/\W|\s/g, '');
+    let $id = $('#input_id').val();
+
+    if (e.which === 32) {
+      let trimed_val = $('#input_id').val().replace(/\s/gi, '');
+      $('#input_id').val(trimed_val);
+      $('#input_id').attr('name', '');
+      $('#label_id').css('color', 'tomato');
+      $('#id_input_error').css('color', 'tomato');
+      $(e.target).css('border-bottom', '1px solid tomato');
+      $('#id_input_error').html('빈 칸은 입력할 수 없습니다.');
+      return;
+    }
+
+    if ($id == null) {
+      $('#input_id').attr('name', '');
       $('#label_id').css('color', 'tomato');
       $('#id_input_error').css('color', 'tomato');
       $(e.target).css('border-bottom', '1px solid tomato');
       $('#id_input_error').html('아이디를 입력해주세요.');
+      return;
     }
+
+    filterByDebounce(e, (strId) => {
+      $.ajax({
+        url: backUrl + 'member/idcheck',
+        xhrFields: {
+          withCredentials: true,
+        },
+        data: { id: $id },
+        success: function (jsonObj) {
+          if (jsonObj == 'no') {
+            $('#input_id').attr('name', '');
+            $('#id_input_error').html('중복된 아이디로, 사용할 수 없습니다.');
+            $('#label_id').css('color', 'tomato');
+            $('#id_input_error').css('color', 'tomato');
+            $(e.target).css('border-bottom', '1px solid tomato');
+          } else {
+            $('#input_id').attr('name', 'ok');
+            $('#id_input_error').html('사용 가능한 아이디입니다.');
+            $('#label_id').css('color', '');
+            $('#id_input_error').css('color', 'green');
+            $(e.target).css('border-bottom', '');
+          }
+        },
+      });
+    });
   });
 
   //디바운스
@@ -127,11 +133,12 @@ $(() => {
       let strTell_filtered = strTell.replace(/[^0-9]/g, '');
       if (!validateTell(strTell_filtered)) {
         errorMsg = "휴대폰 번호를 정확히 입력해주세요.('-'제외 후 입력)";
+        $('#input_tel').attr('name', '');
         $('#label_tel').css('color', 'tomato');
         $('#tel_input_error').css('color', 'tomato');
         $(e.target).css('border-bottom', '1px solid tomato');
       } else {
-        ok_flag2 = true;
+        $('#input_tel').attr('name', 'ok');
         $('#label_tel').css('color', '');
         $('#tel_input_error').css('color', '');
         $(e.target).css('border-bottom', '');
@@ -146,11 +153,12 @@ $(() => {
       let errorMsg = '';
       if (!validateName(strName)) {
         errorMsg = '올바른 이름을 입력해주세요. (2 - 6자)';
+        $('#input_name').attr('name', '');
         $('#label_name').css('color', 'tomato');
         $('#name_input_error').css('color', 'tomato');
         $(e.target).css('border-bottom', '1px solid tomato');
       } else {
-        ok_flag3 = true;
+        $('#input_name').attr('name', 'ok');
         $('#label_name').css('color', '');
         $('#name_input_error').css('color', '');
         $(e.target).css('border-bottom', '');
@@ -165,11 +173,12 @@ $(() => {
       let errorMsg = '';
       if (!validateEmail(strEmail)) {
         errorMsg = '이메일 주소를 정확히 입력해주세요.';
+        $('#input_email').attr('name', '');
         $('#label_email').css('color', 'tomato');
         $('#email_input_error').css('color', 'tomato');
         $(e.target).css('border-bottom', '1px solid tomato');
       } else {
-        ok_flag4 = true;
+        $('#input_email').attr('name', 'ok');
         $('#label_email').css('color', '');
         $('#email_input_error').css('color', '');
         $(e.target).css('border-bottom', '');
@@ -184,11 +193,12 @@ $(() => {
       let error_msg = '';
       if (!validatePassword(strPassword)) {
         error_msg = '영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)';
+        $('#input_pwd').attr('name', '');
         $('#label_pwd').css('color', 'tomato');
         $('#pwd_input_error').css('color', 'tomato');
         $(e.target).css('border-bottom', '1px solid tomato');
       } else {
-        ok_flag5 = true;
+        $('#input_pwd').attr('name', 'ok');
         $('#label_pwd').css('color', '');
         $('#pwd_input_error').css('color', '');
         $(e.target).css('border-bottom', '');
@@ -214,11 +224,12 @@ $(() => {
       let strBirth_filtered = strBirth.replace(/[^0-9]/g, '');
       if (!validateBirth(strBirth_filtered)) {
         errorMsg = '생일을 정확히 입력해주세요.';
+        $('#input_birth').attr('name', '');
         $('#label_birth').css('color', 'tomato');
         $('#birth_input_error').css('color', 'tomato');
         $(e.target).css('border-bottom', '1px solid tomato');
       } else {
-        ok_flag6 = true;
+        $('#input_birth').attr('name', 'ok');
         $('#label_birth').css('color', '');
         $('#birth_input_error').css('color', '');
         $(e.target).css('border-bottom', '');
@@ -263,9 +274,9 @@ $(() => {
 
   // -- 체크 박스 전체 선택 & 전체 해제 start --
   $('#cbx_chkAll').click(function () {
-    if ($('#cbx_chkAll').is(':checked'))
+    if ($('#cbx_chkAll').is(':checked')) {
       $('input[name=chk]').prop('checked', true);
-    else $('input[name=chk]').prop('checked', false);
+    } else $('input[name=chk]').prop('checked', false);
   });
 
   $('input[name=chk]').click(function () {
@@ -320,22 +331,50 @@ $(() => {
   });
   // span 태그 사이 글 클릭시 체크박스 클릭 end --
 
-  let cnt = 0;
-  $('input[type=checkbox]:checked').change(function () {
-    cnt = $('input[type=checkbox]:checked').length;
+  // -- 가입하기 버튼 활성화 start --
+  $('input').on('blur', function () {
+    if ($('input[name=ok]').length == 6) {
+      $('#join_btn').attr('disabled', false);
+      $('#join_btn').css('background-color', '#000000');
+      $('#join_btn').css('cursor', 'pointer');
+    } else {
+      $('#join_btn').attr('disabled', true);
+      $('#join_btn').css('background-color', '#ebebeb');
+      $('#join_btn').css('cursor', 'default');
+    }
   });
-  if (
-    cnt == 6 &&
-    ok_flag1 &&
-    ok_flag2 &&
-    ok_flag3 &&
-    ok_flag4 &&
-    ok_flag5 &&
-    ok_flag6
-  ) {
-    $('#join_btn').attr('disabled', false);
-    $('#join_btn').css('background-color', '#000000');
-    $('#join_btn').css('color', '#fff');
-    $('#join_btn').css('cursor', 'pointer');
-  }
+  // -- 가입하기 버튼 활성화 end --
+
+  // -- 가입 요청 start --
+  $('#join_btn').click(function () {
+    if (!$('#cbx_chkAll').is(':checked') || !$('#agree_big2').is(':checked')) {
+      return;
+    }
+    let $req_val = {
+      id: $('#input_id').val(),
+      pwd: $('#input_pwd').val(),
+      email: $('#input_email').val(),
+      name: $('#input_name').val(),
+      birth: $('#input_birth').val(),
+      tel: $('#input_tel').val(),
+      check: $('#cbx_chkAll').is(':checked'),
+    };
+    $.ajax({
+      url: backUrl + 'member/join',
+      xhrFields: {
+        withCredentials: true,
+      },
+      method: 'post',
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify($req_val),
+      success: function () {
+        alert('가입되었습니다.');
+        location.href = document.referrer;
+      },
+      error: function () {
+        alert('조건 불충분으로 가입 불가');
+      },
+    });
+  });
+  // -- 가입 요청 end --
 });
