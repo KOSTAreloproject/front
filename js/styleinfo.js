@@ -18,7 +18,6 @@ $(() => {
       url: url+styleNum,
       method: "get",
       success: function (jsonObj) {
-        console.log(jsonObj);
         let style = jsonObj.style;
         loginId = jsonObj.loginId;
         loginNum = jsonObj.loginNum;
@@ -130,7 +129,6 @@ $(() => {
         $tagOrigin.hide();
         $(document).on("click", "input[class='tagClick']", function () {
           let hashName = $(this).attr("id");
-          console.log(hashName);
           location.href =
             "./stylelist.html?hashName=" + hashName;
         });
@@ -150,7 +148,6 @@ $(() => {
           $repImgObj.attr('class',"repImg");
           let repNum = r.repNum;
           let repWriteId = r.member.id;
-          console.log(repWriteMnum)
           let repContent = r.repContent;
           let repDate = r.date;
           let repParent = r.replyParentDTO;
@@ -241,7 +238,6 @@ $(() => {
     heart();
   };
   function heart() {
-    console.log(styleNum);
     $.ajax({
       xhrFields: {
         withCredentials: true,
@@ -263,7 +259,6 @@ $(() => {
     heartCancle();
   };
   function heartCancle() {
-    console.log(styleNum);
     $.ajax({
       xhrFields: {
         withCredentials: true,
@@ -334,7 +329,6 @@ $(() => {
   $(document).on("click", "input[class='edit']", function () {
     let repEditNum = $(this).attr("id").split("_")[1];
     $("div.repBtn_"+repEditNum).hide();
-    console.log(repEditNum);
     let replyEditStr = '<div id = "replyEditForm">';
     replyEditStr += '<input type="text" id="reply_id" value="'+loginId+'"hidden><br/>';
     replyEditStr +=
@@ -411,8 +405,6 @@ $(() => {
       re_replyContent = $("#re_replyContent").val();
     });
     $('#writeRep_rep').click(function(){
-      console.log(replyNum);
-      console.log(re_replyContent);
       $.ajax({
         xhrFields: {
           withCredentials: true,
