@@ -2,7 +2,7 @@ $(() => {
   //--StockAdd폼 서브밋 되었을 때 할 일 START--
   let $form = $("section>div.StockAdd>form");
   $form.submit((e) => {
-    let url = backUrl + "/stock/add.do";
+    let url = backUrl + "/stock/add";
     let formData = new FormData($form[0]);
     // formData.forEach((value, key) => {
     //   console.log(key);

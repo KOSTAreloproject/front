@@ -19,7 +19,7 @@
 
       <section>
         <div class="snb_area">
-          <a href="./memberdetail.html" class="nuxt-link-active"
+          <a href="./memberprofile.html" class="nuxt-link-active"
             ><h2 class="snb_main_title">마이 페이지</h2></a
           >
           <nav class="snb">
@@ -28,7 +28,7 @@
               <ul data-v-7bcac446="" class="snb_menu">
                 <li class="menu_item menu_on">
                   <a
-                    href="./orderList.html"
+                    href="./myOrderList.html"
                     aria-current="page"
                     class="menu_link"
                   >
@@ -36,7 +36,7 @@
                   </a>
                 </li>
                 <li class="menu_item">
-                  <a href="./mypageingList.html" class="menu_link">
+                  <a href="./mypageIngList.html" class="menu_link">
                     입찰 내역
                   </a>
                 </li>
@@ -44,7 +44,7 @@
                   <a href="./inventory.html" class="menu_link"> 판매 내역 </a>
                 </li>
                 <li class="menu_item">
-                  <a href="./mypage_zzimlist.html" class="menu_link">
+                  <a href="./mypageZzimList.html" class="menu_link">
                     관심 상품
                   </a>
                 </li>
@@ -54,7 +54,7 @@
               <strong class="snb_title">내 정보</strong>
               <ul class="snb_menu">
                 <li class="menu_item">
-                  <a href="./memberdetail.html" class="menu_link">
+                  <a href="./memberprofile.html" class="menu_link">
                     프로필 정보
                   </a>
                 </li>
@@ -82,42 +82,65 @@
           </div>
           <div class="content_registration">
             <div class="account_registration">
+              <div class="input_item">
+                <h4 class="input_title">은행명</h4>
+                <div class="bankName"></div>
+                <h4 class="input_title">계좌번호</h4>
+                <div class="bankNum"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content_registration">
+            <div class="account_registration">
                 <div class="input_logistics_companies input_box">
                     <h4 class="input_title">은행명</h4>
                     <div class="input_item">
-                        <select>
-                            <option>국민은행</option>
-                            <option>신한은행</option>
-                            <option>우리은행</option>
-                            <option>하나은행</option>
-                            <option>기업은행</option>
-                            <option>농협은행</option>
-                            <option>SC은행</option>
-                            <option>우체국은행</option>
-                            <option>한국시티은행</option>
+                        <select name="account">
+                            <!-- <option selected></option> -->
+                            <option value="004" selected>국민은행</option>
+                            <option value="021">신한은행</option>
+                            <option value="020"> 우리은행</option>
+                            <option value="005">하나은행</option>
+                            <option value="003">기업은행</option>
+                            <option value="010">농협은행</option>
+                            <option value="023">SC은행</option>
+                            <option value="071">우체국은행</option>
+                            <option value="027"> 한국시티은행</option>
                         </select>
                     </div>
                 </div>
                 <div class="input_box has_error">
                     <h4 class="input_title">계좌번호</h4>
-                    <p class="input_error">올바른 계좌번호를 입력해주세요.</p>
+                    <p class="input_error">계좌번호를 입력해주세요.</p>
                     <div class="input_item">
                       <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
                       placeholder="- 없이 입력하세요" class="accountNum">
                 </div>
-                <div  class="input_box">
+                <!-- <div  class="input_box">
                     <h4 class="input_title">예금주</h4>
                     <div class="input_item">
-                      <p  class="input_error2">올바른 이름을 입력해주세요. (2-50자)</p>
+                      <p  class="input_error2">올바른 이름을 입력해주세요.</p>
                         <input  type="text" placeholder="예금주명을 정확히 입력하세요." autocomplete="off" class="input_txt">
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="registration_btn_box">
-                <a  disabled="disabled" href="#" class="btn btn_save solid medium disabled"> 저장하기 </a>
+               <button class="update">수정하기</button>
             </div>
             <!---->
         </div>
+                <!-- modal window start -->
+                <div id="popup_background">
+                  <div id="popup">
+                    <p id="ask">작성하시겠습니까?</p>
+                    <div class="btn_confirm">
+                      <button id="ok_btn">확인</button>
+                      <button id="cancle_btn">취소</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal window end -->
       </section>
     </div>
     <div id="footer"></div>

@@ -1,12 +1,11 @@
 $(() => {
-  let url = backUrl + "/stock/detailBySNum.do";
+  let url = backUrl + "/stock/detailBySNum";
   let sNum = location.search.substring(1).split("=")[1];
   $.ajax({
     url: url,
     method: "get",
     data: { sNum: sNum },
     success: function (jsonStr) {
-      let sFile = jsonStr.sfile;
       let sBrand = jsonStr.sbrand;
       let sName = jsonStr.sname;
       let sGrade = jsonStr.sgrade;
@@ -24,7 +23,23 @@ $(() => {
 
       $(".sFile").hide();
       let $imgObj = $("<img class='sFile'>");
-      $imgObj.attr("src", "../imgs/" + sFile);
+      // 사진 불러오기
+      $.ajax({
+        xhrFields: {
+          responseType: "blob",
+          withCredentials: true,
+          cache: false,
+        },
+        url: backUrl + "stock/img/" + sNum,
+        method: "get",
+        success: function (result) {
+          let blobStr = URL.createObjectURL(result);
+          $imgObj.attr("src", blobStr);
+        },
+        error: function (xhr) {
+          console.log(xhr.status);
+        },
+      });
 
       $(".file").append($imgObj);
     },
@@ -33,15 +48,18 @@ $(() => {
     },
   });
 
-  //--등급과 comment 입력 후 sumit되었을 때 할일 START--
+  //--상품등록 버튼 클릭 되었을 때 할일 START--
   let $form = $("div.StockDetail>form");
   $form.submit((e) => {
-    let url = backUrl + "/product/add.do";
+    let url = backUrl + "/product/add";
     let sNum = location.search.substring(1).split("=")[1];
     let params = {
       sNum: sNum,
     };
     $.ajax({
+      xhrFields: {
+        withCredentials: true,
+      },
       url: url,
       method: "post",
       data: params,
@@ -55,5 +73,5 @@ $(() => {
     // 기본 이벤트 처리 막기: return false
     return false;
   });
-  //--등급과 comment 입력 후 sumit되었을 때 할일 END--
+  //--상품등록 버튼 클릭 되었을 때 할일 END--
 });
