@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>공지사항</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/basic.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/noticelist.css"
+    />
+    <link
+      data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/noticelist.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- header start -->
+      <div id="header"></div>
+      <!-- header end -->
+      <section>
+        <!-- nav bar start -->
+        <div class="snb_area">
+          <a href="./memberprofile.html" class="nuxt-link-active"
+            ><h2 class="snb_main_title">마이 페이지</h2></a
+          >
+          <nav class="snb">
+            <div class="snb_list">
+              <strong class="snb_title">쇼핑 정보</strong>
+              <ul data-v-7bcac446="" class="snb_menu">
+                <li class="menu_item menu_on">
+                  <a href="./myOrderList.html" class="menu_link"> 구매 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./mypageIngList.html" class="menu_link">
+                    입찰 내역
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./inventory.html" class="menu_link"> 판매 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a
+                    href="./mypageZzimList.html"
+                    class="menu_link"
+                    style="font-weight: bold"
+                  >
+                    관심 상품
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="snb_list">
+              <strong class="snb_title">내 정보</strong>
+              <ul class="snb_menu">
+                <li class="menu_item">
+                  <a href="./memberprofile.html" class="menu_link">
+                    프로필 정보
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./address.html" class="menu_link"> 주소록 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./account.html" class="menu_link">
+                    판매 정산 계좌
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <!-- nav bar end -->
+        <!-- content start -->
+        <div class="content_area">
+          <h1 id="big_title">
+            공지사항
+            <a class="filter" id="idx_0">서비스</a>
+            <a class="filter" id="idx_1">작업</a>
+            <a class="filter" id="idx_2">업데이트</a>
+            <a class="filter" id="idx_3">이벤트</a>
+            <a class="filter" id="idx_4">전체</a>
+          </h1>
+          <div class="search_wrap">
+            <input type="text" class="search_box" placeholder="검색" />
+            <button id="search_btn">검색</button>
+          </div>
+          <div class="list">
+            <p class="sort">
+              카테고리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제목
+              <a id="notice_write" href="./noticeform.html">글 작성</a>
+            </p>
+            <div class="titlelist">
+              <div class="title">
+                <div class="category_and_title">[카테고리]제목</div>
+              </div>
+            </div>
+            <div class="pagegroup"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- content end -->
+    <!-- footer start -->
+    <div id="footer"></div>
+    <!-- footer end -->
+  </body>
+</html>
