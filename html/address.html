@@ -35,32 +35,24 @@
     <!-- header import end -->
     <section>
       <div class="snb_area">
-        <a href="./memberdetail.html" class="nuxt-link-active"
-          ><h2 class="snb_main_title">마이 페이지</h2></a
-        >
+        <a href="./memberprofile.html" class="nuxt-link-active"><h2 class="snb_main_title">마이 페이지</h2></a>
         <nav class="snb">
           <div class="snb_list">
             <strong class="snb_title">쇼핑 정보</strong>
             <ul data-v-7bcac446="" class="snb_menu">
               <li class="menu_item menu_on">
-                <a href="./orderList.html" aria-current="page" class="menu_link">
+                <a href="./myOrderList.html" class="menu_link">
                   구매 내역
                 </a>
               </li>
               <li class="menu_item">
-                <a href="./mypageingList.html" class="menu_link"> 입찰 내역 </a>
+                <a href="./mypageIngList.html" class="menu_link"> 입찰 내역 </a>
               </li>
               <li class="menu_item">
-                <a
-                  href="./inventory.html"
-                  class="menu_link"
-                  style="font-weight: bold"
-                >
-                  판매 내역
-                </a>
+                <a href="./inventory.html" class="menu_link"> 판매 내역 </a>
               </li>
               <li class="menu_item">
-                <a href="./mypage_zzimlist.html" class="menu_link"> 관심 상품 </a>
+                <a href="./mypageZzimList.html" class="menu_link"> 관심 상품 </a>
               </li>
             </ul>
           </div>
@@ -68,13 +60,13 @@
             <strong class="snb_title">내 정보</strong>
             <ul class="snb_menu">
               <li class="menu_item">
-                <a href="./memberdetail.html" class="menu_link"> 프로필 정보 </a>
+                <a href="./memberprofile.html" class="menu_link"> 프로필 정보 </a>
               </li>
               <li class="menu_item">
                 <a href="./address.html" class="menu_link" style="font-weight: bold"> 주소록 </a>
               </li>
               <li class="menu_item">
-                <a href="" class="menu_link"> 판매 정산 계좌 </a>
+                <a href="./account.html" class="menu_link"> 판매 정산 계좌 </a>
               </li>
             </ul>
           </div>
@@ -167,7 +159,11 @@
               </div>
               <input
               type="button"
+
+              value="우편번호 찾기"
+
               value="우편번호"
+
               id="kakaoOpen"
               class="btn btn_zipcode outline small outlinegrey"
               /> 
@@ -207,8 +203,8 @@
           </a></p>
           <div id="ex1" class="modal">
             <p>저장하시겠습니까?</p>
-            <button id="save" class="btn btn_save solid disabled">확인</button>
-            <button id="edit" class="btn btn_save solid disabled">확인</button>
+            <a href="#" rel="modal:close"><button id="save" class="btn btn_save solid disabled">확인</button></a>
+            <a href="#" rel="modal:close"><button id="edit" class="btn btn_save solid disabled">확인</button></a>
           </div> 
         </div>
         <!-- 하단 저장하기 버튼 -->
@@ -216,7 +212,7 @@
         <div id="ex2" class="modal">
           <p>삭제하시겠습니까?</p>
           <input type="text" id="del_addrnum_input" hidden/>
-          <button id="delete_addr" class="btn btn_save solid disabled_del">확인</button>
+          <a href="#" rel="modal:close"> <button id="delete_addr" class="btn btn_save solid disabled_del">확인</button></a>
         </div>
         <!-- 삭제하기 눌렀을 때 나오는 모달창  -->
       </div>

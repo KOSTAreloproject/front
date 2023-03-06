@@ -40,7 +40,7 @@ span.material-icons{
   cursor:pointer;
   padding-right: 15px;
 }
-input#edit, input.styleDel {
+input#edit, input.styleDel{
   font-weight: 700;
   cursor:pointer;
   margin : 5px 5px;
@@ -55,7 +55,27 @@ input#edit, input.styleDel {
 input[type="text"] {
   margin-bottom: 10px;
 }
-input[type="button"] {
+input.re_replyForm,input#re_replyFormDel{
+  font-weight: 700;
+  cursor:pointer;
+  margin : 5px 5px;
+  display: inline-block;
+  padding: 8px 10px;
+  border: 1px solid #ebebeb;
+  border-radius: 12px;
+  font-size: 13px;
+}
+input.edit,input.del,input.editFormDel,input.editFm{
+  font-weight: 700;
+  cursor:pointer;
+  margin : 5px 5px;
+  display: inline-block;
+  padding: 8px 10px;
+  border: 1px solid #ebebeb;
+  border-radius: 12px;
+  font-size: 13px;
+}
+input.tagClick {
   font-weight: 700;
   cursor:pointer;
   margin : 5px 5px;
@@ -66,6 +86,17 @@ input[type="button"] {
   font-size: 13px;
   /* background-color: black; */
   /* color: white ; */
+}
+input#myBtn{
+  font-weight: 700;
+  cursor:pointer;
+  /* margin : 5px 5px; */
+  display: inline-block;
+  padding: 8px 10px;
+  border: 1px solid #ebebeb;
+  border-radius: 12px;
+  font-size: 13px;
+  margin-top: 3px;
 }
 section {
   text-align-last: center;
@@ -84,9 +115,16 @@ div.reply {
   text-align-last: left;
   padding-left: 10px;
 }
+div.re_reply {
+  /* border: 2px solid #735bff; */
+  margin-top: 10px;
+  text-align-last: left;
+  padding-left: 50px;
+}
 div.repId {
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-left: 10px;
   font-size: 14px;
 }
 span.repContent{
@@ -95,6 +133,7 @@ span.repContent{
 }
 div#repBtn{
   float: right;
+  margin-top: -50px;
 }
 div.repDate{
   font-size: 12px;
@@ -120,6 +159,20 @@ input.replyedit_Content{
   font-size: 14px;
   text-align-last: auto;
 }
+input.re_reply_id_content{
+  float:left;
+  background-color: #ebebeb;
+  border: 1px solid transparent;
+  padding: 11px 52px 11px 12px;
+  width: 70%;
+  border-radius: 20px;
+  font-size: 14px;
+  text-align-last: auto;
+  margin-left: 30px;
+}
+p.write_rep_modal{
+  margin: 0px;
+}
 p.del_modal{
   margin: auto;
   float: right;
@@ -139,4 +192,26 @@ button.modal_btn{
   text-align: center;
   background-color: #fff;
 
+}
+span.re_replyWrite{
+  margin-left: 10px;
+  cursor:pointer;
+}
+div.edit_btn_package, div.re_reply_btn_package{
+  display: -webkit-inline-box;
+}
+p.edit_rep_modal, p.rep_writeRep_modal{
+  margin: 0px;
+}
+img#profile, img.repImg{
+  height: 25px;
+  border-radius: 100px;
+}
+span.writerId{
+  margin-top: 5px;
+  margin-left: 10px;
+  position: absolute;
+}
+div.repInfo{
+  display: inline-flex;
 }

@@ -2,12 +2,13 @@ $(() => {
   let url = backUrl+"style";
   let data = location.search.substring(1);
   let searchCode = data.split("=")[0];
-
+  let hashName = data.split("=")[1];
+  let loginId;
 
   //--페이지 처음 불러왔을 때 url코드 보고 리스트별 뽑아내기 START--
   switch (searchCode) {
     case "hashName":
-      hashList(url, data);
+      hashList(url, hashName);
       break;
     case "id":
       myList(url, data);
@@ -23,7 +24,7 @@ $(() => {
       xhrFields: {
         withCredentials: true,
       },
-      url: url+data,
+      url: url+"/hashList/"+data,
       method: "get",
       success: function (jsonObj) {
         listShow(jsonObj);
@@ -36,8 +37,8 @@ $(() => {
         $('#Cnt').css('color','#222');
         $('#Cnt').css('background-color','#fff');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   }
@@ -64,8 +65,8 @@ $(() => {
         $('#Cnt').css('color','#fff');
         $('#Cnt').css('background-color','#222');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   });
@@ -90,8 +91,8 @@ $(() => {
         $('#Cnt').css('color','#222');
         $('#Cnt').css('background-color','#fff');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   }
@@ -120,8 +121,8 @@ $(() => {
         $('#Cnt').css('color','#222');
         $('#Cnt').css('background-color','#fff');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   }
@@ -147,6 +148,7 @@ $(() => {
       method: "get",
       success: function (jsonObj) {
         listShow(jsonObj);
+        
         $('#recent').css('color','#fff');
         $('#recent').css('background-color','#222');
         $('#myStyle').css('color','#222');
@@ -156,8 +158,8 @@ $(() => {
         $('#Cnt').css('color','#222');
         $('#Cnt').css('background-color','#fff');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   });
@@ -174,7 +176,8 @@ $(() => {
     let $origin = $("div.style").first();
     $("div.style").not(":first-child").remove();
     $origin.show();
-    let myData = "/myList/id";
+    let myData = "/myList";
+
     myList(url, myData);
   });
   //--내 글 모아보기 클릭 이벤트 END--
@@ -183,17 +186,20 @@ $(() => {
   function listShow(jsonObj) {
     let tagList = jsonObj.tagList;
     let list = jsonObj.list;
-    let loginId = jsonObj.loginId;
+
+    loginId = jsonObj.loginId;
     let $origin = $("div.style").first();
     let $parent = $("div.stylelist");
 
-    if(loginId == null){
-      $('input#write').hide();
-    }
+    // if(loginId == null){
+    //   $('input#write').hide();
+    // }
 
     $(list).each((index, p) => {
       let styleNum = p.styleNum;
       let id = p.member.id;
+      let mNum = p.member.mnum;
+
       let styleLikes = p.likesList.length;
       let styleFile = p.styleFile;
       let tagList = p.tagList;
@@ -212,9 +218,14 @@ $(() => {
       $imgObj.attr("id",styleNum);
       $copy.find("div.img").empty().append($imgObj);
       $copy.find("div.styleNum").html(styleNum).hide();
+      let $profileObj = $('<img>');
+      $profileObj.attr('id',"m_"+mNum);
+      $profileObj.attr('class',"profile");
       $copy
         .find("span.styleId")
-        .html("@" +id );
+        .html("")
+        .append($profileObj)
+        .append('<span class="profileId">'+id+'</span>')
         $copy.find("span.stylelike").html('<span class="material-icons" id="likes">' +
         "sentiment_satisfied_alt"
       +'</span>'+styleLikes);
@@ -222,6 +233,8 @@ $(() => {
 
       $parent.append($copy);
       imgShow(styleNum);
+
+      profileImgShow(mNum);
     });
     $origin.hide();
     
@@ -255,12 +268,34 @@ $(() => {
           let blobStr = URL.createObjectURL(result);
           $('img#'+num).attr('src', blobStr);
         },
-        error: function (xhr) {
-          console.log(xhr.status);
+
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
         },
       });
     }
     //--이미지 띄우기 END--
+
+    //--프로필 이미지 띄우기 START--
+    function profileImgShow(mnum){
+      $.ajax({
+        xhrFields: {
+          responseType: 'blob',
+          withCredentials: true,
+          cache: false, 
+        },
+        url: backUrl+"member/img/"+mnum,
+        method: "post",
+        success: function (result) {
+          let blobStr = URL.createObjectURL(result);
+          $('img#m_'+mnum).attr('src', blobStr);
+        },
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
+        },
+      });
+    }
+    //--프로필 이미지 띄우기 END--
 
     //--해시태그 클릭되었을 때 할 일 START--
     $("div.tagList").on("click", "span:not(.current)", (e) => {
@@ -269,7 +304,9 @@ $(() => {
 
       $("div.style").not(":first-child").remove();
       $origin.show();
-      let hashData = '/hashList/'+hashName;
+
+      let hashData = hashName;
+
       hashList(url, hashData);
     });
     //--해시태그 클릭되었을 때 할 일 END--

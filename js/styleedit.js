@@ -1,33 +1,53 @@
 $(() => {
-  let url = backUrl+"/style/edit.do";
   let data = location.search.substring(1);
+  let styleNum = data.split("=")[1];
+  let url = backUrl+"style/update/"+styleNum;
   let link = "./stylelist.html";
-  let styleNum;
-  let id;
-  let originFile;
+  let styleContent='';
   //--게시판 내용 보여주기 START--
   $.ajax({
     xhrFields: {
       withCredentials: true,
     },
-    url: backUrl+"/style/detail.do",
+    url: backUrl+"style/detail/"+styleNum,
     method: "get",
     data: data,
     success: function (jsonObj) {
-      let vo = jsonObj.vo;
-      id = vo.id;
-      styleNum = vo.styleNum;
-      let styleContent = vo.styleContent;
-      let originFile = vo.styleFile;
-      $("#writer").val(id);
+      let style = jsonObj.style;
+      let tagList = style.tagList;
+      $(tagList).each((index, o) => {
+        let hashName = o.ste.hashName;
+        console.log(hashName);
+        styleContent += '#'+hashName+' ';
+      });
       $("#styleContent").val(styleContent);
-      $("#sNum").val(styleNum);
+      imgShow(styleNum);
     },
-    error: function (xhr) {
-      alert(whr.status);
+    error: function (jsonObj) {
+      alert(jsonObj.responseJSON.msg);
     },
   });
-  //--게시판 내용 보여주기 END--
+  //--게시판 내용 보여주기 END--  
+  //--이미지 띄우기 START--
+    function imgShow(num){
+       $.ajax({
+        xhrFields: {
+        responseType: 'blob',
+        withCredentials: true,
+        cache: false, 
+      },
+      url: backUrl+'style/list/img/'+num,
+      method: "get",
+      success: function (result) {
+      let blobStr = URL.createObjectURL(result);
+      $("div>div.show>img").attr("src", blobStr);
+    },
+    error: function (jsonObj) {
+      alert(jsonObj.responseJSON.msg);
+    },
+  });
+}
+//--이미지 띄우기 END--
 
   $("div.form>div>form>input[type=file]").change((e) => {
     let imageFileObj = e.target.files[0];
@@ -38,13 +58,7 @@ $(() => {
   });
 
   //--게시물 수정 버튼 클릭 START--
-  document.getElementById("myBtn1").onclick = function () {
-    edit();
-  };
-  function edit() {
-    if (confirm("게시물을 수정하시겠습니까?") == false) {
-      return;
-    }
+  $('#write').click(function() {
     let $form = $("div>div.form>div>form");
     let formData = new FormData($form[0]);
     $.ajax({
@@ -57,16 +71,15 @@ $(() => {
       processData: false,
       contentType: false,
       success: function (jsonObj) {
-        alert(jsonObj);
         location.href = ("./styleinfo.html?styleNum=" + styleNum);
       },
-      error: function (xhr) {
-        alert("잘못 입력하셨습니다.");
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
     // location.href = "./styleinfo.html?styleNum=" + styleNum;
     return false;
-  }
+  })
   //--게시물 수정 버튼 클릭 END--
   //--게시물 삭제 버튼 클릭 START--
     $('#delete').click(function(){
@@ -74,14 +87,13 @@ $(() => {
       xhrFields: {
         withCredentials: true,
       },
-      url: backUrl+"/style/delete.do",
-      method: "post",
-      data: "styleNum=" + styleNum + "&id=" + id,
+      url: backUrl+"style/"+styleNum,
+      method: "delete",
       success: function (jsonObj) {
-        // alert(jsonObj);
+        alert("삭제되었습니다.");
       },
-      error: function (xhr) {
-        alert(whr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
     location.href = link;

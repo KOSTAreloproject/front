@@ -28,20 +28,15 @@
           
           <div class="form">
             <div>
-              <form
-              method="post"
-              enctype="multipart/form-data"
-              action= backUrl+"/style/add.do"
-              >
-              <input type="file" name="f" accept="image/*" /><br />
-              <textarea id="styleContent"
-              rows="10"
-              cols="40"
-              name="styleContent"
-              placeholder="태그를 입력하려면 태그 앞에 '#'를 입력해주세요."
+              <form method="post" enctype="multipart/form-data" action= "">
+              <input type="file" name="f" accept="image/*" value=""/><br />
+              <textarea id="styleContent" rows="10" cols="40" name="styleContent"
+              placeholder="태그를 입력하려면 태그 앞에 '#'를 입력해주세요." value=""
               ></textarea
               ><br />
-              <button id="write" class="write">작성</button>
+              <p class="write_modal"><a href="#write_btn" rel="modal:open">
+              <input type="button" id="write" class="write" value="작성"></a></p>
+              <!-- <button id="write" class="write">작성</button> -->
               <input type="button" id="del" onclick="del()" value="취소" />
             </form>
           </div>
@@ -51,7 +46,7 @@
           <!-- 작성 눌렀을 때 나오는 모달창  -->
             <div id="write_btn" class="modal">
               <p>작성하시겠습니까?</p>
-              <button id="write" class="modal_btn">확인</button>
+              <button id="write_modal_btn" class="modal_btn">확인</button>
             </div>
           <!-- 작성 눌렀을 때 나오는 모달창  -->
     </section>
