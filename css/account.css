@@ -1,0 +1,38 @@
+div.content_area {
+  float: right;
+  width: 75%;
+}
+
+.content_registration {
+  width: 100%;
+}
+
+.account_registration {
+  padding-top: 10px;
+}
+
+select {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+
+div.input_item {
+  border-bottom: 1px solid rgb(205, 205, 205);
+  padding-bottom: 50px;
+  width: 50%;
+}
+
+p.input_error {
+  display: none;
+  color: tomato;
+}
+
+input.accountNum {
+  width: 300px;
+}
+
+div.registration_btn_box{
+ padding-top: 30px;
+}
