@@ -1,0 +1,190 @@
+
+
+header {
+  z-index: 200;
+}
+
+section {
+  /* padding-top: 50px; */
+  padding-bottom: 50px;
+}
+
+section.slideshow {
+  left: 0;
+  right: 0;
+  top: 160px;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 100px;
+}
+
+section.slideshow button {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+section.slideshow button:before {
+  font-family: 'xeicon';
+  color: #fff;
+  font-size: 40px;
+}
+
+section.slideshow button.slick-prev {
+  left: 40px;
+  font-size: 0;
+  color: transparent;
+}
+
+section.slideshow button.slick-prev:before {
+  content: '\e93d';
+}
+
+section.slideshow button.slick-next {
+  right: 40px;
+  font-size: 0;
+  color: transparent;
+}
+
+section.slideshow button.slick-next:before {
+  content: '\e940';
+}
+
+div.zzim {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+div.zzimlist {
+  width: 220px;
+  height: 100px;
+  /* display: inline-block; 줄바꿈안됨. 크기조절가능. 상하마진적용 */
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+div.zmoreview {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+div.deadline {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+div.deadlinelist {
+  width: 220px;
+  height: 100px;
+  /* display: inline-block; 줄바꿈안됨. 크기조절가능. 상하마진적용 */
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+div.dmoreview {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+div.styleboard {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+div.styleboardlist {
+  width: 220px;
+  height: 100px;
+  /* display: inline-block; 줄바꿈안됨. 크기조절가능. 상하마진적용 */
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+div.smoreview {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+}
+
+div.dpnum, div.zpnum, div.zsnum, div.dsnum, div.stnum {
+  visibility: hidden;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+button {
+  width: 100px;
+  height: inherit;
+  color: #fff;
+  font-size: 16px;
+  background-color: #000000;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+div.zsname, div.dsname {
+  font-size: 25px;
+  font-weight: 600;
+}
+div.stid{
+  font-size:20px;
+}
+div.stlike{
+  font-size:18px;
+}
+
+div.aprice {
+  font-size: 15px;
+}
+
+div.enddate {
+  font-size: 15px;
+}
+
+/* -------------------------------- */
+
+.zzimlist{
+  display: none;
+}
+
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > div > div > div.slick-slide.slick-current.slick-active{
+  margin-top:-30px;
+  width: 1200px;
+ 
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > div{
+   margin-top:-150px;
+   
+
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > div > div{
+  margin-top: 50px;
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  height: 600px;
+}

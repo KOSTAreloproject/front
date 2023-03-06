@@ -56,7 +56,6 @@ $(() => {
       method: "get",
       success: function (jsonObj) {
         listShow(jsonObj);
-        console.log(jsonObj);
         $('#recent').css('color','#222');
         $('#recent').css('background-color','#fff');
         $('#myStyle').css('color','#222');
@@ -178,6 +177,7 @@ $(() => {
     $("div.style").not(":first-child").remove();
     $origin.show();
     let myData = "/myList";
+
     myList(url, myData);
   });
   //--내 글 모아보기 클릭 이벤트 END--
@@ -186,6 +186,7 @@ $(() => {
   function listShow(jsonObj) {
     let tagList = jsonObj.tagList;
     let list = jsonObj.list;
+
     loginId = jsonObj.loginId;
     let $origin = $("div.style").first();
     let $parent = $("div.stylelist");
@@ -198,6 +199,7 @@ $(() => {
       let styleNum = p.styleNum;
       let id = p.member.id;
       let mNum = p.member.mnum;
+
       let styleLikes = p.likesList.length;
       let styleFile = p.styleFile;
       let tagList = p.tagList;
@@ -231,6 +233,7 @@ $(() => {
 
       $parent.append($copy);
       imgShow(styleNum);
+
       profileImgShow(mNum);
     });
     $origin.hide();
@@ -265,13 +268,14 @@ $(() => {
           let blobStr = URL.createObjectURL(result);
           $('img#'+num).attr('src', blobStr);
         },
+
         error: function (jsonObj) {
           alert(jsonObj.responseJSON.msg);
         },
       });
     }
     //--이미지 띄우기 END--
-    
+
     //--프로필 이미지 띄우기 START--
     function profileImgShow(mnum){
       $.ajax({
@@ -292,6 +296,7 @@ $(() => {
       });
     }
     //--프로필 이미지 띄우기 END--
+
     //--해시태그 클릭되었을 때 할 일 START--
     $("div.tagList").on("click", "span:not(.current)", (e) => {
       let hashName = $(e.target).html().split("#")[1];
@@ -299,7 +304,9 @@ $(() => {
 
       $("div.style").not(":first-child").remove();
       $origin.show();
+
       let hashData = hashName;
+
       hashList(url, hashData);
     });
     //--해시태그 클릭되었을 때 할 일 END--

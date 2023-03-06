@@ -1,0 +1,36 @@
+/* 왼쪽 사이드바 */
+div.snb_area {
+  float: left;
+  padding-left: 50px;
+  width: 25%;
+}
+
+/*변경*/
+.snb_menu > .menu_item > a,
+.nuxt-link-active {
+  text-decoration: none;
+  color: inherit; /* 추가  */
+}
+
+div.snb_list > ul {
+  /* 앞에 동그라미 점 없애기 */
+  list-style-type: none;
+  /* li는 왼쪽 padding 영역을 갖고 있기에 재설정 */
+  padding: 0; /* 변경  */
+}
+
+/* 추가  */
+div.snb_list > ul > li {
+  font-size: 90%;
+  padding-bottom: 10px;
+  width: 100px;
+}
+
+div.snb_list > ul > li:hover {
+  font-weight: bold;
+}
+
+div.snb_area > a.nuxt-link-active {
+  display: inline-block;
+  width: 120px;
+}

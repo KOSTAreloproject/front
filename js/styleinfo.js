@@ -1,6 +1,7 @@
 $(() => {
   let url = backUrl+"style/detail/"
   let data = location.search.substring(1); //?prodNo=C0001
+
   let repUrl = backUrl+"style/reply/";
   let styleNum = data.split('=')[1];
   let likesUrl = backUrl+"style/likes/"+styleNum;
@@ -147,6 +148,7 @@ $(() => {
           $repImgObj.attr('id',"repImg_"+repWriteMnum);
           $repImgObj.attr('class',"repImg");
           let repNum = r.repNum;
+
           let repWriteId = r.member.id;
           let repContent = r.repContent;
           let repDate = r.date;
@@ -167,6 +169,7 @@ $(() => {
           $repCopy
             .find("div.repId")
             .html(repId +"<span class='repContent'>"+ repContent+"</span>");
+
             repImgShow(repWriteMnum)         
             if (loginId == repWriteId) {
             $repCopy

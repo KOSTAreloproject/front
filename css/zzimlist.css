@@ -1,0 +1,103 @@
+h3{
+    font-size: 25px;
+}
+
+hr{
+    width: 100%;
+    margin-top:10px;
+}
+div.content_area{
+    float: right;
+    width: 75%;
+    margin-top:-5px;
+    margin-bottom:30px;
+}
+div.mypwish{
+   width:75%;
+   background-color: rgb(246, 246, 246);
+}
+div.mywishlist{
+    width:100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+div.left{
+    float: left;
+    width:20%;
+    padding-right: 50px;
+}
+div.left>div.wzimg>img{
+    cursor: pointer;
+}
+
+div.right{
+    width:80%;
+    float: right;
+    padding-left: 40px;
+}
+div.right>div.wsbrand{
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+div.right>div.wsname{
+    font-size :20px;
+    padding-bottom:30px;
+}
+
+div.right>div.wsizecategoryname{
+    font-size:18px;
+     padding-bottom:20px;
+}
+div.right>div.wenddate{
+    font-size:18px;
+}
+div.right>div.delwish{
+    float:right;
+    padding-right:30px;
+}
+button.zsubmit{
+    border: solid 1px  black;
+}
+div.empty_area{
+    padding-top: 60px;
+    padding-bottom: 30px;
+    text-align: center;
+    display: none;
+}
+div.wpnum, div.wsnum{
+    display: none;
+}
+/*
+페이징
+*/
+div.center {
+  text-align: center;
+  width: 80%;
+  padding-top: 100px;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #000000;
+  color: white;
+  border: 1px solid #000000;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}

@@ -1,0 +1,192 @@
+section {
+  overflow: auto;
+}
+
+div.left {
+  width: 50%;
+  float: left;
+  text-align: center;
+  
+}
+div.left>div.img{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width:100%
+}
+div.img img{
+    width: 400px;
+}
+div.left>div.rtender{
+  padding-left: 80px;
+  text-align: center;
+}
+span.tdrefresh{
+  padding-top:30px;
+}
+img#tdrefresh{
+  width:20px;
+  height: 20px;
+ 
+  cursor: pointer;
+}
+div.nowtime{
+  margin-bottom: 10px;
+}
+fieldset{
+  width: 80%;
+ 
+  border:solid rgb(185, 185, 185);
+}
+#tender {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+h4 {
+  font-size: 20px;
+  
+}
+
+div.right>h4{
+  margin-left:15px;
+}
+
+div.right {
+  width: 50%;
+  float: right;
+  
+  box-sizing: border-box;
+  background-color: rgb(246, 246, 246);
+}
+
+div.sbrand {
+  margin-top: 20px;
+  font-size: 30px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+div.sname {
+  font-size: 25px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+div.smanagercomment {
+  font-size: 17px;
+  margin-left: 15px; 
+  margin-bottom: 10px;
+}
+
+div.sizecategoryname{
+  font-size: 17px;
+   margin-left: 15px; 
+  margin-bottom: 10px;
+}
+div.scolor {
+   font-size: 17px;
+   margin-left: 15px; 
+  margin-bottom: 10px;
+}
+div.soriginprice {
+   font-size: 17px;
+   margin-left: 15px; 
+  margin-bottom: 10px;
+}
+
+div.sgrade {
+   font-size: 17px;
+   margin-left: 15px; 
+  margin-bottom: 10px;
+}
+
+div.enddate {
+  font-size: 17px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+div.remaindate {
+  font-size: 17px;
+  color: blue;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+div.shopeprice {
+  font-size: 17px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+div.maxprice {
+  font-size: 17px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+div.inserttender {
+   font-size: 17px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+div.tendercomment {
+   font-size: 17px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+#zsubmit {
+  width: 60%;
+margin-left: 150px;
+  text-align: center;
+
+}
+div.pnum, div.snum, div.chzval, div.sid {
+  display: none;
+}
+
+
+p.p{
+  font-size: 17px;
+  
+}
+
+div.addzzim{
+
+  text-align: center;
+}
+#addzzim {
+  display: inline-flex;
+  justify-content: center;
+  width: 400px;
+  line-height: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 1px solid darkgrey;
+  color: #000000;
+  cursor: pointer;
+}
+
+div.zzimonoff>img{
+  width: 50px;
+  height: 50px;
+}
+
+div.sizeimg> img{
+  margin-left: 15px;
+  margin-top: 30px;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 700,
+  'GRAD' 200,
+  'opsz' 48
+}
+

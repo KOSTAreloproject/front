@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relo</title>
+    <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/basic.css" />
+    <link rel="stylesheet" href="../css/account.css" />
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <link rel="stylesheet" href="../css/popup.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/account.js"></script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="header"></div>
+
+      <section>
+        <div class="snb_area">
+          <a href="./memberdetail.html" class="nuxt-link-active"
+            ><h2 class="snb_main_title">마이 페이지</h2></a
+          >
+          <nav class="snb">
+            <div class="snb_list">
+              <strong class="snb_title">쇼핑 정보</strong>
+              <ul data-v-7bcac446="" class="snb_menu">
+                <li class="menu_item menu_on">
+                  <a
+                    href="./orderList.html"
+                    aria-current="page"
+                    class="menu_link"
+                  >
+                    구매 내역
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./mypageingList.html" class="menu_link">
+                    입찰 내역
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./inventory.html" class="menu_link"> 판매 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./mypage_zzimlist.html" class="menu_link">
+                    관심 상품
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="snb_list">
+              <strong class="snb_title">내 정보</strong>
+              <ul class="snb_menu">
+                <li class="menu_item">
+                  <a href="./memberdetail.html" class="menu_link">
+                    프로필 정보
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./address.html" class="menu_link"> 주소록 </a>
+                </li>
+                <li class="menu_item">
+                  <a
+                    href="./account.html"
+                    class="menu_link"
+                    style="font-weight: bold"
+                  >
+                    판매 정산 계좌
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="content_area">
+          <div class="content_title">
+            <div class="title">
+              <h1>판매 정산 계좌</h1>
+            </div>
+          </div>
+          <div class="content_registration">
+            <div class="account_registration">
+                <div class="input_logistics_companies input_box">
+                    <h4 class="input_title">은행명</h4>
+                    <div class="input_item">
+                        <select>
+                            <option>국민은행</option>
+                            <option>신한은행</option>
+                            <option>우리은행</option>
+                            <option>하나은행</option>
+                            <option>기업은행</option>
+                            <option>농협은행</option>
+                            <option>SC은행</option>
+                            <option>우체국은행</option>
+                            <option>한국시티은행</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input_box has_error">
+                    <h4 class="input_title">계좌번호</h4>
+                    <p class="input_error">올바른 계좌번호를 입력해주세요.</p>
+                    <div class="input_item">
+                      <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
+                      placeholder="- 없이 입력하세요" class="accountNum">
+                </div>
+                <div  class="input_box">
+                    <h4 class="input_title">예금주</h4>
+                    <div class="input_item">
+                      <p  class="input_error2">올바른 이름을 입력해주세요. (2-50자)</p>
+                        <input  type="text" placeholder="예금주명을 정확히 입력하세요." autocomplete="off" class="input_txt">
+                    </div>
+                </div>
+            </div>
+            <div class="registration_btn_box">
+                <a  disabled="disabled" href="#" class="btn btn_save solid medium disabled"> 저장하기 </a>
+            </div>
+            <!---->
+        </div>
+      </section>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>
