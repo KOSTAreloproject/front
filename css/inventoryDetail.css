@@ -21,3 +21,7 @@ div.desc {
   display: inline-block;
   margin-left: 50px;
 }
+
+input.sHopePrice{
+  width: 140px;
+}

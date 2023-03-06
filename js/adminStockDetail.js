@@ -1,12 +1,14 @@
 $(() => {
-  let url = backUrl + "/stock/detailBySNum.do";
+  let url = backUrl + "stock/detailBySNum";
   let sNum = location.search.substring(1).split("=")[1];
   $.ajax({
+    xhrFields: {
+      withCredentials: true,
+    },
     url: url,
     method: "get",
     data: { sNum: sNum },
     success: function (jsonStr) {
-      let sFile = jsonStr.sfile;
       let sBrand = jsonStr.sbrand;
       let sName = jsonStr.sname;
       let sType = jsonStr.stype;
@@ -27,7 +29,23 @@ $(() => {
 
       $(".sFile").hide();
       let $imgObj = $("<img class='sFile'>");
-      $imgObj.attr("src", "../imgs/" + sFile);
+      // 사진 불러오기
+      $.ajax({
+        xhrFields: {
+          responseType: "blob",
+          withCredentials: true,
+          cache: false,
+        },
+        url: backUrl + "stock/img/" + sNum,
+        method: "get",
+        success: function (result) {
+          let blobStr = URL.createObjectURL(result);
+          $imgObj.attr("src", blobStr);
+        },
+        error: function (xhr) {
+          console.log(xhr.status);
+        },
+      });
 
       $(".file").append($imgObj);
     },
@@ -39,17 +57,23 @@ $(() => {
   //--등급과 comment 입력 후 sumit되었을 때 할일 START--
   let $form = $("div.StockDetail>form");
   $form.submit((e) => {
-    let url = backUrl + "/stock/editSReturn.do";
+    let url = backUrl + "stock/editSstatus";
     let sNum = location.search.substring(1).split("=")[1];
+
     let params = {
       sNum: sNum,
       sGrade: $(".sGrade").val(),
       managerComment: $(".managerComment").val(),
     };
+
     $.ajax({
+      xhrFields: {
+        withCredentials: true,
+      },
       url: url,
-      method: "post",
-      data: params,
+      method: "PUT",
+      data: JSON.stringify(params),
+      contentType: "application/json",
       success: function () {
         location.href = frontUrl + "admin.html";
       },

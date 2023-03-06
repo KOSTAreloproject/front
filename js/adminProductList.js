@@ -1,22 +1,41 @@
 $(() => {
-  let url = backUrl + "/stock/listBySReturn.do";
+  let url = backUrl + "stock/listBySstatus/1";
   $.ajax({
     url: url,
     method: "get",
-    data: { sReturn: 3 },
+    data: { sStatus: 3 },
     success: function (jsonStr) {
+      console.log(jsonStr);
       let $origin = $("div.stock").first();
       let $parent = $("div.StockList");
-      $(jsonStr).each((index, s) => {
-        let sFile = s.sFile;
+      $(jsonStr.list).each((index, s) => {
         let sizeCategoryName = s.sizeCategoryName;
-        let sName = s.sName;
-        let sColor = s.sColor;
-        let sNum = s.sNum;
+        let sName = s.sname;
+        let sColor = s.scolor;
+        let sNum = s.snum;
+
         let $copy = $origin.clone();
 
         let $imgObj = $("<img class='sFile'>"); //태그용 객체를 만듬
-        $imgObj.attr("src", "../imgs/" + sFile); //+ ".jpg"
+
+        // 사진 불러오기
+        $.ajax({
+          xhrFields: {
+            responseType: "blob",
+            withCredentials: true,
+            cache: false,
+          },
+          url: backUrl + "stock/img/" + sNum,
+          method: "get",
+          success: function (result) {
+            let blobStr = URL.createObjectURL(result);
+            $imgObj.attr("src", blobStr);
+          },
+          error: function (xhr) {
+            console.log(xhr.status);
+          },
+        });
+
         $copy.find("div.sNum").html(sNum);
         $copy.find("div.sFile").empty().append($imgObj);
         $copy.find("div.sizeCategoryName").html("사이즈: " + sizeCategoryName);
@@ -27,7 +46,14 @@ $(() => {
       $origin.hide();
     },
     error: function (xhr) {
-      alert(xhr.status);
+      if (xhr.responseJSON.msg === "로그인하세요") {
+        location.href = "./login.html";
+      }
+      $("div.head_menu").hide();
+      $("div.stock").hide();
+      $("div.StockList").append(
+        "<div class='empty'>" + xhr.responseJSON.msg + "</div>"
+      );
     },
   });
 

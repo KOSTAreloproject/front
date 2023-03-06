@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/basic.css" />
     <link rel="stylesheet" href="../css/inventory.css" />
     <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <link rel="stylesheet" href="../css/popup.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../js/basic.js"></script>
     <script src="../js/inventory3.js"></script>
@@ -18,7 +19,7 @@
 
       <section>
         <div class="snb_area">
-          <a href="./memberdetail.html" class="nuxt-link-active"
+          <a href="./memberprofile.html" class="nuxt-link-active"
             ><h2 class="snb_main_title">마이 페이지</h2></a
           >
           <nav class="snb">
@@ -27,7 +28,7 @@
               <ul data-v-7bcac446="" class="snb_menu">
                 <li class="menu_item menu_on">
                   <a
-                    href="./orderList.html"
+                    href="./myOrderList.html"
                     aria-current="page"
                     class="menu_link"
                   >
@@ -35,21 +36,15 @@
                   </a>
                 </li>
                 <li class="menu_item">
-                  <a href="./mypageingList.html" class="menu_link">
+                  <a href="./mypageIngList.html" class="menu_link">
                     입찰 내역
                   </a>
                 </li>
                 <li class="menu_item">
-                  <a
-                    href="./inventory.html"
-                    class="menu_link"
-                    style="font-weight: bold"
-                  >
-                    판매 내역
-                  </a>
+                  <a href="./inventory.html" class="menu_link"  style="font-weight: bold"> 판매 내역 </a>
                 </li>
                 <li class="menu_item">
-                  <a href="./mypage_zzimlist.html" class="menu_link">
+                  <a href="./mypageZzimList.html" class="menu_link">
                     관심 상품
                   </a>
                 </li>
@@ -59,7 +54,7 @@
               <strong class="snb_title">내 정보</strong>
               <ul class="snb_menu">
                 <li class="menu_item">
-                  <a href="./memberdetail.html" class="menu_link">
+                  <a href="./memberprofile.html" class="menu_link">
                     프로필 정보
                   </a>
                 </li>
@@ -67,7 +62,12 @@
                   <a href="./address.html" class="menu_link"> 주소록 </a>
                 </li>
                 <li class="menu_item">
-                  <a href="./account.html" class="menu_link"> 판매 정산 계좌 </a>
+                  <a
+                    href="./account.html"
+                    class="menu_link"
+                  >
+                    판매 정산 계좌
+                  </a>
                 </li>
               </ul>
             </div>
@@ -124,7 +124,7 @@
             <div class="head_menu">
               <div class="auction_box">이미지</div>
               <div class="auction_box">상품정보</div>
-              <div class="auction_box">정산일</div>
+              <div class="auction_box">종료일</div>
               <div class="auction_box">상태</div>
             </div>
 
@@ -142,9 +142,21 @@
               </div>
             </div>
 
-            <button id="shop">SHOP 바로가기</button>
+            <a href="./shoplist.html"
+            ><button id="shop">SHOP 바로가기</button></a
+          >
           </div>
         </div>
+        <!-- modal window start -->
+        <div id="popup_background">
+            <div id="popup">
+               <p id="ask">작성하시겠습니까?</p>
+                <div class="btn_confirm">
+                    <button id="ok_btn">확인</button>
+                </div>
+            </div>
+        </div>
+        <!-- modal window end -->
       </section>
     </div>
     <div id="footer"></div>

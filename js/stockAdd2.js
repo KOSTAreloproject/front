@@ -21,6 +21,7 @@ $(() => {
       },
     });
     return false;
+    
   });
   //--StockAdd2폼 서브밋 되었을 때 할 일 END--
 
