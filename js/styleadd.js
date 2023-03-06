@@ -33,8 +33,8 @@ $(() => {
       success: function (jsonObj) {
         location.href ='./stylelist.html';
       },
-      error: function (xhr) {
-        alert(xhr);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
      });
      return false;

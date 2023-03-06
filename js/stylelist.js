@@ -37,8 +37,8 @@ $(() => {
         $('#Cnt').css('color','#222');
         $('#Cnt').css('background-color','#fff');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   }
@@ -66,8 +66,8 @@ $(() => {
         $('#Cnt').css('color','#fff');
         $('#Cnt').css('background-color','#222');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   });
@@ -92,8 +92,8 @@ $(() => {
         $('#Cnt').css('color','#222');
         $('#Cnt').css('background-color','#fff');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   }
@@ -122,8 +122,8 @@ $(() => {
         $('#Cnt').css('color','#222');
         $('#Cnt').css('background-color','#fff');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   }
@@ -159,8 +159,8 @@ $(() => {
         $('#Cnt').css('color','#222');
         $('#Cnt').css('background-color','#fff');
       },
-      error: function (xhr) {
-        console.log(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   });
@@ -265,8 +265,8 @@ $(() => {
           let blobStr = URL.createObjectURL(result);
           $('img#'+num).attr('src', blobStr);
         },
-        error: function (xhr) {
-          console.log(xhr.status);
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
         },
       });
     }
@@ -281,13 +281,13 @@ $(() => {
           cache: false, 
         },
         url: backUrl+"member/img/"+mnum,
-        method: "get",
+        method: "post",
         success: function (result) {
           let blobStr = URL.createObjectURL(result);
           $('img#m_'+mnum).attr('src', blobStr);
         },
-        error: function (xhr) {
-          console.log(xhr.status);
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
         },
       });
     }

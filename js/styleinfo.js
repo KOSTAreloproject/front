@@ -52,10 +52,11 @@ $(() => {
           let blobStr = URL.createObjectURL(result);
           $('div.img img').attr('src', blobStr);
         },
-        error: function (xhr) {
-        console.log(xhr.status);
-      },
-   });
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
+        },
+      });
+      //--이미지 띄우기 END--
         let $profileObj = $('<img>');
         $profileObj.attr('id',"profile");
         $profileObj.attr('class',"profile");
@@ -100,13 +101,13 @@ $(() => {
           cache: false, 
         },
         url: backUrl+"member/img/"+stylemNum,
-        method: "get",
+        method: "post",
         success: function (result) {
           let blobStr = URL.createObjectURL(result);
           $('img#profile').attr('src', blobStr);
         },
-        error: function (xhr) {
-          console.log(xhr.status);
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
         },
       });
       }
@@ -142,29 +143,40 @@ $(() => {
         let $repOrigin = $("div.reply").first();
         let $repParent = $("div.repList");
         $(repList).each((index, r) => {
-          let repNum = r.repNum;
-          let repWriteId = r.member.id;
+          let $repImgObj = $('<img>');
           let repId = r.member.id;
           let repWriteMnum = r.member.mnum;
+          $repImgObj.attr('id',"repImg_"+repWriteMnum);
+          $repImgObj.attr('class',"repImg");
+          let repNum = r.repNum;
+          let repWriteId = r.member.id;
           console.log(repWriteMnum)
           let repContent = r.repContent;
           let repDate = r.date;
           let repParent = r.replyParentDTO;
           let $repCopy = $repOrigin.clone();
           $repCopy.attr("id","reply_"+repNum);
-          $repCopy.find("div.repDate").html(repDate+"<span id='replyWrite_"+repNum+"'class='re_replyWrite'>답글달기</span>");
+          $repCopy.find("div.repDate")
+                  .html(repDate+"<span id='replyWrite_"+repNum+"'class='re_replyWrite'>답글달기</span>");
           if(repParent != null){
             $repCopy.attr("class","re_reply");
             $repCopy.find("div.repDate").html(repDate);
           }
-          $repCopy.find("div.repNum").html(repNum).hide();
+          $repCopy.find('div.repImg')
+                  .append($repImgObj);
+          $repCopy.find("div.repNum")
+                  .html(repNum)
+                  .hide();
           $repCopy
             .find("div.repId")
             .html(repId +"<span class='repContent'>"+ repContent+"</span>");
-          if (loginId == repWriteId) {
+            repImgShow(repWriteMnum)         
+            if (loginId == repWriteId) {
             $repCopy
               .find("div.repId")
-              .append('<div id="repBtn">'+
+              $repCopy.find('div.repDate')
+              .append('<div class="repeditForm_'+repNum+'"></div>')
+              $repCopy.append('<div id="repBtn" class="repBtn_'+repNum+'">'+
                 '<input type="button" id="edit.btn_' +
                   repNum +
                   '"class = "edit" value="수정">'+
@@ -174,21 +186,39 @@ $(() => {
                   '" class="del" value="삭제"></div>' +
                   '</a></p>'
               )
-              $repCopy.find('div.repDate')
-              .append('<div class="repeditForm_'+repNum+'"></div>')
           }
           $repParent.append($repCopy);
         });
         $repOrigin.hide();
       },
-      error: function (xhr) {
-        alert(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
     //--댓글 리스트 출력하기 END--
     
     //--상품 정보 보여주기 END--
   }
+  //--댓글 이미지 띄우기 START--
+  function repImgShow(repWriteMnum){
+    $.ajax({
+      xhrFields: {
+        responseType: 'blob',
+        withCredentials: true,
+        cache: false, 
+      },
+      url: backUrl+"member/img/"+repWriteMnum,
+      method: "post",
+      success: function (result) {
+        let blobStr = URL.createObjectURL(result);
+        $('img#repImg_'+repWriteMnum).attr('src', blobStr);
+      },
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
+      },
+    });
+    }
+  //--댓글 이미지 띄우기 END--
   //--삭제 버튼 클릭 START--
   $('#delete_style').click(function(){
     $.ajax({
@@ -200,8 +230,8 @@ $(() => {
       success() {
         location.href = "./stylelist.html";
       },
-      error: function (xhr) {
-        alert(xhr);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   })
@@ -222,8 +252,8 @@ $(() => {
         // alert(jsonObj);
         location = location;
       },
-      error: function (xhr) {
-       alert(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   }
@@ -243,8 +273,8 @@ $(() => {
       success: function (jsonObj) {
         location = location;
       },
-      error: function (xhr) {
-        alert(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   }
@@ -269,8 +299,8 @@ $(() => {
       success() {
         location = location;
       },
-      error: function (xhr) {
-        alert(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   })
@@ -292,9 +322,9 @@ $(() => {
         success(jsonObj) {
           location = location;
         },
-        error: function (xhr) {
-              alert(xhr.status);
-            },
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
+        },
           })
         })
           
@@ -302,8 +332,9 @@ $(() => {
 
   //--댓글 수정 버튼 클릭 START--    
   $(document).on("click", "input[class='edit']", function () {
-    let repNum = $(this).attr("id").split("_")[1];
-    console.log(repNum);
+    let repEditNum = $(this).attr("id").split("_")[1];
+    $("div.repBtn_"+repEditNum).hide();
+    console.log(repEditNum);
     let replyEditStr = '<div id = "replyEditForm">';
     replyEditStr += '<input type="text" id="reply_id" value="'+loginId+'"hidden><br/>';
     replyEditStr +=
@@ -316,7 +347,7 @@ $(() => {
     replyEditStr +=
     '<input type="button" id="editFormDel" class="editFormDel" value="취소">';
     replyEditStr += '</div>'
-    let $repedit = $("div.repeditForm_"+repNum);
+    let $repedit = $("div.repeditForm_"+repEditNum);
     $repedit.html(replyEditStr);
     
     //--댓글 수정하기 폼 버튼 클릭 START--
@@ -329,7 +360,7 @@ $(() => {
         xhrFields: {
           withCredentials: true,
         },
-        url: repUrl+repNum,
+        url: repUrl+repEditNum,
         data: JSON.stringify ({
           "repContent" : replyContentEdit
         }),
@@ -338,13 +369,14 @@ $(() => {
         success() {
           location = location;
         },
-        error: function (xhr) {
-          alert(xhr.status);
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
         },
       });
     });
     //--댓글 수정하기 폼 버튼 취소클릭 START--
     $(document).on("click", "input[class='editFormDel']", function () {
+      $("div.repBtn_"+repEditNum).show();
       $repedit.html("");
     });
     //--댓글 수정하기 폼 버튼 취소클릭 END--
@@ -353,7 +385,7 @@ $(() => {
   //--답글달기 버튼 클릭 START--
   $("div.repList").on('click','.re_replyWrite', function(e) {
     let rep = $(e.target).attr('id');
-    let repNum = rep.split('_')[1];
+    let re_repNum = rep.split('_')[1];
     let re_replyStr = '<div id = "re_replyform">';
     re_replyStr += '<input type="text" id="re_reply_id" value="'+loginId+'"hidden><br/>';
     re_replyStr +=
@@ -361,7 +393,7 @@ $(() => {
     re_replyStr += '<div class="re_reply_btn_package">' 
     re_replyStr += '<p class="rep_writeRep_modal"><a href="#rep_writeRep_btn" rel="modal:open">' 
     re_replyStr +=
-      '<input type="button" id="re_replyBtn_'+repNum+'" class="re_replyForm" value="댓글 작성">';
+      '<input type="button" id="re_replyBtn_'+re_repNum+'" class="re_replyForm" value="댓글 작성">';
     re_replyStr += '</a></p>'
     re_replyStr +=
       '<input type="button" id="re_replyFormDel" class="re_replyFormDel" value="취소">';
@@ -379,6 +411,8 @@ $(() => {
       re_replyContent = $("#re_replyContent").val();
     });
     $('#writeRep_rep').click(function(){
+      console.log(replyNum);
+      console.log(re_replyContent);
       $.ajax({
         xhrFields: {
           withCredentials: true,
@@ -393,8 +427,8 @@ $(() => {
         success() {
           location = location;
         },
-        error: function (xhr) {
-          alert(xhr.status);
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
         },
       });
     })

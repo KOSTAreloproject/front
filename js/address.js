@@ -29,7 +29,7 @@ $(() => {
           $copy.find('input#modifyDefalt').attr('id','editBtn_'+addrNum);
           $copy.find('input#deleteDefalt').attr('id','delBtn_'+addrNum);
           $copy.find('div.addrNum').html(addrNum);
-          $copy.find('div.addrRecipient').html(addrRecipient + "  " );
+          $copy.find('div.addrRecipient').html(addrName + "  " );
           if(addrType == 0){
             $copy.find('div.addrRecipient').append('<span id="addr_default">기본배송지</span>')
           }
@@ -39,8 +39,8 @@ $(() => {
         });
         $origin.hide();
       },
-      error: function (xhr) {
-        alert(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   }
@@ -102,9 +102,9 @@ $(() => {
             $("#input_button_check").prop("checked", false);
           }
         },
-        error : function(xhr){
-          alert(xhr.status);
-        }
+        error: function (jsonObj) {
+          alert(jsonObj.responseJSON.msg);
+        },
       })
 
   }
@@ -112,12 +112,12 @@ $(() => {
   //--폼에서 저장하기 클릭 START--
   $('#save').click(function () {
     let url = backUrl + 'address/add';
-    let $addrName = $('#addressname_input').val();
+    let $addrRecipient = $('#addressname_input').val();
     let $addrPostNum = $('#zipcode_input').val();
     let $addrTel = $('#hp_input').val();
     let $addr = $('#address1_input').val();
     let $addrDetail = $('#address2_input').val();
-    let $addrRecipient = $('#name_input').val();
+    let $addrName = $('#name_input').val();
     let addrType = 1;
     if($('#input_button_check').is(":checked") == true){
       addrType = 0;
@@ -146,8 +146,8 @@ $(() => {
         showList();
         $("#input_button_check").attr("checked", false);
       },
-      error: function (xhr) {
-        alert(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   });
@@ -195,9 +195,9 @@ $(() => {
         $('div#ex2.modal').attr("style","display:none");
        
       },
-      error : function(xhr){
-        alert(xhr.status);
-      }
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
+      },
     })
   })
   //--주소록 삭제 버튼 클릭 END--
@@ -205,12 +205,12 @@ $(() => {
   $('#edit').click(function () {
     let url = backUrl + 'address/';
     let $addrNum = $('#num_input').val();
-    let $addrName = $('#addressname_input').val();
+    let $addrRecipient = $('#addressname_input').val();
     let $addrPostNum = $('#zipcode_input').val();
     let $addrTel = $('#hp_input').val();
     let $addr = $('#address1_input').val();
     let $addrDetail = $('#address2_input').val();
-    let $addrRecipient = $('#name_input').val();
+    let $addrName = $('#name_input').val();
     let addrType = 1;
     if($('#input_button_check').is(":checked") == true){
       addrType = 0;
@@ -240,8 +240,8 @@ $(() => {
         resetData();
         showList();
       },
-      error: function (xhr) {
-        alert(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
   });

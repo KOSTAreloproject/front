@@ -23,8 +23,8 @@ $(() => {
       $("#styleContent").val(styleContent);
       imgShow(styleNum);
     },
-    error: function (xhr) {
-      alert(xhr.status);
+    error: function (jsonObj) {
+      alert(jsonObj.responseJSON.msg);
     },
   });
   //--게시판 내용 보여주기 END--  
@@ -42,8 +42,8 @@ $(() => {
       let blobStr = URL.createObjectURL(result);
       $("div>div.show>img").attr("src", blobStr);
     },
-    error: function (xhr) {
-      console.log(xhr.status);
+    error: function (jsonObj) {
+      alert(jsonObj.responseJSON.msg);
     },
   });
 }
@@ -73,8 +73,8 @@ $(() => {
       success: function (jsonObj) {
         location.href = ("./styleinfo.html?styleNum=" + styleNum);
       },
-      error: function (xhr) {
-        alert("잘못 입력하셨습니다.");
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
     // location.href = "./styleinfo.html?styleNum=" + styleNum;
@@ -92,8 +92,8 @@ $(() => {
       success: function (jsonObj) {
         alert("삭제되었습니다.");
       },
-      error: function (xhr) {
-        alert(xhr.status);
+      error: function (jsonObj) {
+        alert(jsonObj.responseJSON.msg);
       },
     });
     location.href = link;

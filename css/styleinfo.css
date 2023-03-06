@@ -124,6 +124,7 @@ div.re_reply {
 div.repId {
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-left: 10px;
   font-size: 14px;
 }
 span.repContent{
@@ -132,6 +133,7 @@ span.repContent{
 }
 div#repBtn{
   float: right;
+  margin-top: -50px;
 }
 div.repDate{
   font-size: 12px;
@@ -201,7 +203,7 @@ div.edit_btn_package, div.re_reply_btn_package{
 p.edit_rep_modal, p.rep_writeRep_modal{
   margin: 0px;
 }
-img#profile{
+img#profile, img.repImg{
   height: 25px;
   border-radius: 100px;
 }
@@ -209,4 +211,7 @@ span.writerId{
   margin-top: 5px;
   margin-left: 10px;
   position: absolute;
+}
+div.repInfo{
+  display: inline-flex;
 }
