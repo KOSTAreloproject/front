@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relo</title>
+    <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type = "text/css" href="../css/basic.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/StockReturn.js"></script>
+</script>    
+  </head>
+  <body>
+  <div id='wrapper'>
+    <header id="header"></header>
+    <section>
+      <div class="snb_area">    
+        <h2 >관리자 페이지</h2>
+          <nav class="snb">
+            <div class="snb_list">
+              <strong class="snb_title">회원 관리</strong>
+              <ul  class="snb_menu">
+                <li class="menu_item">
+                  <a href="./admin.html"  class="menu_link" > 승인 요청 내역</a>
+                </li>
+                <li class="menu_item">
+                  <a href="./adminProductList.html" class="menu_link"> 상품 승인 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./StockReturn.html" class="menu_link" style="font-weight: bold;"> 반송 신청 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./adminAwardList.html" class="menu_link"> 경매 낙찰 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./adminOrderConfirmedList.html" class="menu_link"> 구매 확정 내역 </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      <div class="content_area">
+        <div class="title">
+           <h1>반송 신청 내역</h1>
+        </div>
+        <div class="auction_list">
+          <div class="head_menu">
+            <div class="auction_box">이미지</div>
+            <div class="auction_box" id="info2">상품정보</div> 
+            <div></div>
+          </div>
+        <div class="StockList">
+          <div class="stock">
+            <div class="sFile">이미지</div>
+             <div class="info">
+               <div class="sName">상품이름</div>
+               <div class="sizeCategoryName">사이즈</div>
+               <div class="sColor">상품색상</div>
+               <div class="sNum"></div>
+               <div class="mNum" style="display: none;"></div>
+             </div>
+             <div class="detailpage">
+              <input type="button" value="반송하기" class="detail">
+             </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>

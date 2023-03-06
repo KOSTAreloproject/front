@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relo</title>
+    <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/basic.css" />
+    <link rel="stylesheet" href="../css/inventory.css" />
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <link rel="stylesheet" href="../css/popup.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/inventory.js"></script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="header"></div>
+
+      <section>
+        <div class="snb_area">
+          <a href="./memberprofile.html" class="nuxt-link-active"
+            ><h2 class="snb_main_title">마이 페이지</h2></a
+          >
+          <nav class="snb">
+            <div class="snb_list">
+              <strong class="snb_title">쇼핑 정보</strong>
+              <ul data-v-7bcac446="" class="snb_menu">
+                <li class="menu_item menu_on">
+                  <a
+                    href="./myOrderList.html"
+                    aria-current="page"
+                    class="menu_link"
+                  >
+                    구매 내역
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./mypageIngList.html" class="menu_link">
+                    입찰 내역
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./inventory.html" class="menu_link"  style="font-weight: bold"> 판매 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./mypageZzimList.html" class="menu_link">
+                    관심 상품
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="snb_list">
+              <strong class="snb_title">내 정보</strong>
+              <ul class="snb_menu">
+                <li class="menu_item">
+                  <a href="./memberprofile.html" class="menu_link">
+                    프로필 정보
+                  </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./address.html" class="menu_link"> 주소록 </a>
+                </li>
+                <li class="menu_item">
+                  <a
+                    href="./account.html"
+                    class="menu_link"
+                  >
+                    판매 정산 계좌
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="content_area">
+          <div class="content_title">
+            <div class="title">
+              <h1>판매 내역</h1>
+            </div>
+          </div>
+          <div class="auction_tab_list">
+            <div class="auction_tab" style="border-bottom: 2px solid black">
+              <div class="tab_box">
+                <div
+                  class="count_ing"
+                  style="font-weight: bold; color: #f15746"
+                >
+                  0
+                </div>
+                <div class="title_ing" style="font-weight: bold">판매 입찰</div>
+              </div>
+            </div>
+            <div class="auction_tab">
+              <a href="./inventory2.html" style="color: black">
+                <div class="tab_box">
+                  <div class="count_end">0</div>
+                  <div class="title_end">진행중</div>
+                </div></a
+              >
+            </div>
+            <div class="auction_tab">
+              <a href="./inventory3.html" style="color: black">
+                <div class="tab_box">
+                  <div class="count_end">0</div>
+                  <div class="title_end">종료</div>
+                </div></a
+              >
+            </div>
+          </div>
+          <div class="auction_list">
+            <div class="search_by_day">
+              <input type="button" value="최근 2개월" />
+              <input type="button" value="4개월" />
+              <input type="button" value="6개월" />
+              <input type="date" class="start_day" /> ~ <input type="date" />
+              <input type="button" value="조회" id="search" />
+            </div>
+          </div>
+          <ul class="period_possible">
+            <li>한 번에 조회 가능한 기간은 최대 6개월입니다.</li>
+            <li>기간별 조회 결과는 입찰일 기준으로 노출됩니다.</li>
+          </ul>
+          <div class="auction_list">
+            <div class="head_menu">
+              <div class="auction_box">이미지</div>
+              <div class="auction_box">상품정보</div>
+              <div class="auction_box">등급</div>
+              <div class="auction_box">상태</div>
+            </div>
+
+            <div class="list_area">
+              <div class="desc">
+                <div class="item_area sFile">이미지</div>
+                <div class="item_areas">
+                  <div class="sBrand">브랜드명</div>
+                  <div class="sName">상품명</div>
+                  <div class="sizeCategoryName">사이즈</div>
+                </div>
+                <div class="item_area sGrade">-</div>
+                <div class="item_area sStatus">상태</div>
+                <div class="sNum" style="display: none"></div>
+              </div>
+            </div>
+
+            <a href="./shoplist.html"
+              ><button id="shop">SHOP 바로가기</button></a
+            >
+          </div>
+        </div>
+        <!-- modal window start -->
+        <div id="popup_background">
+          <div id="popup">
+            <p id="ask">작성하시겠습니까?</p>
+            <div class="btn_confirm">
+              <button id="ok_btn">확인</button>
+            </div>
+          </div>
+        </div>
+        <!-- modal window end -->
+      </section>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>
