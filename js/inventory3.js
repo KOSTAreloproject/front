@@ -2,6 +2,9 @@ $(() => {
   $("div#popup_background").hide();
   let url = backUrl + "/product/EndListById/1";
   $.ajax({
+    xhrFields: {
+      withCredentials: true,
+    },
     url: url,
     method: "GET",
     success: function (jsonStr) {
@@ -62,7 +65,8 @@ $(() => {
       $origin.hide();
     },
     error: function (xhr) {
-      if (xhr.responseJSON.msg === "로그인하세요") {
+      console.log(xhr)
+      if (xhr.responseJSON.msg === "로그인 하세요") {
         location.href = "./login.html";
       }
       $("div.head_menu").hide();

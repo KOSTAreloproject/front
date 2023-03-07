@@ -1,6 +1,9 @@
 $(() => {
   let url = backUrl + "stock/listBySstatus/1";
   $.ajax({
+    xhrFields: {
+      withCredentials: true,
+    },
     url: url,
     method: "get",
     data: { sStatus: 5 },
@@ -47,7 +50,14 @@ $(() => {
       $origin.hide();
     },
     error: function (xhr) {
-      alert(xhr.status);
+      if (xhr.responseJSON.msg === "로그인하세요") {
+        location.href = "./login.html";
+      }
+      $("div.head_menu").hide();
+      $("div.stock").hide();
+      $("div.StockList").append(
+        "<div class='empty'>" + "반송 신청내역이 없습니다." + "</div>"
+      );
     },
   });
 

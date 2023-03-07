@@ -1,6 +1,9 @@
 $(() => {
   let url = backUrl + "stock/listBySstatus/1";
   $.ajax({
+    xhrFields: {
+      withCredentials: true,
+    },
     url: url,
     method: "get",
     data: { sStatus: 3 },
