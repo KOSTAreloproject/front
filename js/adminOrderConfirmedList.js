@@ -130,7 +130,7 @@ $(() => {
     $(document).on('click', 'input#2months', (e) => {
       let date = new Date() //시스템상 오늘 날짜
       let date2 = new Date() 
-      date2 = new Date(date2.setDate(date2.getDate() - 59)) //시스템 날짜 기준 3일 후
+      date2 = new Date(date2.setDate(date2.getDate() - 60)) //시스템 날짜 기준 3일 후
   
       $now = date.toISOString().slice(0, 10)
       $now2 = date2.toISOString().slice(0, 10)
@@ -143,7 +143,7 @@ $(() => {
     $(document).on('click', 'input#4months', (e) => {
       let date = new Date() //시스템상 오늘 날짜
       let date2 = new Date() 
-      date2 = new Date(date2.setDate(date2.getDate() - 119)) //시스템 날짜 기준 3일 후
+      date2 = new Date(date2.setDate(date2.getDate() - 120)) //시스템 날짜 기준 3일 후
   
       $now = date.toISOString().slice(0, 10)
       $now2 = date2.toISOString().slice(0, 10)
@@ -156,7 +156,7 @@ $(() => {
     $(document).on('click', 'input#6months', (e) => {
       let date = new Date() //시스템상 오늘 날짜
       let date2 = new Date() 
-      date2 = new Date(date2.setDate(date2.getDate() - 179)) //시스템 날짜 기준 3일 후
+      date2 = new Date(date2.setDate(date2.getDate() - 180)) //시스템 날짜 기준 3일 후
   
       $now = date.toISOString().slice(0, 10)
       $now2 = date2.toISOString().slice(0, 10)

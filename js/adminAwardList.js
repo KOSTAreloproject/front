@@ -105,7 +105,7 @@ $(() => {
     let date = new Date() //시스템상 오늘 날짜
     
     let date2 = new Date()
-    date2 = new Date(date2.setDate(date2.getDate() - 59)) //시스템 날짜 기준 2개월 전
+    date2 = new Date(date2.setDate(date2.getDate() - 60)) //시스템 날짜 기준 2개월 전
     
     $now = date.toISOString().slice(0, 10)
     $now2 = date2.toISOString().slice(0, 10)
@@ -116,7 +116,7 @@ $(() => {
      //--달력 좌측에 현재 날짜 지정, 우측에 현재 날짜 - 60일 setting END--
   
     //--달력 좌측, 우측 min max 설정 START--
-    date = new Date(date.setDate(date.getDate() - 179))
+    date = new Date(date.setDate(date.getDate() - 180))
     $now2 = date.toISOString().slice(0, 10)
     $('input.start_day').attr('min', $now2)
     $('input.start_day').attr('max', $now)
@@ -128,7 +128,7 @@ $(() => {
     $(document).on('click', 'input#2months', (e) => {
       let date = new Date() //시스템상 오늘 날짜
       let date2 = new Date() 
-      date2 = new Date(date2.setDate(date2.getDate() - 59)) //시스템 날짜 기준 3일 후
+      date2 = new Date(date2.setDate(date2.getDate() - 60)) //시스템 날짜 기준 3일 후
   
       $now = date.toISOString().slice(0, 10)
       $now2 = date2.toISOString().slice(0, 10)
@@ -141,7 +141,7 @@ $(() => {
     $(document).on('click', 'input#4months', (e) => {
       let date = new Date() //시스템상 오늘 날짜
       let date2 = new Date() 
-      date2 = new Date(date2.setDate(date2.getDate() - 119)) //시스템 날짜 기준 3일 후
+      date2 = new Date(date2.setDate(date2.getDate() - 120)) //시스템 날짜 기준 3일 후
   
       $now = date.toISOString().slice(0, 10)
       $now2 = date2.toISOString().slice(0, 10)
@@ -154,7 +154,7 @@ $(() => {
     $(document).on('click', 'input#6months', (e) => {
       let date = new Date() //시스템상 오늘 날짜
       let date2 = new Date() 
-      date2 = new Date(date2.setDate(date2.getDate() - 179)) //시스템 날짜 기준 3일 후
+      date2 = new Date(date2.setDate(date2.getDate() - 180)) //시스템 날짜 기준 3일 후
   
       $now = date.toISOString().slice(0, 10)
       $now2 = date2.toISOString().slice(0, 10)
