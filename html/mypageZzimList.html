@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="../css/basic.css" />
     <link rel="stylesheet" href="../css/mypageBasic.css" />
     <link rel="stylesheet" href="../css/zzimlist.css" />
-    
+    <link rel="stylesheet" href="../css/popup.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../js/basic.js"></script>
     <script src="../js/zzimlist.js"></script>
@@ -63,13 +63,19 @@
                 <div class="wsnum">재고번호</div>
                 <div class="wpnum">상품번호</div>
               </div>
-              <div class="right">
+              <div class="mid">
                 <div class="wsbrand"></div>
                 <div class="wsname"></div>
                 <div class="wsizecategoryname"></div>
                 <div class="wenddate"></div>
+              </div>
+              <div class="right">
+                <div class="goshop">
+                  <button class="gssubmit">입찰하기</button>
+                </div>
+                <div style="clear:both;"></div>
                 <div class="delwish">
-                <button class="zsubmit">찜삭제</button>
+                  <button class="zsubmit">찜삭제</button>
                 </div>
               </div>
               <hr>
@@ -77,25 +83,23 @@
              </div>
           </div>
         
-          <div class="center">
-        <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
-        </div>
-      </div>
-      </div>
+            <div class="center">
+            <div class="pagination"></div>
+            <div class="pagecount"></div>
+            </div>
 
-          <!-- <div class="empty_area">
-          관심상품 내역이 없습니다.
-          </div>
-            <a href="../html/productlist.html" class="goshop"> SHOP 바로가기 </a>
-           -->
+      </div>
+      </div>
+      <!-- modal window start -->
+              <div id="popup_background">
+                <div id="popup">
+                  <p id="ask"></p>
+                  <div class="btn_confirm">
+                    <button id="ok_btn">확인</button>
+                  </div>
+                </div>
+              </div>
+              <!-- modal window end -->
     </section>
     <div id="footer"></div>
 

@@ -1,4 +1,6 @@
 $(() => {
+  //모달창 가리기
+   $("div#popup_background").hide();
   //화면실행시 실행될것들//
   let num = location.search.substring(6)
   productinfo()
@@ -30,7 +32,6 @@ $(() => {
       },
       url: url,
       success: function (jsonObj) {
-        console.log(jsonObj)
         let $right = $("div.right")
         let sBrand = jsonObj.sbrand
         let sName = jsonObj.sname
@@ -56,11 +57,12 @@ $(() => {
         let sizeCategoryName = jsonObj.sizeCategoryName
         let pEndDate = jsonObj.pendDate
         setInterval(Timer, 1000, pEndDate)
+        
         if (maxPrice != 0) {
            $right.find("div.maxprice>span.maxval").html(maxPrice+'원')
           }
           if(maxPrice == 0){
-           $right.find("div.maxprice").append('한번도 입찰되지 않은 상품입니다.')
+           $right.find("div.maxprice").append('<strong>한번도 입찰되지 않은 상품입니다.</strong>')
          }
         //--경매 마감일 계산--
         let imgurl = backUrl + "product/detail/img/"
@@ -105,7 +107,15 @@ $(() => {
    });
    // --찜하기 여부 확인 END--
         $right.find("div.sbrand").html(sBrand)
+        let targetDate = new Date(pEndDate).getTime() // 경매마감일 설정
+        let nowDate = new Date().getTime()// 현재일 설정
+        let countDate = targetDate - nowDate
+        if(countDate <0){
+          $right.find("div.enddate").append('<strong>경매가 마감 되었습니다.</strong>')
+          $right.find("div.inserttender").css('display', 'none')
+        }else{
         $right.find("div.enddate").append(pEndDate)
+        }
         $right.find("div.sname").html(sName)
         $right.find("div.scolor").append(sColor)
         $right.find("div.sizecategoryname").append(sizeCategoryName)
@@ -188,8 +198,12 @@ $(() => {
       method: "post",
       success: function (result) {
         let msg = result.msg
-        alert(msg)
-        location.href = frontUrl + 'shopproductdetail.html?pNum='+num
+        $('#ask').html(msg)
+        $("div#popup_background").show(); 
+        $("#ok_btn").click(function (e) {
+         $("div#popup_background").hide();
+         location.href = frontUrl + 'shopproductdetail.html?pNum='+num
+         });
             },
       error: function (xhr) {
         let text = xhr.responseText
@@ -198,8 +212,6 @@ $(() => {
     });
   });
   //상품 입찰하기--END/
-  
-  
   //찜하기 START//
    $("#addzzim").click((e) => {
     e.preventDefault()
@@ -207,7 +219,6 @@ $(() => {
    })
    function zzim(){
     let $chzval = $('div.chzval').text()
-    console.log(num)
     let url = backUrl + "zzim/"+num
     if($chzval == 2){ //찜하기 없으면 추가
     $.ajax({
@@ -218,8 +229,12 @@ $(() => {
       method: "post",
       success: function (result) {
         let msg = result.msg
-        alert(msg)
-        location.href = frontUrl + 'shopproductdetail.html?pNum='+num
+        $('#ask').html(msg)
+        $("div#popup_background").show(); 
+        $("#ok_btn").click(function (e) {
+         $("div#popup_background").hide();
+         location.href = frontUrl + 'shopproductdetail.html?pNum='+num
+         });
        },
        error: function (xhr) {
         alert(xhr.status)
@@ -235,8 +250,12 @@ $(() => {
       method: "delete",
       success: function (result) {
        let msg = result.msg
-        alert(msg)
-       location.href = frontUrl + 'shopproductdetail.html?pNum='+num
+        $('#ask').html(msg)
+        $("div#popup_background").show(); 
+        $("#ok_btn").click(function (e) {
+         $("div#popup_background").hide();
+         location.href = frontUrl + 'shopproductdetail.html?pNum='+num
+         });
        },
        error: function (xhr) {
         alert(xhr.status)

@@ -57,6 +57,41 @@ section.slideshow button.slick-next:before {
   content: '\e940';
 }
 
+#wrapper > section.slideshow.slick-initialized.slick-slider{
+  margin-top: -200px;
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > button.slick-prev.slick-arrow{
+  margin-top: 70px;
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > button.slick-next.slick-arrow{
+  margin-top: 70px;
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  height: 600px;
+}
+#wrapper > section.slideshow.slick-initialized.slick-slider > div > div > div.slick-slide.slick-current.slick-active > a > img{
+  width: 100%;
+
+}
+#wrapper > section.slideshow.slick-initialized.slick-slider > div > div > div:nth-child(1) > a > img{
+  width: 100%;
+
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > div > div > div:nth-child(2) > a > img{
+  width: 100%;
+
+}
+
+#wrapper > section.slideshow.slick-initialized.slick-slider > div > div > div:nth-child(3) > a > img{
+  width: 100%;
+ 
+}
 div.zzim {
   width: 100%;
   height: auto;
@@ -166,25 +201,3 @@ div.enddate {
   display: none;
 }
 
-
-#wrapper > section.slideshow.slick-initialized.slick-slider > div > div > div.slick-slide.slick-current.slick-active{
-  margin-top:-30px;
-  width: 1200px;
- 
-}
-
-#wrapper > section.slideshow.slick-initialized.slick-slider > div{
-   margin-top:-150px;
-   
-
-}
-
-#wrapper > section.slideshow.slick-initialized.slick-slider > div > div{
-  margin-top: 50px;
-}
-
-#wrapper > section.slideshow.slick-initialized.slick-slider{
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  height: 600px;
-}

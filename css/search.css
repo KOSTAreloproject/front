@@ -27,15 +27,25 @@
 }
 /* popup 뒷배경 end */
 /* 검색창 Start */
+#searchhr{
+  width: 95%;
+}
 #hr1{
-    margin-left:10px;
-    margin-right: 10px;
+    width: 100%;
+    margin-top: 40px;
+    border: 1px solid black;
+  
 }
 
 #hr2{
-    margin-left:10px;
-    margin-right: 10px;
+    width: 100%;
     margin-top: 40px;
+    border: 1px solid black;
+}
+
+#hr3{
+   width: 100%;
+   margin-left:4%;
 }
 #searchform{
     margin-top: 10px;
@@ -69,10 +79,51 @@
     font-size:20px;
     
 }
+div.searchresults{
+
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* 스크롤바 start */
+#spopup::-webkit-scrollbar {
+  width: 6px; /* 스크롤바의 두께 */
+}
+
+#spopup::-webkit-scrollbar-thumb {
+  height: 5%; /* 스크롤바의 길이 */
+  background: #000000; /* 스크롤바의 색상 */
+  border-radius: 10px; /* 스크롤바의 모양 */
+}
+
+#spopup::-webkit-scrollbar-track {
+  background: #fafafa; /*스크롤바 뒷 배경 색상*/
+}
+div.searchresults::-webkit-scrollbar {
+  width: 6px; /* 스크롤바의 두께 */
+}
+
+div.searchresults::-webkit-scrollbar-thumb {
+  height: 5%; /* 스크롤바의 길이 */
+  background: #000000; /* 스크롤바의 색상 */
+  border-radius: 10px; /* 스크롤바의 모양 */
+}
+
+div.searchresults::-webkit-scrollbar-track {
+  background: #fafafa; /*스크롤바 뒷 배경 색상*/
+}
+/* 스크롤바 end */
+div.searchsnum, div.searchpnum{
+  display: none;
+}
+div.searchimg{
+  float: left;
+}
 
 #category{
     width: 100%;
     margin-top: 30px;
+    margin-bottom: 30px;
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
@@ -80,18 +131,18 @@
 }
 
 #category>h3{
+    width: 100%;
     font-size:20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+   padding-bottom: 1%;
 
 }
 
 #category_wrap{
-    padding-left: 15px;
-    width: 100%;
+    margin-left:15%;
+    padding-bottom: 3%;
+    width: 80%;
     display: grid;
     grid-template-columns: repeat(3,minmax(0,1fr));
-   
 }
 #top{
   width: 150px;
@@ -141,27 +192,53 @@ div.mywish{
 }
 
 div.mywish>h3{
+    width: 100%;
     font-size:20px;
     margin-bottom: 20px;
 
 }
 div.wish{
-  display: inline-block;
+  width: 90%;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  float: left;
 }
 div.wishlist{
-  display: inline-block;
+  width: 100%;
 }
-div.zimg{
-  cursor: pointer;
-}
-div.wishlist>div.zimg, div.zbrand, div.zname, div.enddate, div.zprice{
-  display: inline-block;
-  margin-right: 20px;
-}
-div.zpnum{
+
+div.swpnum{
   display: none;
 }
-div.zmoreview>button {
+div.swimg{
+  width: 20%;
+  float: left;
+  cursor: pointer;
+}
+div.swname{
+  width: 25%;
+  padding-top: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  float: left;
+}
+ div.swenddate{
+  padding-top: 10%;
+  width: 30%;
+  float: left;
+ }
+ div.swprice{
+   padding-top: 10%;
+  float: right;
+ }
+
+div.myzmoreview{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2%;
+}
+div.myzmoreview>button {
   width: 100px;
   height: inherit;
   color: #fff;
@@ -169,6 +246,7 @@ div.zmoreview>button {
   background-color: #000000;
   margin-top: 20px;
   cursor: pointer;
+  text-align: center;
 }
 /* popup start */
 #spopup {
@@ -177,12 +255,14 @@ div.zmoreview>button {
   left: 50%;
   position: absolute;
   box-shadow: 0 0.4rem 1rem 0 rgb(0 0 0/ 10%);
-  width: 800px;
-  height: 800px;
+  width:60%;
+  height: 600px;
+  margin-left: 10px;
+  margin-right: 10px;
   background-color: #fafafa;
   border-radius: 8px;
   transform: translate(-50%, -50%);
   z-index: 500;
-  overflow: hidden;
+  overflow: scroll;
 }
 
