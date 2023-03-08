@@ -2,12 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>RELO</title>
+    <title>SHOP | RELO</title>
     <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" type = "text/css" href="../css/basic.css" />
     <link rel="stylesheet" type = "text/css" href="../css/shoplist.css" />
+    <link rel="stylesheet" type = "text/css" href="../css/popup.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../js/basic.js"></script>
     <script src="../js/shoplist.js"></script>
@@ -24,37 +25,37 @@
             <div class="sortlist">
             <ul class="sortlist">
               <li class="sortitem">
-                <a href="#">
-                  <div class="sortdesc">
-                    <p class="maindesc">인기순</p>
-                    <p class="subdesc">관심 상품 수가 많은 순서대로 정렬합니다.</p>
+                <a href="pnum" class="pnum">
+                   <div class="sortdesc" id="pnum">
+                    <p class="maindesc"  id="pnum">최신순</p>
+                    <p class="subdesc"  id="pnum">최신 상품 순서대로 정렬합니다.</p>
                   </div>
                 </a>
               </li>
               <hr>
               <li class="sortitem">
-                <a href="#">
-                   <div class="sortdesc">
-                    <p class="maindesc">최신순</p>
-                    <p class="subdesc">최신 상품 순서대로 정렬합니다.</p>
-                  </div>
+                <a href="zzim">
+                    <div class="sortdesc" id="zzim">
+                      <p class="maindesc" id="zzim">인기순</p>
+                      <p class="subdesc" id="zzim">관심 상품 수가 많은 순서대로 정렬합니다.</p>
+                    </div>
                 </a>
               </li>
               <hr>
                <li class="sortitem">
-                <a href="#">
-                  <div class="sortdesc">
-                    <p class="maindesc">마감임박순</p>
-                    <p class="subdesc">마감이 임박한 상품 순서대로 정렬합니다.</p>
+                <a href="pend" class="pend">
+                  <div class="sortdesc"  id="pend">
+                    <p class="maindesc" id="pend">마감임박순</p>
+                    <p class="subdesc" id="pend">마감이 임박한 상품 순서대로 정렬합니다.</p>
                   </div>
                 </a>
                </li>
                <hr>   
                 <li class="sortitem">
-                  <a href="#">
-                  <div class="sortdesc">
-                    <p class="maindesc">미입찰상품</p>
-                    <p class="subdesc">한번도 입찰되지 않은 상품을 마감 임박순으로 정렬합니다.</p>
+                  <a href="no" class="no">
+                  <div class="sortdesc" id ="no">
+                    <p class="maindesc" id="no">미입찰상품</p>
+                    <p class="subdesc" id="no">한번도 입찰되지 않은 상품을 마감 임박순으로 정렬합니다.</p>
                   </div>
                 </a>
               </li>
@@ -69,18 +70,18 @@
 
              <div class="snb_list">
               <ul class="snb_menu">
-                <form>
+                <form id="test">
                   <li class="menu_item">
-                 <input type="checkbox" name = "prodCate" value=""> 전체상품
+                 <label><input type="checkbox" name = "prodCate" value="" checked/>전체상품</label>
                 </li>
                 <li class="menu_item">
-                  <input type="checkbox" name = "prodCate" value="top"> 상의
+                   <label><input type="checkbox" name = "prodCate" value="top"/>상의</label>
                 </li>
                 <li class="menu_item">
-                 <input type="checkbox" name = "prodCate" value="bottom"> 하의
+                  <label><input type="checkbox" name = "prodCate" value="bottom"/>하의</label>
                 </li>
                 <li class="menu_item">
-                  <input type="checkbox" name = "prodCate" value="shoes"> 신발
+                   <label><input type="checkbox" name = "prodCate" value="shoes"/>신발</label>
                 </li>
                 </form>
               </ul>
@@ -95,8 +96,21 @@
                 <div class="pnum"></div>
               </div>
           </div>
+          <div class="more">
+          <div class="listcount"></div>
+            <button>더보기</button>
+          </div>
+          <div id="footer"></div>
+          <!-- modal window start -->
+              <div id="popup_background">
+                <div id="popup">
+                  <p id="ask">상품 목록의 마지막입니다.</p>
+                  <div class="btn_confirm">
+                    <button id="ok_btn">확인</button>
+                  </div>
+                </div>
+              </div>
+              <!-- modal window end -->
     </section>
-    </div>
-    <div id="footer"></div>
   </body>
 </html>

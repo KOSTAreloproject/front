@@ -31,34 +31,55 @@ div.left>div.wzimg>img{
     cursor: pointer;
 }
 
-div.right{
-    width:80%;
-    float: right;
+div.mid{
+    width:40%;
+    float: left;
     padding-left: 40px;
 }
-div.right>div.wsbrand{
+div.mid>div.wsbrand{
     font-size: 25px;
     padding-bottom: 10px;
 }
 
-div.right>div.wsname{
+div.mid>div.wsname{
     font-size :20px;
     padding-bottom:30px;
 }
 
-div.right>div.wsizecategoryname{
+div.mid>div.wsizecategoryname{
     font-size:18px;
      padding-bottom:20px;
 }
-div.right>div.wenddate{
+div.mid>div.wenddate{
     font-size:18px;
 }
-div.right>div.delwish{
+div.right{
+    width:40%;
     float:right;
-    padding-right:30px;
+   padding-right:50px;
+
 }
-button.zsubmit{
-    border: solid 1px  black;
+div.goshop>button.gssubmit{
+    font-size: 15px;
+    width: 60%;
+    height: 100px;
+    color: white;
+    border-width: 0;
+    border-radius: 10px;
+    background-color: red;
+    margin-bottom:30px;
+    float: right;
+    cursor: pointer;
+}
+div.delwish>button.zsubmit{
+    font-size: 15px;
+    width: 30%;
+    height: 30px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+     float: right;
+    cursor: pointer;
 }
 div.empty_area{
     padding-top: 60px;
@@ -75,14 +96,14 @@ div.wpnum, div.wsnum{
 div.center {
   text-align: center;
   width: 80%;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .pagination {
   display: inline-block;
 }
 
-.pagination a {
+.pagination span {
   color: black;
   float: left;
   padding: 8px 16px;
@@ -90,14 +111,19 @@ div.center {
   transition: background-color 0.3s;
   border: 1px solid #ddd;
   margin: 0 4px;
+  cursor: pointer;
 }
 
-.pagination a.active {
+#pagenum.active {
   background-color: #000000;
   color: white;
   border: 1px solid #000000;
 }
 
-.pagination a:hover:not(.active) {
+.pagination span#pagenum:hover:not(.active) {
   background-color: #ddd;
+}
+
+div.pagecount{
+    display: none;
 }

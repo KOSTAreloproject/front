@@ -7,7 +7,7 @@ h1{
   padding-bottom: 20px;
 }
 div.sortnav{
-  right:250px;
+  right:290px;
   position: absolute;
   z-index:1;
 }
@@ -51,9 +51,9 @@ p.subdesc{
 }
 /* 왼쪽 사이드바 */
 div.shopnav {
+  margin-left:20px;
   float: left;
-  padding-left: 50px;
-  width: 20%;
+  width: 10%;
 }
 
 a{
@@ -70,18 +70,19 @@ div.filter img{
   height: 20px;
 }
 div.shop{
+  text-align: center;
   display: inline-block;
+  margin-left: 0;
   margin-top: 20px;
-  padding-right: 50px;
-  width:75%;
+  width:80%;
   position: relative;
-  cursor: pointer;
 }
 
 div.shoplist{
  display: inline-block;
-  text-align: center;
-  z-index: 0;
+ cursor: pointer;
+ text-align: center;
+ z-index: 0;
 }
 div.sname{
   font-size: 18px;
@@ -95,11 +96,10 @@ div.enddate{
   font-size: 15px;
 }
 
+
 /*변경*/
-div.shopnav > .menu_item > a,
-.nuxt-link-active {
-  text-decoration: none;
-  color: inherit; /* 추가  */
+label{
+  cursor: pointer;
 }
 
 div.snb_list > ul {
@@ -126,9 +126,21 @@ div.snb_area > a.nuxt-link-active {
 }
 
 
-div.shoplist{
-  margin-bottom: 20px;
-  margin-left: 20px;
+div.more{
+  text-align: center;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+div.more>button{width: 100px;
+  height: inherit;
+  color: #fff;
+  font-size: 16px;
+  background-color: #000000;
+  margin-top: 20px;
   cursor: pointer;
+}
+
+div.more>div.listcount{
+  display: none;
 }
 
