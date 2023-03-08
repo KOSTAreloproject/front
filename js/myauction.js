@@ -29,7 +29,7 @@ $(() => {
         } else {
           console.log(jsonObj.list);
           $("div.count_ing").html(jsonObj.list.length);
-          
+
           //복제본 만들어서 list에 추가
           for (let obj of jsonObj.list) {
             console.log();
@@ -44,13 +44,13 @@ $(() => {
             let sbrand = obj.sbrand;
             let scolor = obj.scolor;
             let sgrade = obj.sgrade;
-            console.log(adate)
-            
+            console.log(adate);
+
             aprice = aprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            
-            let $imgObj = $('<img>');
-            $imgObj.attr("id", "img_"+snum);
-            $imgObj.attr('width', '130px');
+
+            let $imgObj = $("<img>");
+            $imgObj.attr("id", "img_" + snum);
+            $imgObj.attr("width", "130px");
 
             let $copy = $origin.clone();
             $copy.attr("id", pnum);
@@ -63,7 +63,7 @@ $(() => {
             $copy.find("div.a_date").html(adate);
 
             $parent.append($copy);
-            imgShow(snum, "img_"+snum);
+            imgShow(snum, "img_" + snum);
           }
         }
         $origin.hide();
@@ -102,18 +102,18 @@ $(() => {
   //경매 종료된 항목들 개수 세기 END
 
   //--상품 이미지 띄우기 START--
-  function imgShow(num, id){
+  function imgShow(num, id) {
     $.ajax({
       xhrFields: {
-        responseType: 'blob',
+        responseType: "blob",
         withCredentials: true,
-        cache: false, 
+        cache: false,
       },
-      url: backUrl+'stock/img/'+num,
-        method: "get",
-        success: function (result) {
-          let blobStr = URL.createObjectURL(result);
-          $('img#'+id).attr('src', blobStr);
+      url: backUrl + "stock/img/" + num,
+      method: "get",
+      success: function (result) {
+        let blobStr = URL.createObjectURL(result);
+        $("img#" + id).attr("src", blobStr);
       },
       error: function (xhr) {
         console.log(xhr.status);
@@ -187,13 +187,12 @@ $(() => {
             let pstatus = obj.pstatus;
             let mnum = obj.mnum;
             let $copy = $origin.clone();
-          
 
             aprice = aprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-            let $imgObj = $('<img>');
-            $imgObj.attr("id", "end_img_"+snum);
-            $imgObj.attr('width', '130px');
+            let $imgObj = $("<img>");
+            $imgObj.attr("id", "end_img_" + snum);
+            $imgObj.attr("width", "130px");
 
             $copy.find("div.end_s_img").empty().append($imgObj);
             $copy.find("div.end_s_name").html(sname);
@@ -205,36 +204,43 @@ $(() => {
 
             $parent.append($copy);
 
-            if (awNum!=null ) {
-              if (pstatus==6) {
+            if (awNum != null) {
+              if (pstatus == 6) {
                 $copy.find("div.status").html("낙찰");
-                let $btnObj = $("<br/><input type='button' value='결제' class='buy'>");
+                let $btnObj = $(
+                  "<input type='button' value='결제' class='buy'>"
+                );
                 $btnObj.attr("data-name", anum);
-                $copy.find("div.status").append($btnObj);
+                $btnObj.attr("data-num", pnum);
+                $btnObj.attr("data-mem", mnum);
+                $btnObj.attr("data-price", aprice);
+                let $divObj = $("<div></div>");
+                $divObj.append($btnObj);
+                // $copy.find("div.status").append($btnObj);
                 let $btnObj2 = $(
                   "<input type='button' value='포기' class='cancel'>"
                 );
                 $btnObj2.attr("data-name", anum);
                 $btnObj2.attr("data-num", pnum);
                 $btnObj2.attr("data-mem", mnum);
-                $copy.find("div.status").append($btnObj2);
+                $divObj.append($btnObj2);
+                $copy.find("div.status").append($divObj);
                 // $copy.find("div.end_s_grade").css("{padding:30px 4px 39px !important}");
                 // $copy.find("div.end_a_price").css("{padding:30px 4px 39px !important}")
                 // $copy.find("div.end_a_date").css("{padding:30px 4px 39px !important}")
                 // $copy.find("div.status").css("{padding:30px 4px 39px !important}")
                 //div.end_a_price,div.end_a_date,div.status
-              } else if (pstatus==7) {
+              } else if (pstatus == 7) {
                 $copy.find("div.status").html("결제 완료");
-              } 
-              console.log(pstatus)
-            } else if (pstatus==8) {
-                $copy.find("div.status").html("낙찰 포기");
               }
-            else {
+              console.log(pstatus);
+            } else if (pstatus == 8) {
+              $copy.find("div.status").html("낙찰 포기");
+            } else {
               $copy.find("div.status").html("미낙찰");
             }
             $parent.append($copy);
-            imgShow(snum, "end_img_"+snum);
+            imgShow(snum, "end_img_" + snum);
           }
         }
         $origin.hide();
@@ -248,37 +254,39 @@ $(() => {
   //경매 종료된 목록 띄우기 END
 
   //--결제하기 버튼 클릭시 START
-  $(document).on('click', 'input.buy', (e) => {
-    let anum = $(e.target).attr('data-name');
+  $(document).on("click", "input.buy", (e) => {
+    let anum = $(e.target).attr("data-name");
+    let pnum = $(e.target).attr("data-num");
+    let mnum = $(e.target).attr("data-mem");
+    let aprice = $(e.target).attr("data-price");
     console.log(anum);
-    location.href = frontUrl + 'orderadd.html?'+ anum;
-  })
+    location.href =
+      frontUrl + "orderadd.html?" + pnum + "&" + mnum + "&" + anum + "&"+ aprice ;
+  });
   //--결제하기 버튼 클릭시 END
 
   //--취소 버튼 클릭시 START--
-  $(document).on('click', 'input.cancel', (e) => {
-    let anum = $(e.target).attr('data-name');
-    let pnum = $(e.target).attr('data-num');
-    let mnum = $(e.target).attr('data-mem');
+  $(document).on("click", "input.cancel", (e) => {
+    let anum = $(e.target).attr("data-name");
+    let pnum = $(e.target).attr("data-num");
+    let mnum = $(e.target).attr("data-mem");
 
     $.ajax({
       xhrFields: {
         withCredentials: true,
       },
-      url: backUrl+'award/delete',
+      url: backUrl + "award/delete",
       method: "post",
       contentType: "application/json",
-      data : JSON.stringify({
-              "anum":anum,
-              "pnum":pnum,
-              "mnum":mnum
-            }),
+      data: JSON.stringify({
+        'anum': anum,
+        'pnum': pnum,
+        'mnum': mnum,
+      }),
       success: function (result) {
-          alert(result.msg);
-
+        alert(result.msg);
       },
       error: function (xhr) {
-        alert(xhr.msg);
         console.log(xhr.status);
       },
     });
@@ -286,131 +294,130 @@ $(() => {
   //--취소 버튼 클릭시 END--
 
   //--달력 좌측에 현재 날짜 지정, 우측에 현재 날짜 - 3일 setting START--
-  let date = new Date() //시스템상 오늘 날짜
-  let date2 = new Date()
-  date2 = new Date(date2.setDate(date2.getDate() - 3)) //시스템 날짜 기준 3일 전
-  let date3 = new Date()
-  date3 = new Date(date3.setDate(date3.getDate() - 60)) //시스템 날짜 기준 2개월 전
-  
-  $now = date.toISOString().slice(0, 10)
-  $now2 = date2.toISOString().slice(0, 10)
-  $now3 = date3.toISOString().slice(0, 10)
-  
-  $('input.start_day').val($now2)
-  $('input.end_day').val($now)
-  $('input#start_end_day').val($now3)
-  $('input#end_end_day').val($now)
-   //--달력 좌측에 현재 날짜 지정, 우측에 현재 날짜 + 3일 setting END--
+  let date = new Date(); //시스템상 오늘 날짜
+  let date2 = new Date();
+  date2 = new Date(date2.setDate(date2.getDate() - 3)); //시스템 날짜 기준 3일 전
+  let date3 = new Date();
+  date3 = new Date(date3.setDate(date3.getDate() - 60)); //시스템 날짜 기준 2개월 전
+
+  $now = date.toISOString().slice(0, 10);
+  $now2 = date2.toISOString().slice(0, 10);
+  $now3 = date3.toISOString().slice(0, 10);
+
+  $("input.start_day").val($now2);
+  $("input.end_day").val($now);
+  $("input#start_end_day").val($now3);
+  $("input#end_end_day").val($now);
+  //--달력 좌측에 현재 날짜 지정, 우측에 현재 날짜 + 3일 setting END--
 
   //--ing 페이지 달력 좌측, 우측 min max 설정 START--
-  date = new Date(date.setDate(date.getDate() - 180))
-  $now2 = date.toISOString().slice(0, 10)
-  $('input.start_day').attr('min', $now2)
-  $('input.start_day').attr('max', $now)
-  $('input.end_day').attr('min', $now2)
-  $('input.end_day').attr('max', $now)
+  date = new Date(date.setDate(date.getDate() - 180));
+  $now2 = date.toISOString().slice(0, 10);
+  $("input.start_day").attr("min", $now2);
+  $("input.start_day").attr("max", $now);
+  $("input.end_day").attr("min", $now2);
+  $("input.end_day").attr("max", $now);
   //--ing 페이지 달력 좌측, 우측 min max 설정 END--
 
-    //--end 페이지 달력 좌측, 우측 min max 설정 START--
-    date = new Date()
-    date = new Date(date.setDate(date.getDate() - 179))
-    $now2 = date.toISOString().slice(0, 10)
-    $('input#start_end_day').attr('min', $now2)
-    $('input#start_end_day').attr('max', $now)
-    $('input#end_end_day').attr('min', $now2)
-    $('input#end_end_day').attr('max', $now)
-    //--end 페이지 달력 좌측, 우측 min max 설정 END--
+  //--end 페이지 달력 좌측, 우측 min max 설정 START--
+  date = new Date();
+  date = new Date(date.setDate(date.getDate() - 180));
+  $now2 = date.toISOString().slice(0, 10);
+  $("input#start_end_day").attr("min", $now2);
+  $("input#start_end_day").attr("max", $now);
+  $("input#end_end_day").attr("min", $now2);
+  $("input#end_end_day").attr("max", $now);
+  //--end 페이지 달력 좌측, 우측 min max 설정 END--
 
   //--최근 3일 버튼 클릭 event START--
-  $(document).on('click', 'input#3days', (e) => {
-    let date = new Date() //시스템상 오늘 날짜
-    let date2 = new Date() 
-    date2 = new Date(date2.setDate(date2.getDate() - 3)) //시스템 날짜 기준 3일 후
+  $(document).on("click", "input#3days", (e) => {
+    let date = new Date(); //시스템상 오늘 날짜
+    let date2 = new Date();
+    date2 = new Date(date2.setDate(date2.getDate() - 3)); //시스템 날짜 기준 3일 후
 
-    $now = date.toISOString().slice(0, 10)
-    $now2 = date2.toISOString().slice(0, 10)
-    $('input.start_day').val($now2)
-    $('input.end_day').val($now)
-  })
+    $now = date.toISOString().slice(0, 10);
+    $now2 = date2.toISOString().slice(0, 10);
+    $("input.start_day").val($now2);
+    $("input.end_day").val($now);
+  });
   //--최근 3일 버튼 클릭 event END--
 
   //--최근 5일 버튼 클릭 event START--
-  $(document).on('click', 'input#5days', (e) => {
-    let date = new Date() //시스템상 오늘 날짜
-    let date2 = new Date() 
-    date2 = new Date(date2.setDate(date2.getDate() -5)) //시스템 날짜 기준 3일 후
+  $(document).on("click", "input#5days", (e) => {
+    let date = new Date(); //시스템상 오늘 날짜
+    let date2 = new Date();
+    date2 = new Date(date2.setDate(date2.getDate() - 5)); //시스템 날짜 기준 3일 후
 
-    $now = date.toISOString().slice(0, 10)
-    $now2 = date2.toISOString().slice(0, 10)
-    $('input.start_day').val($now2)
-    $('input.end_day').val($now)
-  })
+    $now = date.toISOString().slice(0, 10);
+    $now2 = date2.toISOString().slice(0, 10);
+    $("input.start_day").val($now2);
+    $("input.end_day").val($now);
+  });
   //--최근 5일 버튼 클릭 event END--
 
   //--최근 7일 버튼 클릭 event START--
-  $(document).on('click', 'input#7days', (e) => {
-    let date = new Date() //시스템상 오늘 날짜
-    let date2 = new Date() 
-    date2 = new Date(date2.setDate(date2.getDate() - 7)) //시스템 날짜 기준 3일 후
+  $(document).on("click", "input#7days", (e) => {
+    let date = new Date(); //시스템상 오늘 날짜
+    let date2 = new Date();
+    date2 = new Date(date2.setDate(date2.getDate() - 7)); //시스템 날짜 기준 3일 후
 
-    $now = date.toISOString().slice(0, 10)
-    $now2 = date2.toISOString().slice(0, 10)
-    $('input.start_day').val($now2)
-    $('input.end_day').val($now)
-  })
+    $now = date.toISOString().slice(0, 10);
+    $now2 = date2.toISOString().slice(0, 10);
+    $("input.start_day").val($now2);
+    $("input.end_day").val($now);
+  });
   //--최근 7일 버튼 클릭 event END--
 
   //--최근 2개월 버튼 클릭 event START--
-  $(document).on('click', 'input#2months', (e) => {
-    let date = new Date() //시스템상 오늘 날짜
-    let date2 = new Date() 
-    date2 = new Date(date2.setDate(date2.getDate() - 59)) //시스템 날짜 기준 3일 후
+  $(document).on("click", "input#2months", (e) => {
+    let date = new Date(); //시스템상 오늘 날짜
+    let date2 = new Date();
+    date2 = new Date(date2.setDate(date2.getDate() - 60)); //시스템 날짜 기준 3일 후
 
-    $now = date.toISOString().slice(0, 10)
-    $now2 = date2.toISOString().slice(0, 10)
-    $('input#start_end_day').val($now2)
-    $('input#end_end_day').val($now)
-  })
+    $now = date.toISOString().slice(0, 10);
+    $now2 = date2.toISOString().slice(0, 10);
+    $("input#start_end_day").val($now2);
+    $("input#end_end_day").val($now);
+  });
   //--최근 2개월 버튼 클릭 event END--
 
   //--최근 4개월 버튼 클릭 event START--
-  $(document).on('click', 'input#4months', (e) => {
-    let date = new Date() //시스템상 오늘 날짜
-    let date2 = new Date() 
-    date2 = new Date(date2.setDate(date2.getDate() - 119)) //시스템 날짜 기준 3일 후
+  $(document).on("click", "input#4months", (e) => {
+    let date = new Date(); //시스템상 오늘 날짜
+    let date2 = new Date();
+    date2 = new Date(date2.setDate(date2.getDate() - 120)); //시스템 날짜 기준 3일 후
 
-    $now = date.toISOString().slice(0, 10)
-    $now2 = date2.toISOString().slice(0, 10)
-    $('input#start_end_day').val($now2)
-    $('input#end_end_day').val($now)
-  })
+    $now = date.toISOString().slice(0, 10);
+    $now2 = date2.toISOString().slice(0, 10);
+    $("input#start_end_day").val($now2);
+    $("input#end_end_day").val($now);
+  });
   //--최근 4개월 버튼 클릭 event END--
 
   //--최근 6개월 버튼 클릭 event START--
-  $(document).on('click', 'input#6months', (e) => {
-    let date = new Date() //시스템상 오늘 날짜
-    let date2 = new Date() 
-    date2 = new Date(date2.setDate(date2.getDate() - 179)) //시스템 날짜 기준 3일 후
+  $(document).on("click", "input#6months", (e) => {
+    let date = new Date(); //시스템상 오늘 날짜
+    let date2 = new Date();
+    date2 = new Date(date2.setDate(date2.getDate() - 180)); //시스템 날짜 기준 3일 후
 
-    $now = date.toISOString().slice(0, 10)
-    $now2 = date2.toISOString().slice(0, 10)
-    $('input#start_end_day').val($now2)
-    $('input#end_end_day').val($now)
-  })
+    $now = date.toISOString().slice(0, 10);
+    $now2 = date2.toISOString().slice(0, 10);
+    $("input#start_end_day").val($now2);
+    $("input#end_end_day").val($now);
+  });
   //--최근 6개월 버튼 클릭 event END--
 
   //--END page 날짜 클릭 최대기간 6개월 제한 START--
-  $(document).on('change', 'input.days', (e) => {
+  $(document).on("change", "input.days", (e) => {
     let $divObj = $(e.target);
     // let $
-    console.log($divObj)
-    alert('날짜 제한')
+    console.log($divObj);
+    alert("날짜 제한");
     // $('input.start_end_day').attr('min', $now2)
     // $('input.start_end_day').attr('max', $now)
-  })
+  });
   //--END page 날짜 클릭 최대기간 6개월 제한 END--
 
-  
   //   //--상품 클릭 되었을 때 START--
   //   $("div.productlist").on("click", "div.product", (e) => {
   //     //클릭한 상품번호 얻어오는 부분
