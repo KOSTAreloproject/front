@@ -76,9 +76,11 @@ $(() => {
       data: JSON.stringify({ sNum: sNum, mNum: mNum }),
       success: function (jsonStr) {
         alert("재고반송 추가완료");
+        $(e.target).parents("div.stock").hide();
+
       },
       error: function (xhr) {
-        alert(xhr.status);
+        alert("재고반송중에 오류가 났습니다");
       },
     });
   });

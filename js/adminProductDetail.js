@@ -2,6 +2,9 @@ $(() => {
   let url = backUrl + "/stock/detailBySNum";
   let sNum = location.search.substring(1).split("=")[1];
   $.ajax({
+    xhrFields: {
+      withCredentials: true,
+    },
     url: url,
     method: "get",
     data: { sNum: sNum },

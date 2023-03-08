@@ -17,13 +17,15 @@ $(()=>{
         let sNum = jsonStr[0].snum;
         let pEndDate = jsonStr[0].pEndDate;
 
-        $(".pEndDate").html("종료일: "+pEndDate);
+     
+
+        $(".pEndDate").html(pEndDate);
         $(".sBrand").html(sBrand);
         $(".sName").html(sName);
-        $(".sizeCategoryName").html("사이즈: " + sizeCategoryName);
-        $(".sGrade").html("검수 내역 : " + sGrade + " 급");
-        $(".maxPrice").html("판매가 : " + maxPrice + "원");
-        $(".finalPrice").html("정산금액 : " + finalPrice(maxPrice) + "원");
+        $(".sizeCategoryName").html( sizeCategoryName);
+        $(".sGrade").html( sGrade + " 급");
+        $(".maxPrice").html(maxPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원");
+        $(".finalPrice").html("💰"+finalPrice(maxPrice).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원");
   
         $(".sFile").hide();
         let $imgObj = $("<img class='sFile'>"); //태그용 객체를 만듬
@@ -90,7 +92,7 @@ $(()=>{
     });
 
     //정산금액 = 판매가 - (검수비 + 수수료 )
-    function finalPrice(maxPrice){
+    function finalPrice(maxPrice,sHopePrice){
         maxPrice = maxPrice - (4000);
         return maxPrice;
     }

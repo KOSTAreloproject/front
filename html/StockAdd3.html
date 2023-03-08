@@ -15,14 +15,17 @@
   </head>
   <body>
     <div id='wrapper'>
+      <div id = 'back'>
       <header id="header"></header>
 
       <section>
-        <div class="terms">
-          <h1>약관 동의</h1>
-          <h5>※ 물건 대리 판매 동의</h5>
-          <input type="checkbox" class="ck"><br/>
-          <textarea cols="65" rows="15" readonly class="t1">
+
+        <div class="checkbox_group">
+
+          
+        <form class="terms">
+          <h1>판매 동의</h1>
+          <div class="text">
                             제 1 장 총칙
 
 제 1 조 (목적)
@@ -168,10 +171,14 @@
 부 칙
 (시행일) 본 약관은 2018년 8월 1일부터 시행됩니다. 개정된 약관의 적용일자 이전 이용자 또는 회원은 개정된 이용약관의 적용을 받습니다.
 								
-          </textarea><br/>
-          <h5>※ 개인정보 수집/이용 동의</h5>
-          <input type="checkbox" class="ck"><br/>
-          <textarea cols="65" rows="15" readonly class="t2">
+          </div>
+          <div >
+          <h5>✔ [필수] 물건 대리 판매 동의</h5>
+          <input type="checkbox" id="check_1" class="normal" >
+          </div>
+          <br/>
+          
+          <div class="text">
 
 1. 개인정보의 수집항목 및 수집방법 
 
@@ -216,16 +223,25 @@ RELO에서는 기본적인 회원 서비스 제공을 위한 필수정보로 실
          - 행정자치부
              · 위탁업무 내용 : 공공 I-PIN, GPKI 인증
               · 개인정보 보유 및 이용 기간 : 행정자치부에서는 이미 보유하고 있는 개인정보이기 때문에 별도로 저장하지 않음                       
-          </textarea>
+          </div><div>
+          <h5>✔ [필수] 개인정보 수집/이용 동의</h5>
+          <input type="checkbox" id="check_2" class="normal" ><br/>
+          <h5>✔ 전체동의</h5>
+          <input type="checkbox" id="check_all" ></div>
+          
           <div class="finish">
-           <div id="ex1" class="modal">
+            <div class="join_btn_box">
+              <a id="join_btn" disabled="disabled" href="./StockAdd2.html">동의하기</a>
+            </div>
+           <!-- <div id="ex1" class="modal">
              상품 등록 신청이 완료되었습니다.
              <a href="http://192.168.0.154:5500/html/index.html" >메인으로</a>
          </div>
-         <p><a href="#ex1" rel="modal:open">동의하기</a></p><br/>
+         <p><a href="#ex1" rel="modal:open">동의하기</a></p><br/> -->
        </div>
-        </div>
+      </form></div>
       </section>
+      </div>
    </div>
       
    <div id="footer"></div>
