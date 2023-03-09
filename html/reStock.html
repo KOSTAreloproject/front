@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="../js/basic.js"></script>
-    <script src="../js/inventoryDetail.js"></script>
+    <script src="../js/reStock.js"></script>
   </head>
 
   <body>
@@ -77,7 +77,7 @@
         </div>
         <div class="content_area">
           <div class="title">
-            <h1>진행중인 거래</h1>
+            <h1>상품 재 등록</h1>
           </div>
           <div class="inventory">
             <div class="f">
@@ -98,14 +98,14 @@
             <div class="groupIng"> 
             <div class="ing2">발송완료</div>
             <div class="ing3">입고완료</div>
-            <div class="ing4" style="font-weight: bold">✔ 검수합격</div>
+            <div class="ing4" style="font-weight: bold">✔ 재등록</div>
             <div class="ing5">입찰중</div>
             <div class="ing6">입찰완료</div>
             <div class="ing7">정산완료</div>
           </div>
           </div> 
-            <h5>원가</h5>
-            <div class="sOriginPrice">원가</div>
+            <h5>경매가</h5>
+            <div class="sHopePrice">경매가</div>
             <h5>comment</h5>
             <div class="managerComment">comment</div>
             <h5>검수 내역</h5>
@@ -118,7 +118,7 @@
               <P style="display: none;color: red;" class="ckPrice">가격이 높습니다. 다시 입력하세요</P>
               <input type="number"  name="sHopePrice" class="sHopePrice" placeholder="금액을 입력해주세요"  min="1" /> 원 <br />
               <p class="maxPrice">※ 최대 000까지</p>
-              <p>☞ S급:30% A급:20% B급:10% (원가 기준)</p>
+              <p>☞ S급:-10% A급:-20% B급:-30% (경매가 기준)</p>
               <h4>판매 정산 계좌 </h4>
               <div class="account">
                 <h5>은행명</h5>
@@ -127,9 +127,7 @@
               <div class="bankNum">카카오뱅크</div>
             </div>
               <div class="choice">
-                <input type="button" value="판매취소" name="cancle" class="cancle"> 
-                <input type="button" value="신청하기" name="regi" class="regi" > 
-                <input type="button" value="목록으로" onclick="location.href = './inventory.html'"> 
+                <input type="button" value="신청하기" name="regi" class="regi" id="tlscjd"> 
               </div>
             </div>
            

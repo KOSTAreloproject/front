@@ -1,4 +1,5 @@
 $(() => {
+
   $("div#popup_background").hide();
   let url = backUrl + "/product/EndListById/1";
   $.ajax({
@@ -28,6 +29,8 @@ $(() => {
           pStatus = "낙찰";
         } else if (pStatus == 7) {
           pStatus = "정산중";
+        } else if (pStatus == 9){
+          pStatus = "판매완료";
         }
         // if (sGrade == null) {
         //   sGrade = "-";
@@ -60,6 +63,7 @@ $(() => {
         $copy.find("div.pEndDate").html(pEndDate);
         $copy.find("div.sizeCategoryName").html(sizeCategoryName);
         $copy.find("div.pStatus").html(pStatus);
+        $copy.find("div.sNum").html(sNum);
         $parent.append($copy);
       });
       $origin.hide();
@@ -81,13 +85,22 @@ $(() => {
   $("div.list_area").on("click", "div.desc", function (e) {
     let pStatus = $(e.target).parents("div.desc").find("div.pStatus").html();
     if (pStatus == "낙찰") {
-      let pNum = $(e.target).parents("div.desc").find("div.pNum").html();
-      location.href = "./inventory3Detail.html?pNum=" + pNum;
+      $("div#popup_background").show();
+      $("p#ask").html("낙찰자가 상품을 결제해야 합니다");
+      // let pNum = $(e.target).parents("div.desc").find("div.pNum").html();
+      // location.href = "./inventory3Detail.html?pNum=" + pNum;
     } else if (pStatus == "정산중") {
       $("div#popup_background").show();
       $("p#ask").html("상품이 정산중입니다");
     } else if (pStatus == "유찰"){
-      
+      $("div#popup_background").show();
+      $("button#no_btn").show();
+      $("button#re_btn").show();
+      $("#ok_btn").hide();
+      $("p#ask").html("상품을 재등록 하시겠습니까?");
+    }else if (pStatus == "판매완료"){
+      let pNum = $(e.target).parents("div.desc").find("div.pNum").html();
+      location.href = "./inventory3Detail.html?pNum=" + pNum;
     }
   });
   //--상세보기 클릭되었을 때 할일 END--
@@ -96,5 +109,47 @@ $(() => {
   $("#ok_btn").click(function (e) {
     $("div#popup_background").hide();
   });
+
+  $("button#re_btn").click(function (e) {
+    $("div#popup_background").hide();
+    let pNum = $("div:nth-child(2) > div.pNum").html();
+    let sNum = $("div:nth-child(2) > div.item_areas > div.sNum").html();
+
+    let url = backUrl + "product/delBypNum/"+pNum
+    
+    $.ajax({
+      xhrFields: {
+        withCredentials: true,
+      },
+      url: url,
+      method: "DELETE",
+      success: function (jsonStr) {
+        location.href = "./reStock.html?sNum=" + sNum;
+      },
+      error: function (xhr) {
+      },
+    });
+  });
+
+  $("button#no_btn").click(function (e) {
+    $("div#popup_background").hide();
+    let pNum = $("div:nth-child(2) > div.pNum").html();
+    let url = backUrl + "product/delBypNum/"+pNum
+
+    $.ajax({
+      xhrFields: {
+        withCredentials: true,
+      },
+      url: url,
+      method: "DELETE",
+      success: function (jsonStr) {
+        location.href = "./inventory3.html";
+      },
+      error: function (xhr) {
+      },
+    });
+  });
   //--모달창 클릭되었을 때 할일 END--
+
+  
 });

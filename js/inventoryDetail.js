@@ -10,6 +10,7 @@ $(() => {
     method: "GET",
     data: { sNum: sNum },
     success: function (jsonStr) {
+      console.log(jsonStr)
       let sBrand = jsonStr[0].sbrand;
       let sName = jsonStr[0].sname;
       let sizeCategoryName = jsonStr[0].sizeCategoryName;
@@ -119,6 +120,22 @@ $(() => {
    
     //--모달창 클릭되었을 때 할일 END--
 
+          //--상한가 체크 START--
+          $(".sHopePrice").on("blur", function() {
+            var inputValue = parseInt($(this).val());
+            var maxValue = parseInt($(this).attr("max"));
+          
+            if (inputValue > maxValue) {
+             
+                $("p.ckPrice").css("display","block")
+             
+              $(this).val("");
+            }else {
+              $("p.ckPrice").css("display","none")
+          }
+          });
+          //--상한가 체크 END--
+
   //--판매자 희망판매가 입력 후 클릭되었을 때 할일 START--
 
     $(" div.choice > input.regi").click(function (e) {
@@ -182,9 +199,13 @@ $(() => {
         method: "PUT",
         data: JSON.stringify(sNum),
         contentType: "application/json",
-        success: function () {
+        success: function (flag) {
+          if(flag){
           $("div#popup_background").hide();
           location.href = frontUrl + "inventory.html";
+          }else{
+            location.href = frontUrl + "address.html";
+          }
         }, 
         error: function (xhr) {
         },
