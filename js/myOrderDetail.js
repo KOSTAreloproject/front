@@ -10,6 +10,7 @@ $(function () {
     method: "get",
     success: function (result) {
       console.log(result);
+      let addrnum = result.addrNum;
       let addr = result.addr;
       let addrDetail = result.addrDetail;
       let addrPostNum = result.addrPostNum;
@@ -52,6 +53,15 @@ $(function () {
         orderStatus = "배송 중";
       } else if (dstatus == 2) {
         orderStatus = "배송 완료";
+
+        let $btnObj = $(
+          "<input type='button' value='구매확정' class='confirm'>"
+        );
+        $btnObj.attr("data-anum", anum);
+        $btnObj.attr("data-pnum", pnum);
+        $btnObj.attr("data-addrnum", addrnum);
+
+        $("div.delivery_status").append($btnObj);
       } else {
         orderStatus = "구매 확정";
       }
@@ -86,4 +96,32 @@ $(function () {
     });
   }
   //--상품 이미지 띄우기 END--
+
+  //--구매확정 버튼 클릭시 START--
+  $(document).on("click", "input.confirm", (e) => {
+    let anum = $(e.target).attr("data-anum");
+    let pnum = $(e.target).attr("data-pnum");
+    let addrnum = $(e.target).attr("data-addrnum");
+    $.ajax({
+      xhrFields: {
+        withCredentials: true,
+      },
+      url: backUrl + "order-delivery/confirm",
+      method: "post",
+      contentType: "application/json",
+      data: JSON.stringify({
+        aNum: anum,
+        pNum: pnum,
+        addrNum: addrnum,
+      }),
+      success: function (result) {
+        alert(result.msg);
+        location = location;
+      },
+      error: function (xhr) {
+        console.log(xhr.status);
+      },
+    });
+  });
+  //--구매확정 버튼 클릭시 END--
 });

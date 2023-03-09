@@ -34,6 +34,7 @@ $(() => {
             let anum = obj.anum;
             let aprice = obj.aprice;
             let odate = obj.oDate;
+            let dstatus = obj.dstatus;
             // let pendDate = obj.pEndDate;
             let pnum = obj.pnum;
             let snum = obj.snum;
@@ -68,7 +69,18 @@ $(() => {
             $copy.find("div.a_price").html(aprice);
             $copy.find("div.o_date").attr("data-name", anum);
             $copy.find("div.o_date").html(odate);
+            // if (dstatus == 2) {
+            //   let $btnObj = $(
+            //     "<input type='button' value='구매확정' class='confirm'>"
+            //   );
+            //   $btnObj.attr("data-anum", anum);
+            //   $btnObj.attr("data-num", pnum);
 
+            //   let $divObj = $("<div></div>");
+            //   $divObj.append($btnObj);
+            //   // $copy.find("div.status").append($btnObj);
+            //   $copy.find("div.o_date").append($divObj);
+            // }
             $parent.append($copy);
             imgShow(snum, "img_" + snum);
           }
@@ -147,11 +159,12 @@ $(() => {
   });
   //경매 진행 중 클릭 시 END
 
-  //상품 클릭됐을 때 START
+  //항목 클릭됐을 때 START
   $(document).on("click", "div[class='desc']", (e) => {
     let anum = $(e.target).attr("data-name");
     location.href = frontUrl + "myOrderDetail.html?" + anum;
   });
+  //항목 클릭됐을 때 END
 
   //--달력 좌측에 현재 날짜 지정, 우측에 현재 날짜 - 60일 setting START--
   let date = new Date(); //시스템상 오늘 날짜
