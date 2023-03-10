@@ -1,11 +1,4 @@
 $(() => {
-  // let page = 1;
-  // $('.pagination a').on('click', function(e) {
-  //   e.preventDefault();
-  //   $('.pagination a.active').removeClass('active');
-  //   $(this).addClass('active');
-  //   page = $('.pagination a.active').text();
-  // });
 
   //페이지 번호가 클릭되었을 때 할 일 START//
   $('div.pagination').on('click', 'span#pagenum:not(.current)', (e) => {
@@ -54,7 +47,8 @@ $(() => {
   let url = backUrl + "stock/listBySstatus/"
   showList(url,1)
 
-function showList (url,page){
+function showList (url,cp){
+  $(window).scrollTop(0);
   let $origin = $('div.stock').first();
     $('div.stock').not(':first-child').remove();
     $origin.show();
@@ -63,16 +57,14 @@ function showList (url,page){
     xhrFields: {
       withCredentials: true,
     },
-    url: url + page,
+    url: url + cp,
     method: "get",
     data: { sStatus: 3 },
     success: function (jsonStr) {
       let $origin = $("div.stock").first();
       let $parent = $("div.StockList");
       let totalPage = jsonStr.totalPageNum;
-      console.log(totalPage)
       let totalCount = jsonStr.list.length
-      console.log(totalCount)
       $(jsonStr.list).each((index, s) => {
         let sizeCategoryName = s.sizeCategoryName;
         let sName = s.sname;
@@ -110,31 +102,28 @@ function showList (url,page){
       });
       $origin.hide();
 
-      $('div.pagecount').html(totalPage);
-        let $pageGroup = $('div.pagination');
-        let pageGroupStr = '';
-        let startPage = page;
-        let endPage = totalCount;
-        if (startPage > 1) {
-          pageGroupstr += '<span id="pagenum"' + (startPage - 1) + '"></span>';
+      $("div.pagecount").html(totalPage);
+      let $pageGroup = $("div.pagination");
+      let pageGroupStr = "";
+      let cntPerPage = 5;
+      let startPage = parseInt((cp-1) / cntPerPage) * cntPerPage + 1;
+      let endPage = startPage + cntPerPage - 1;
+
+      if (endPage > totalPage) {
+        endPage = totalPage;
+      }
+      pageGroupStr += '<span id="prev">&laquo;</span>';
+      for (let i = startPage; i <= endPage; i++) {
+        if (i == cp) {
+          pageGroupStr +=
+            '<span class="active" id="pagenum">' + i + "</span>";
+        } else {
+          pageGroupStr += '<span id="pagenum">' + i + "</span>";
         }
-        if (endPage > totalPage) {
-          endPage = totalPage;
-        }
-        pageGroupStr += '<span id="prev">&laquo;</span>';
-        for (let i = startPage; i <= totalPage; i++) {
-          if (i == page) {
-            pageGroupStr +=
-              '<span class="active" id="pagenum">' + i + '</span>';
-          } else {
-            pageGroupStr += '<span id="pagenum">' + i + '</span>';
-          }
-        }
-        // if (endPage < totalPage) {
-        //   pageGroupStr += '<span id="pagenum"' + (endPage + 1) + '></span>';
-        // }
-        $pageGroup.html(pageGroupStr);
-        $pageGroup.append('<span id="next">&raquo;</span>');
+      }
+      $pageGroup.html(pageGroupStr);
+      $pageGroup.append('<span id="next">&raquo;</span>');
+        
     },
     error: function (xhr) {
       if (xhr.responseJSON.msg === "로그인하세요") {

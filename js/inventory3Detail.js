@@ -96,4 +96,6 @@ $(()=>{
         maxPrice = maxPrice - (4000);
         return maxPrice;
     }
+
+    
 })

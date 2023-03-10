@@ -1,16 +1,71 @@
 $(() => {
-
   $("div#popup_background").hide();
-  let url = backUrl + "/product/EndListById/1";
+  showProductstart()
+  showProductIng()
+   //페이지 번호가 클릭되었을 때 할 일 START//
+$('div.pagination').on('click', 'span#pagenum:not(.current)', (e) => {
+  e.preventDefault();
+  let $page = $(e.target).text();
+  let $activePageNumber = $('#pagenum.active');
+  if ($activePageNumber) {
+    $activePageNumber.removeClass('active');
+  }
+  $(e.target).addClass('active');
+  $(window).scrollTop(0);
+  showList(url, $page);
+});
+// -- 페이지 번호가 클릭되었을 때 할 일 END --
+// -- 페이지 다음 버튼을 클릭했을 때 할일 START--
+$(document).on('click', 'span#next', (e) => {
+  e.preventDefault();
+  let $pagecount = Number($('div.pagecount').text());
+  let $cp = Number($('#pagenum.active').text());
+  let $activePageNumber = $('#pagenum.active');
+  if ($pagecount == $cp) {
+    alert('마지막 목록 입니다.');
+    return;
+  }
+  if ($activePageNumber) {
+    $activePageNumber.removeClass('active');
+  }
+  $(window).scrollTop(0);
+  showList(url, $cp + 1);
+});
+// -- 페이지 다음 버튼을 클릭했을 때 할일 END--
+// -- 페이지 이전 버튼을 클릭했을 때 할일 START--
+$(document).on('click', 'span#prev', (e) => {
+  e.preventDefault();
+  let $cp = Number($('#pagenum.active').text()); //현재 페이지
+  let $activePageNumber = $('#pagenum.active');
+  if ($cp == 1) {
+    alert('첫번째 목록 입니다.');
+    return;
+  }
+  if ($activePageNumber) {
+    $activePageNumber.removeClass('active');
+  }
+  $(window).scrollTop(0);
+  showList(url, $cp - 1);
+});
+// -- 페이지 이전 버튼을 클릭했을 때 할일 END--
+
+let url = backUrl + "product/EndListById/";
+showList(url,1)
+
+function showList (url,cp){
+  let $origin = $('div.desc').first();
+  $('div.desc').not(':first-child').remove();
+  $origin.show();
+
   $.ajax({
     xhrFields: {
       withCredentials: true,
     },
-    url: url,
+    url: url + cp,
     method: "GET",
     success: function (jsonStr) {
-      console.log(jsonStr);
-      let $origin = $("div.desc").first();
+      $("div.count_end").html(jsonStr.totalCount);
+      let totalPage = jsonStr.totalPageNum;
       let $parent = $("div.list_area");
       $(jsonStr.list).each((index, p) => {
         let sizeCategoryName = p.sizeCategoryName;
@@ -20,9 +75,9 @@ $(() => {
         let sBrand = p.sbrand;
         let sNum = p.snum;
         let pEndDate = p.pEndDate;
-
+  
         let $copy = $origin.clone();
-
+  
         if (pStatus == 8) {
           pStatus = "유찰";
         } else if (pStatus == 6) {
@@ -32,12 +87,9 @@ $(() => {
         } else if (pStatus == 9){
           pStatus = "판매완료";
         }
-        // if (sGrade == null) {
-        //   sGrade = "-";
-        // }
-
+  
         let $imgObj = $("<img class='sFile'>"); //태그용 객체를 만듬
-
+  
         // 사진 불러오기
         $.ajax({
           xhrFields: {
@@ -55,7 +107,7 @@ $(() => {
             console.log(xhr.status);
           },
         });
-
+  
         $copy.find("div.pNum").html(pNum);
         $copy.find("div.sBrand").html(sBrand);
         $copy.find("div.sFile").empty().append($imgObj);
@@ -67,6 +119,28 @@ $(() => {
         $parent.append($copy);
       });
       $origin.hide();
+
+      $("div.pagecount").html(totalPage);
+      let $pageGroup = $("div.pagination");
+      let pageGroupStr = "";
+      let cntPerPage = 5;
+      let startPage = parseInt((cp-1) / cntPerPage) * cntPerPage + 1;
+      let endPage = startPage + cntPerPage - 1;
+
+      if (endPage > totalPage) {
+        endPage = totalPage;
+      }
+      pageGroupStr += '<span id="prev">&laquo;</span>';
+      for (let i = startPage; i <= endPage; i++) {
+        if (i == cp) {
+          pageGroupStr +=
+            '<span class="active" id="pagenum">' + i + "</span>";
+        } else {
+          pageGroupStr += '<span id="pagenum">' + i + "</span>";
+        }
+      }
+      $pageGroup.html(pageGroupStr);
+      $pageGroup.append('<span id="next">&raquo;</span>');
     },
     error: function (xhr) {
       console.log(xhr)
@@ -80,6 +154,8 @@ $(() => {
       );
     },
   });
+}
+ 
 
   //--상세보기 클릭되었을 때 할일 START--
   $("div.list_area").on("click", "div.desc", function (e) {
@@ -151,5 +227,40 @@ $(() => {
   });
   //--모달창 클릭되었을 때 할일 END--
 
+     //판매입찰 개수 세기 START 
+     function showProductstart() {
+      $.ajax({
+        url: backUrl + "stock/listById/1",
+        xhrFields: {
+          withCredentials: true,
+        },
+        method: "get",
+        success: function (jsonObj) {
   
+            $("div.count_start").html(jsonObj.totalCount);
+        },
+        error: function (xhr) {
+          $("div.count_start").html("0");
+        },
+      });
+    }
+    //판매입찰 개수 세기 END
+
+      //진행중 개수 세기 START 
+  function showProductIng() {
+    $.ajax({
+      url: backUrl + "product/listById/1",
+      xhrFields: {
+        withCredentials: true,
+      },
+      method: "get",
+      success: function (jsonObj) {
+          $("div.count_ing").html(jsonObj.totalCount);
+      },
+      error: function (xhr) {
+        $("div.count_ing").html("0");
+      },
+    });
+  }
+  //진행중 개수 세기 END
 });

@@ -32,7 +32,7 @@
                     aria-current="page"
                     class="menu_link"
                   >
-                    구매 내역
+                    반송 내역
                   </a>
                 </li>
                 <li class="menu_item">
@@ -83,22 +83,22 @@
             <div class="auction_tab">
               <a href="./inventory.html" style="color: black">
                 <div class="tab_box">
-                  <div class="count_end">0</div>
-                  <div class="title_end">판매 입찰</div>
+                  <div class="count_start">0</div>
+                  <div class="title_start">판매 입찰</div>
                 </div></a
               >
             </div>
             <div class="auction_tab">
                 <a href="./inventory2.html" style="color: black">
               <div class="tab_box">
-                <div class="count_end">0</div>
-                <div class="title_end">진행중</div>
+                <div class="count_ing">0</div>
+                <div class="title_ing">진행중</div>
               </div>
             </div>
             <div class="auction_tab" style="border-bottom: 2px solid black">
               <div class="tab_box">
                 <div
-                  class="count_ing"
+                  class="count_end"
                   style="font-weight: bold; color: #f15746"
                 >
                   0
@@ -142,11 +142,16 @@
                 <div class="pNum" style="display: none"></div>
               </div>
             </div>
-
+            <div class="center">
+              <div class="pagination"></div>
+              <div class="pagecount"></div>
+            </div>
             <a href="./shoplist.html"
             ><button id="shop">SHOP 바로가기</button></a
           >
           </div>
+
+        </div>
         </div>
         <!-- modal window start -->
         <div id="popup_background">
