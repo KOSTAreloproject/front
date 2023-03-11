@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relo</title>
+    <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type = "text/css" href="../css/basic.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/adminStockDetail.js"></script>
+</script>    
+  </head>
+  <body>
+  <div id='wrapper'>
+    <header id="header"></header>
+    <section>
+      <div class="snb_area">    
+        <h2 >관리자 페이지</h2>
+          <nav class="snb">
+            <div class="snb_list">
+              <strong class="snb_title">회원 관리</strong>
+              <ul  class="snb_menu">
+                <li class="menu_item">
+                  <a href="./admin.html"  class="menu_link" style="font-weight: bold;"> 승인 요청 내역</a>
+                </li>
+                <li class="menu_item">
+                  <a href="./adminProductList.html" class="menu_link"> 상품 승인 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./StockReturn.html" class="menu_link"> 반송 신청 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./adminAwardList.html" class="menu_link"> 경매 낙찰 내역 </a>
+                </li>
+                <li class="menu_item">
+                  <a href="./adminOrderConfirmedList.html" class="menu_link"> 구매 확정 내역 </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      <div class="content_area">
+        <div class="title">
+           <h1>승인 요청 상세</h1>
+        </div>
+        <div class="StockDetail">
+          <form >
+            <div class="file">
+              <div class="sFile">이미지</div>
+            </div>
+            <table class="type09">
+              <thead>
+                <tr>
+                  <th scope="cols"></th>
+                  <th scope="cols"></th>
+                </tr>
+                </thead>
+              <tbody>
+              <tr>
+                <th scope="row">상품브랜드</th>
+                <td><div class="sBrand">상품브랜드</div></td>
+              </tr>
+              <tr>
+                <th scope="row">상품이름</th>
+                <td><div class="sName">상품이름</div></td>
+              </tr>
+              <tr>
+                <th scope="row">상품유형</th>
+                <td><div class="sType">상품유형</div></td>
+              </tr>
+              <tr>
+                <th scope="row">사이즈</th>
+                <td><div class="sizeCategoryName">사이즈</div></td>
+              </tr>
+              <tr>
+                <th scope="row">상품색상</th>
+                <td><div class="sColor">상품색상</div></td>
+              </tr>
+              <tr>
+                <th scope="row">상품원가</th>
+                <td><div class="sOriginPrice">상품원가
+                </div></td>
+              </tr>
+              <tr>
+                <th scope="row">희망판매일</th>
+                <td><div class="sHopeDays">희망판매일</div></td>
+              </tr>
+              <tr>
+                <th scope="row">판매자 코멘트</th>
+                <td><div class="sellerComment">판매자 코멘트</div></td>
+              </tr>
+              <tr>
+                <th scope="row">상품브랜드</th>
+                <td><div class="sBrand">상품브랜드</div></td>
+              </tr>
+              <tr>
+                <th scope="row">등급</th>
+                <td><input type="text" class="sGrade" name="sGrade" placeholder="S-불 기재"> 등급</td>
+              </tr>
+              <tr>
+                <th scope="row">comment</th>
+                <td><input type="text" class="managerComment" name="managerComment" placeholder="검수결과,특이사항"></td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="next">
+              <input type="submit" value="등급 승인 요청 전송">
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>

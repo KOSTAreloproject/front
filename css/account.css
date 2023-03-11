@@ -1,0 +1,76 @@
+div.content_area {
+  float: right;
+  width: 75%;
+}
+
+.content_registration {
+  width: 100%;
+}
+
+.account_registration {
+  padding-top: 10px;
+}
+
+select {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+
+div.input_item {
+  border-bottom: 1px solid rgb(205, 205, 205);
+  padding-bottom: 50px;
+  width: 50%;
+}
+
+p.input_error {
+  display: none;
+  color: tomato;
+}
+
+input.accountNum {
+  width: 300px;
+}
+
+div.registration_btn_box {
+  padding-top: 30px;
+}
+
+button.update {
+  margin-left: 5px;
+  transition: 0.3s;
+  color: #000000;
+  font-size: 13px;
+  background-color: #ffffff;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid;
+  padding: 10px 50px; /* 버튼 위아래, 좌우 여백 주기 (버튼 크기 조절)*/
+  cursor: pointer;
+}
+
+button.update:hover {
+  color: #ffffff;
+  background-color: #000000;
+  transition: 0.3s;
+}
+
+div.content_area > input {
+  margin-left: 5px;
+  transition: 0.3s;
+  color: #000000;
+  font-size: 13px;
+  background-color: #ffffff;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid;
+  padding: 10px 50px; /* 버튼 위아래, 좌우 여백 주기 (버튼 크기 조절)*/
+  cursor: pointer;
+}
+
+div.content_area > input:hover {
+  color: #ffffff;
+  background-color: #000000;
+  transition: 0.3s;
+}
