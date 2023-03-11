@@ -1,0 +1,118 @@
+section {
+  overflow: auto;
+}
+
+div.left {
+  width: 50%;
+  float: left;
+  text-align: center;
+  
+}
+div.left>div.rtender{
+  padding-left: 80px;
+  text-align: center;
+}
+fieldset{
+  width: 80%;
+ 
+  border:solid rgb(185, 185, 185);
+}
+#tender {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+h4 {
+  font-size: 20px;
+  
+}
+
+
+div.right {
+  width: 50%;
+  float: right;
+  box-sizing: border-box;
+  background-color: rgb(246, 246, 246);
+}
+
+div.sbrand {
+  margin-top: 150px;
+  font-size: 30px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+div.sname {
+  font-size: 25px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+div.enddate {
+  font-size: 17px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+div.remaindate {
+  font-size: 17px;
+  color: blue;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+div.shopeprice {
+  font-size: 17px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+div.maxprice {
+  font-size: 17px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+div.inserttender {
+   font-size: 17px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#zsubmit {
+  width: 60%;
+margin-left: 150px;
+  text-align: center;
+
+}
+div.smanagercomment {
+   font-size: 17px;
+  float: left;
+  margin-right: 20px;
+}
+
+div.scolor {
+   font-size: 17px;
+  float: left;
+  margin-right: 30px;
+}
+div.soriginprice {
+   font-size: 17px;
+  float: left;
+  margin-right: 30px;
+}
+div.pnum {
+  display: none;
+}
+
+div.sid {
+  display: none;
+}
+
+p.p{
+  font-size: 17px;
+  
+}
