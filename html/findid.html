@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RELO</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/basic.css"
+    />
+    <link
+      data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/findid.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/findid.js"></script>
+  </head>
+  <body>
+    <!-- header import start -->
+    <div id="header"></div>
+    <!-- header import end -->
+    <section>
+      <div id="wrapper">
+        <div>
+          <div class="find-wrapper">
+            <h2>아이디 찾기</h2>
+            <form>
+              <p class="notice_txt"> 가입 시 등록한 휴대폰 번호를 입력하면<br> 아이디 일부를 알려드립니다. </p>
+              <h3 id="label_tel1">휴대폰 번호</h3>
+              <input type="text" class="input_tel" id="tel1" placeholder="가입하신 휴대폰 번호" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+              <span class="msg" id="alert_valid_tel1"></span>
+              <input type="button" id="findid" value="아이디 찾기" disabled="disabled"/>
+            </form>
+          </div>
+          <div class="updown"></div>
+          <div class="find-wrapper">
+            <h2>비밀번호 찾기</h2>
+            <form>
+              <p class="notice_txt">가입 시 등록하신 휴대폰 번호와 이메일을 입력하시면,<br>
+                이메일로 임시 비밀번호를 전송해 드립니다.</p>
+              <h3 id="label_tel2">휴대폰 번호</h3>
+              <input type="text" class="input_tel" id="tel2" autocomplete="off" placeholder="가입하신 휴대폰 번호" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+              <span class="msg"  id="alert_valid_tel2"></span>
+              <h3 id="label_email">이메일 주소</h3>
+              <input type="text" id="email" autocomplete="off" placeholder="예) relo@relo.co.kr" oninput="this.value = this.value.replace(/\s| /gi, '')"/>
+              <span class="msg"  id="alert_valid_email"></span>
+              <input type="button" id="findpwd" value="이메일 비밀번호 찾기"/>
+            </form>
+            <div id="notice_list">
+            <p class="notice">- 유효한 메일 계정이 아니거나, 해당 메일 계정이 휴먼상태일 경우 메일 수신이 어려울 수 있습니다.</p>
+            <p class="notice">- RELO 메일을 [수신차단]하셨을 경우 메일 수신이 어려울 수 있습니다.</p>
+          </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+   <!-- modal window start -->
+   <div id="popup_background">
+    <div id="popup">
+      <p id="check_msg">임시 비밀번호를 전송하였습니다.<br>
+전송 받은 임시 비밀번호로 로그인해주세요.</p>
+        <a id="retry_login" href="./login.html">로그인</a>
+    </div>
+  </div>
+  <!-- modal window end -->
+
+  <!-- 일치하는 사용자 정보가 없을 경우 start -->
+  <div class="alert-box">
+    <i class="fa fa-circle-exclamation"></i>
+    일치하는 사용자 정보를 찾을 수 없습니다.
+  </div>
+  <!-- 일치하는 사용자 정보가 없을 경우 end -->
+
+    <!--footer import start-->
+    <div id="footer"></div>
+    <!--footer import end-->
+  </body>
+</html>

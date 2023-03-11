@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RELO</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/basic.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/login.css"
+    />
+    <link
+      data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+      />
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.js" integrity="sha384-OfbOqPoV2XcfZpqrLgqYCNSNBJW4JU/lLrtKk0cpkWvCrDRotHaQ9SSMGeP7u8NB" crossorigin="anonymous"></script>
+      <script src="../js/basic.js"></script>
+      <script src="../js/login.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- header import start -->
+      <div id="header"></div>
+      <!-- header import end -->
+      <section>
+        <div class="login-wrapper">
+          <h2>
+            <img src="../imgs/logo.png" id="logo"></img>
+          </h2>
+          <form>
+            <h3 id="title_id">아이디</h3>
+            <input type="text" class="input_val" id="id"/>
+            <h3 id="title_pwd">비밀번호</h3>
+            <input type="password" class="input_val" id="pwd"/>
+            <div id="error_msg_pwd"></div>
+            <input type="button" id="login" value="로그인" disabled="disabled"/>
+          </form>
+          <div>
+            <a href="./join.html" class="link">회원가입</a>
+            <div class="updown"></div>
+            <a href="./findid.html" class="link">아이디 or 비밀번호 찾기</a>
+          </div>
+          <a id="kakao_login"><i class="fa-solid fa-comment fa-lg"></i>카카오 로그인</a>
+        </div>
+      </section>
+    </div>
+    <!--footer import start-->
+    <div id="footer"></div>
+    <!--footer import end-->
+  </body>
+  <script>
+    Kakao.init('3bcb04cda27e5b8311717e731f708419'); //발급받은 키 중 javascript키를 사용해준다.
+  console.log(Kakao.isInitialized()); // sdk초기화여부판단
+  $('#kakao_login').click(function(){
+
+  Kakao.Auth.authorize({
+  redirectUri: 'http://192.168.0.5:8888/relo/oauth/kakao',
+  prompts: 'none',
+});
+})
+  
+  </script>
+</html>
