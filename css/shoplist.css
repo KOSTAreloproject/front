@@ -1,5 +1,9 @@
+
 header{
   z-index: 2;
+}
+div.whole{
+  width: 100%;
 }
 h1{
   text-align: center;
@@ -7,13 +11,13 @@ h1{
   padding-bottom: 20px;
 }
 div.sortnav{
-  right:195px;
+  right:12% ;
   position: absolute;
   z-index:1;
 }
 div.sortlist{
   width: 400px;
-  right: 0px;
+  right:12% ;
   position: absolute;
   display: none;
   border: 1px solid #ebebeb;
@@ -52,10 +56,12 @@ p.subdesc{
 /* 왼쪽 사이드바 */
 div.shopnav {
   position: fixed;
+  top:290px;
+  left:20;
   margin-left:20px;
   float: left;
   width: 7%;
-  height: 100%;
+ 
 }
 
 a{
