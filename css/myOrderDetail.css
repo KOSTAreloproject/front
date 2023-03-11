@@ -1,0 +1,43 @@
+div.content_area {
+  width: 75%;
+  float: right;
+}
+
+hr {
+  width: 80%;
+  float: left;
+}
+
+p.delivery_info {
+  display: inline-block;
+}
+
+button.delivery_info_listB {
+  width: 150px;
+  height: 40px;
+  color: rgba(34, 34, 34, 0.8);
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid;
+  font-size: 12px;
+  margin-top: 80px;
+  cursor: pointer;
+  margin-right: 85px;
+}
+
+div.basic-tb-hd {
+  width: 80%;
+  border-bottom: 3px solid black;
+}
+
+input.confirm {
+  margin-left: 5px;
+  font-size: 13px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid;
+  padding: 5px 10px; /* 버튼 위아래, 좌우 여백 주기 (버튼 크기 조절)*/
+  cursor: pointer;
+  color: #000000;
+  background-color: #ffffff;
+}
