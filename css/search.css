@@ -1,0 +1,292 @@
+/* popup 뒷배경 start */
+
+*{
+  font-family: '나눔바른고딕OTF 옛한글';
+}
+
+#search_popup_background {
+display: none;
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0px;
+left: 0px;
+background-color: rgba(34, 34, 34, 0.5);
+z-index: 9999;
+}
+
+#search_popup_background>img{
+  top:0;
+  float:right;
+  width:30px;
+  height:30px;
+  margin-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  
+}
+/* popup 뒷배경 end */
+/* 검색창 Start */
+#searchhr{
+width: 95%;
+}
+#hr1{
+  width: 100%;
+  margin-top: 40px;
+  border: 1px solid black;
+
+}
+
+#hr2{
+  width: 100%;
+  margin-top: 40px;
+  border: 1px solid black;
+}
+
+#hr3{
+ width: 100%;
+ margin-left:4%;
+}
+#searchform{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 40px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  display: flex;
+}
+#searchform >img{
+  width: 30px;
+  height: 30px;
+  padding-top: 10px;
+  padding-left: 5px;
+  margin-right: 10px;
+  display: inline-block;
+}
+#searchform >input{
+  width: 100%;
+  height: 40px;
+  padding-top: 10px;
+  outline: 0;
+  border: 0;
+  resize: none;
+  background-color: transparent;
+  font-family: '나눔바른고딕OTF 옛한글';
+}
+
+#searchform >input::placeholder{
+  font-size:20px;
+  
+}
+div.searchresults{
+
+margin-top: 10px;
+margin-left: 10px;
+margin-right: 10px;
+}
+div.searchresultslist{
+cursor: pointer;
+width: 100%;
+}
+div.searchsnum, div.searchpnum{
+display: none;
+}
+div.searchimg{
+width: 20%;
+float: left;
+cursor: pointer;
+}
+
+div.searchpname{
+width: 20%;
+padding-top: 10%;
+margin-right: 5%;
+margin-bottom: 5%;
+float: left;
+}
+div.searchpenddate{
+margin-right: 5%;  
+padding-top: 10%;
+width: 25%;
+float: left;
+}
+div.searchprice{
+margin-right: 10%;
+padding-top: 10%;
+float: right;
+}
+/* 스크롤바 start */
+#spopup::-webkit-scrollbar {
+width: 6px; /* 스크롤바의 두께 */
+}
+
+#spopup::-webkit-scrollbar-thumb {
+height: 5%; /* 스크롤바의 길이 */
+background: #000000; /* 스크롤바의 색상 */
+border-radius: 10px; /* 스크롤바의 모양 */
+}
+
+#spopup::-webkit-scrollbar-track {
+background: #fafafa; /*스크롤바 뒷 배경 색상*/
+}
+div.searchresults::-webkit-scrollbar {
+width: 6px; /* 스크롤바의 두께 */
+}
+
+div.searchresults::-webkit-scrollbar-thumb {
+height: 5%; /* 스크롤바의 길이 */
+background: #000000; /* 스크롤바의 색상 */
+border-radius: 10px; /* 스크롤바의 모양 */
+}
+
+div.searchresults::-webkit-scrollbar-track {
+background: #fafafa; /*스크롤바 뒷 배경 색상*/
+}
+/* 스크롤바 end */
+
+#category{
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+
+}
+
+#category>h3{
+  width: 100%;
+  font-size:20px;
+ padding-bottom: 1%;
+
+}
+
+#category_wrap{
+  margin-left:15%;
+  padding-bottom: 3%;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+}
+#top{
+width: 150px;
+height: 100px;
+display: inline-block;
+cursor: pointer;
+}
+#top>img{
+width: 150px;
+height: 100px;
+border-radius: 10%;
+
+}
+#bottom{
+width: 150px;
+height: 100px;
+display: inline-block;
+cursor: pointer;
+
+}
+#bottom>img{
+width: 150px;
+height: 100px;
+border-radius: 10%;
+
+}
+#shoes{
+ width: 150px;
+height: 100px;
+ cursor: pointer;
+  
+}
+
+#shoes>img{
+width: 150px;
+height: 100px;
+border-radius: 10%;
+
+}
+
+div.mywish{
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+
+}
+
+div.mywish>h3{
+  width: 100%;
+  font-size:20px;
+  margin-bottom: 20px;
+
+}
+div.wish{
+width: 90%;
+margin-left: 10px;
+margin-right: 10px;
+text-align: center;
+float: left;
+}
+div.wishlist{
+width: 100%;
+}
+
+div.swpnum{
+display: none;
+}
+div.swimg{
+width: 20%;
+float: left;
+cursor: pointer;
+}
+div.swname{
+width: 25%;
+padding-top: 10%;
+margin-right: 10%;
+margin-bottom: 5%;
+float: left;
+}
+div.swenddate{
+padding-top: 10%;
+width: 30%;
+float: left;
+}
+div.swprice{
+ padding-top: 10%;
+float: right;
+}
+
+div.myzmoreview{
+width: 100%;
+text-align: center;
+margin-bottom: 2%;
+}
+div.myzmoreview>button {
+width: 100px;
+height: inherit;
+color: #fff;
+font-size: 16px;
+background-color: #000000;
+margin-top: 20px;
+cursor: pointer;
+text-align: center;
+}
+/* popup start */
+#spopup {
+display: none; 
+top: 50%;
+left: 50%;
+position: absolute;
+box-shadow: 0 0.4rem 1rem 0 rgb(0 0 0/ 10%);
+width:60%;
+height: 600px;
+margin-left: 10px;
+margin-right: 10px;
+background-color: #fafafa;
+border-radius: 8px;
+transform: translate(-50%, -50%);
+z-index: 500;
+overflow: scroll;
+}
