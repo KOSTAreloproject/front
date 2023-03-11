@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>STYLE | RELO</title>
+    <link data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+    />
+    <link rel="stylesheet" href="../css/basic.css" />
+    <link rel="stylesheet" href="../css/styleadd.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/styleedit.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="header"></div>
+      <section>
+        <div>
+          <div class="show">
+            <img />
+          <!-- </div> -->
+          <div class="form">
+            <div>
+              <form method="post" enctype="multipart/form-data" action="">
+                <input type="file" name="f" id="styleFile" accept="image/*" value=""/><br />
+                <input type="hidden" id="sNum" name="styleNum" value="" readonly/><br />
+                <textarea rows="10" cols="40" name="styleContent" id="styleContent">
+                  </textarea><br />
+                  <input type="hidden" id="writer" name="m" value="" readonly/><br />
+                  <div class="buttonList">
+                  <p class="write_modal"><a href='#write_btn' rel="modal:open">
+                  <input type="button" id="myBtn1" value="수정"/>
+                  </a></p>
+                  <p class="del_modal"><a href="#del_btn" rel="modal:open">
+                    <input type="button" id="myBtn2" value="삭제" />
+                  </a></p>
+                  <input type="button" id="myBtn3" value="취소" onclick="cancle()"/>
+                </div>
+                  <br />
+              </form>
+            </div>
+          </div>
+        </div>
+                <!--수정 눌렀을 때 나오는 모달창  -->
+                 <div id="write_btn" class="modal">
+                  <p>수정하시겠습니까?</p>
+                  <button id="write" class="write_btn">확인</button>
+                </div>
+                <!--수정 눌렀을 때 나오는 모달창  -->
+                <!--삭제 눌렀을 때 나오는 모달창  -->
+                <div id="del_btn" class="modal">
+                  <p>삭제하시겠습니까?</p>
+                  <button id="delete" class="modal_btn">확인</button>
+                </div>
+                <!--삭제 눌렀을 때 나오는 모달창  -->
+      </section>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>

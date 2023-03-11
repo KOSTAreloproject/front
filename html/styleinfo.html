@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>STYLE | RELO</title>
+    <link data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+      />
+      <link rel="stylesheet" href="../css/basic.css" />
+      <link rel="stylesheet" href="../css/styleinfo.css" />
+      <link rel="stylesheet" href="../css/index.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+      <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+      <script src="../js/styleinfo.js"></script>
+    <script src="../js/basic.js"></script>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id='wrapper'>
+    <section>
+      <div class="whole">
+        <div class="styleinfo">
+          <div class="info">
+            <div class="user">
+              <span class="btn"></span>
+              <div class="id">아이디</div>     
+              <div class="styleDate">날짜</div>
+            </div>
+            <div class="img">
+              <img src="#" alt="상품이미지" />
+            </div>
+            <div class="styleNum">스타일번호</div>
+          </div>
+          <div class="tagList">
+            <div class="tag">
+              <div class="hashName"></div>
+            </div>
+          </div>
+          <div class="btn_box">
+            <span class="material-icons" id="likes">
+              favorite_border
+            </span>
+            <span class="material-icons" id="likesCancle">
+              favorite
+            </span>
+            <span class="material-icons" id="replyBtn">chat_bubble_outline</span>
+            <p class="sharemodal"><a href="#share_btn" rel="modal:open">
+              <span class="material-icons" id="shareBtn">ios_share</span></a></p>
+            </div>
+            <div class="styleLikes">좋아요</div>
+          </div>
+          <div class="repList">
+          <div class="reply">
+            <div class="repNum"></div>
+            <div class="repInfo">
+              <div class="repImg"></div>
+              <div class="repId"></div>
+            </div>
+            <div class="repDate"></div>
+          </div>
+        </div>
+        <!-- <div class="repeditForm"></div> -->
+        <div class="writeReply">
+          <div id="replyForm" >
+            <input type="text" id="reply_id" value="" hidden><br/>
+            <input type="text" id="reply_Content" class="reply_Content"placeholder="  댓글을 남기세요..">
+            <p class="write_rep_modal"><a href="#writeRep_btn" rel="modal:open">
+              <input type="button" id="myBtn" class="myBtn" value="댓글 작성">
+            </a></p>
+            <!-- <input type="button" id="myBtn" value="댓글 작성" onclick="replyWt()"/> -->
+          </div>
+        </div>
+        <!-- 삭제 눌렀을 때 나오는 모달창  -->
+        <div id="del_btn" class="modal">
+          <p>삭제하시겠습니까?</p>
+          <button id="delete_style" class="modal_btn">확인</button>
+        </div>
+        <!-- 삭제 눌렀을 때 나오는 모달창  -->
+        <!-- 댓글 작성 눌렀을 때 나오는 모달창  -->
+        <div id="writeRep_btn" class="modal">
+          <p>작성하시겠습니까?</p>
+          <a href="#" rel="modal:close"><button id="write_rep" class="modal_btn">확인</button></a>
+        </div>
+        <!-- 댓글 작성 눌렀을 때 나오는 모달창  -->
+        <!-- 댓글 수정 눌렀을 때 나오는 모달창  -->
+        <div id="editRep_btn" class="modal">
+          <p>수정하시겠습니까?</p>
+          <a href="#" rel="modal:close"><button id="edit_rep" class="modal_btn">확인</button></a>
+        </div>
+        <!-- 댓글 수정 눌렀을 때 나오는 모달창  -->
+        <!-- 댓글 삭제 눌렀을 때 나오는 모달창  -->
+        <div id="delRep_btn" class="modal">
+          <p>삭제하시겠습니까?</p>
+          <input type="text" id="del_repnum_input" hidden/>
+          <a href="#" rel="modal:close"><button id="delete_rep" class="modal_btn">확인</button></a>
+        </div>
+        <!-- 댓글 삭제 눌렀을 때 나오는 모달창  -->
+        <!-- 답글 작성 눌렀을 때 나오는 모달창 -->
+        <div id="rep_writeRep_btn" class="modal">
+          <p>작성하시겠습니까?</p>
+          <a href="#" rel="modal:close"><button id="writeRep_rep" class="modal_btn">확인</button></a>
+        </div>  
+        <!-- 답글 작성 눌렀을 때 나오는 모달창 -->
+        <!-- 공유 버튼 눌렀을 때 나오는 모달창 -->
+        <div id="share_btn" class="modal">
+          <div class="layer_header">
+            공유
+          </div>
+          <div class="layer_content">
+            <div class="share_list">
+              <span class="share_item">
+                <span class="material-icons" id="emailShare">email</span>
+                이메일
+              </span>
+              <span class="share_item">
+                <span class="material-icons" id="linkShare">link</span>
+                링크 복사 
+              </span>
+              <span class="share_item">
+                <span class="button" id="sendLinkCustom" value="Custom" id="kakaoShare">
+                  <div class="kakaoShareBtn">
+                    <img src="../imgs/kakao_btn.png" alt="카카오톡 공유 보내기 버튼" class="kakaoBtn"/> 
+                  </div></span>
+                  카카오톡
+              </span>
+              </div>
+          </div>
+          </div>  
+        <!-- 공유 버튼 눌렀을 때 나오는 모달창 -->
+          </section>
+        </div>
+        <div id="toast" class="toast-wrap" style="display:none;">
+          <div class="toast"></div>
+      </div>
+        <div id="footer"></div>
+  </body>
+  </html>
+  
