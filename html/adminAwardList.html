@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relo</title>
+    <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type = "text/css" href="../css/basic.css" />
+
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <link rel="stylesheet" href="../css/myOrderList.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/adminAwardList.js"></script>
+</script>    
+  </head>
+  <body>
+  <div id='wrapper'>
+    <header id="header"></header>
+    <section>
+      <div class="snb_area">    
+      <h2 >관리자 페이지</h2>
+        <nav class="snb">
+          <div class="snb_list">
+            <strong class="snb_title">회원 관리</strong>
+            <ul  class="snb_menu">
+              <li class="menu_item">
+                <a href="./admin.html"  class="menu_link" > 승인 요청 내역</a>
+              </li>
+              <li class="menu_item">
+                <a href="./adminProductList.html" class="menu_link"> 상품 승인 내역 </a>
+              </li>
+              <li class="menu_item">
+                <a href="./StockReturn.html" class="menu_link"> 반송 신청 내역 </a>
+              </li>
+              <li class="menu_item">
+                <a href="./adminAwardList.html" class="menu_link"  style="font-weight: bold;"> 경매 낙찰 내역 </a>
+              </li>
+              <li class="menu_item">
+                <a href="./adminOrderConfirmedList.html" class="menu_link"> 구매 확정 내역 </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="content_area">
+        <div class="content_title">
+          <div class="title">
+            <h1>경매 낙찰 내역</h1>
+          </div>
+        </div>
+        <div class="delivery_list">
+          <div class="search_by_day">
+            <input type="button" value="최근 2개월" id="2months"/>
+            <input type="button" value="4개월" id="4months"/>
+            <input type="button" value="6개월" id="6months"/>
+            
+            <input type="date" class="start_day" /> ~ <input type="date" class="end_day"/>
+            <input type="button" value="조회" id="search" />
+          </div>
+        </div>
+        <ul class="period_possible">
+          <li>한 번에 조회 가능한 기간은 최대 6개월입니다.</li>
+          <li>기간별 조회 결과는 결제일 기준으로 노출됩니다.</li>
+        </ul>
+        <div class="delivery_list">
+          <div class="head_menu">
+            <div class="delivery_box">이미지</div>
+            <div class="delivery_boxs">상품정보</div>
+            <div class="delivery_box">등급</div>
+            <div class="delivery_box">낙찰가</div>
+            <div class="delivery_box">낙찰일</div>
+          </div>
+          <div class="list_area">
+            <div class="desc">
+              <div class="item_area s_img">이미지</div>
+              <div class="item_areas">
+                <div class="s_name">상품명</div>
+                <div class="s_color">색상</div>
+                <div class="size_name">사이즈</div>
+              </div>
+              <div class="item_area s_grade">등급</div>
+              <div class="item_area a_price">입찰가격</div>
+              <div class="item_area o_date">낙찰일</div>
+            </div>
+          </div>
+          <div class="center">
+            <div class="pagination"></div>
+            <div class="pagecount"></div>
+          </div>
+          <button id="shop">SHOP 바로가기</button>
+        </div>
+      </div>
+    </section>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>
