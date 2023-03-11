@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>공지사항</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/basic.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/noticelist.css"
+    />
+    <link
+      data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/noticelist.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- header start -->
+      <div id="header"></div>
+      <!-- header end -->
+      <section>
+        <!-- content start -->
+        <div class="content_area">
+          <h1 id="big_title">
+            공지사항
+            <a class="filter" id="idx_0">서비스</a>
+            <a class="filter" id="idx_1">작업</a>
+            <a class="filter" id="idx_2">업데이트</a>
+            <a class="filter" id="idx_3">이벤트</a>
+            <a class="filter" id="idx_4">전체</a>
+          </h1>
+          <div class="search_wrap">
+            <input type="text" class="search_box" placeholder="검색" />
+            <button id="search_btn">검색</button>
+          </div>
+          <div class="list">
+            <p class="sort">
+              카테고리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제목
+              <a id="notice_write" href="./noticeform.html">글 작성</a>
+            </p>
+            <div class="titlelist">
+              <div class="title">
+                <div class="category_and_title">[카테고리]제목</div>
+              </div>
+            </div>
+            <div class="center">
+              <div class="pagination"></div>
+              <div class="pagecount"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- content end -->
+    <!-- footer start -->
+    <div id="footer"></div>
+    <!-- footer end -->
+  </body>
+</html>

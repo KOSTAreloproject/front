@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>공지사항</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/basic.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/noticedetail.css"
+    />
+    <link
+      data-n-head="ssr"
+      rel="icon"
+      type="image/x-icon"
+      href="../imgs/logo.png"
+    />
+    <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@kfonts/nanum-barun-gothic-yet-hangul-otf/index.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/noticedetail.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- header start -->
+      <div id="header"></div>
+      <!-- header end -->
+      <section>
+        <!-- content start -->
+        <div class="content_area">
+          <h1 id="label_txt">
+            <p id="big_title">공지사항</p>
+            <div class="btn_edit">
+              <a id="del" href="#">삭제</a>
+              <a id="edit" href="#">수정</a>
+            </div>
+          </h1>
+          <div class="title_box">
+            <span class="date">작성일</span>
+            <p class="title">[카테고리]제목</p>
+          </div>
+          <a id="test"></a>
+          <div id="summernote"></div>
+          <div class="btn_list">
+            <a id="show_list" href="./noticelist.html">목록보기</a>
+          </div>
+          <div class="pre_and_next">
+            <div id="pre_box">
+              <span id="pre">이전</span>
+              <div class="pre_content">이전 내용</div>
+            </div>
+            <div id="next_box">
+              <span id="next">다음</span>
+              <div class="next_content">다음 내용</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- content end -->
+    <!-- footer start -->
+    <div id="footer"></div>
+    <!-- footer end -->
+  </body>
+</html>
