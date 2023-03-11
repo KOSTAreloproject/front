@@ -96,6 +96,8 @@ $(() => {
             let $imgObj = $("<img>");
             $imgObj.attr("id", "end_img_" + snum);
             $imgObj.attr("width", "130px");
+            $imgObj.attr("class", "prod_img");
+            $imgObj.attr("data-pnum", pnum);
 
             $copy.find("div.end_s_img").empty().append($imgObj);
             $copy.find("div.end_s_name").html(sname);
@@ -379,16 +381,4 @@ $(() => {
   //   // $('input.start_end_day').attr('max', $now)
   // });
   //--END page 날짜 클릭 최대기간 6개월 제한 END--
-
-  //   //--상품 클릭 되었을 때 START--
-  //   $("div.productlist").on("click", "div.product", (e) => {
-  //     //클릭한 상품번호 얻어오는 부분
-  //     let prodNo = $(e.target).parents("div.product").find("div.prodNo").html(); //어디까지 찾느냐 div.product 까지
-  //     //바로 위의 부모객체를 찾으려면 parent 메서드 쓰면됨
-  //     //부모의 부모의 부모의 부모까지 다 찾는 것 parents
-  //     //선택자에 만족하는 객체까지만 찾게 제한 파람값에다 적어주기
-
-  //     location.href = "./productinfo.html?prodNo=" + prodNo;
-  //   });
-  //   //--상품 클릭 되었을 때 END--
 });
