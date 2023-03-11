@@ -41,7 +41,7 @@ div.auction_box {
   text-align: center;
   display: inline-block;
   margin-right: -4px;
-  padding-top: 50px;
+  padding-top: 24px;
   /* background-color: aqua; */
 }
 
@@ -184,5 +184,44 @@ img.sFile {
 div.empty {
   line-height: 150px;
   height: 150px;
+}
+
+/*
+페이징
+*/
+div.center {
+  text-align: center;
+  width: 80%;
+  padding-top: 50px;
+  margin-left: 55px;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination span {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+#pagenum.active {
+  background-color: #000000;
+  color: white;
+  border: 1px solid #000000;
+}
+
+.pagination span#pagenum:hover:not(.active) {
+  background-color: #ddd;
+}
+
+div.pagecount {
+  display: none;
 }
 

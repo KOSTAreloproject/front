@@ -5,11 +5,11 @@
     <title>Relo</title>
     <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="../css/basic.css" />
-    <link rel="stylesheet" href="../css/inventoryDetail.css" />
+    <link rel="stylesheet" href="../css/StockReturnDetail.css" />
     <link rel="stylesheet" href="../css/mypageBasic.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../js/basic.js"></script>
-    <script src="../js/inventory3Detail.js"></script>
+    <script src="../js/StockReturnDetail.js"></script>
   </head>
 
   <body>
@@ -30,6 +30,7 @@
                     href="./myOrderList.html"
                     aria-current="page"
                     class="menu_link"
+                    style="font-weight: bold"
                   >
                     반송 내역
                   </a>
@@ -40,7 +41,7 @@
                   </a>
                 </li>
                 <li class="menu_item">
-                  <a href="./inventory.html" class="menu_link"  style="font-weight: bold"> 판매 내역 </a>
+                  <a href="./inventory.html" class="menu_link" > 판매 내역 </a>
                 </li>
                 <li class="menu_item">
                   <a href="./mypageZzimList.html" class="menu_link">
@@ -74,11 +75,11 @@
         </div>
         <div class="content_area">
           <div class="title">
-            <h1>종료된 거래</h1>
+            <h1>반송</h1>
           </div>
           <div class="inventory">
             <div class="f">
-            <div class="sFile">이미지</div>
+            <div class="sFile">이미지</div> <br />
           </div>
           <div class="desc">
             <h5>브랜드</h5>
@@ -93,37 +94,36 @@
               <h4>진행상황</h4>
             </div>
             <div class="groupIng"> 
-            <div class="ing2">발송완료</div>
-            <div class="ing3">입고완료</div>
-            <div class="ing4" >검수합격</div>
-            <div class="ing5">입찰중</div>
-            <div class="ing6">입찰완료</div>
-            <div class="ing7" style="font-weight: bold">✔ 정산완료</div>
+            <div class="ing2">배송준비중</div>
+            <div class="ing3">배송중</div>
+            <div class="ing4" >배송완료</div>
+            <div class="ing5">반송완료</div>
           </div>
           </div> 
-            <h2>🧾 판매 정산 내역</h2>
-            <h3>정산금액</h3>
-            <div class="finalPrice">정산금액</div>
-            <h4>판매가</h4>
-            <div class="maxPrice">판매가 </div>  
-            <h5>검수비</h5>
-            <div class="ckPrice">-2,000원</div>  
-            <h5>수수료</h5>
-            <div class="susuPrice">-2,000원</div>  
-            <h4>종료일</h4>
-            <div class="pEndDate"></div>
-            <h4>판매 정산 계좌 </h4>
-            <div class="account">
-              <h5>은행명</h5>
-            <div class="bankName">카카오뱅크</div>
-            <h5>계좌번호</h5>
-            <div class="bankNum">카카오뱅크</div>
-            </div>
-              <div class="choice">
-                <input type="button" value="목록으로" onclick="location.href = './inventory3.html'"> 
+          <h3>배송 정보</h3>
+          <h5>배송 신청일</h5>
+            <div class="srStartDate">배송 신청일</div> <br />
+            <h5>운송장 번호</h5>
+            <div class="srTrackingInfo">운송장 번호</div><br />
+              <h3>배송 주소</h3>
+              <div class="address">
+                  <h5>우편번호</h5>
+                  <div class="addrPostNum">우편번호</div>
+                <h5>주소</h5>
+              <div class="addr">주소</div>
+              <h5>상세주소</h5>
+              <div class="addrDetail">상세주소</div>
+              <h5>배송지명</h5>
+              <div class="addrName">배송지명</div>
+              <h5>받는사람</h5>
+              <div class="addrRecipient">받는사람</div>
+              <h5>전화번호</h5>
+              <div class="addrTel">전화번호</div>
               </div>
             </div>
-
+            <div class="choice">
+              <input type="button" value="목록으로" onclick="location.href = './StockReturnList.html'"> 
+            </div>
         </div>
       </section>
     </div>

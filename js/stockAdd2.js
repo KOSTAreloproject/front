@@ -1,47 +1,67 @@
 $(() => {
-  //--StockAdd2폼 서브밋 되었을 때 할 일 START--
-  let $form = $("section>div.StockAdd2>form");
+  //--등록하기 버튼 눌렀을 때 할 일 START--
 
-  $form.submit((e) => {
-    let url = backUrl + "/account/add.do";
-    let params = {
-      bankCode: $("#bankCode").val(),
-      bankAccount: $("#bankAccount").val(),
-    };
-    console.log(params);
-    $.ajax({
-      url: url,
-      method: "post",
-      data: params,
-      success: function () {
-        location.href = frontUrl + "StockAdd3.html";
-      },
-      error: function (xhr) {
-        alert("계좌번호를 입력하세요");
-      },
-    });
-    return false;
-    
+  $("div.registration_btn_box").on("click", function (e) {
+    let bankCode = $("select[name=account] option:selected").val();
+    if($('.accountNum').val() == ''){
+      $('p.input_error').css("display","block")
+    }else{
+      let url = backUrl + "account/add";
+      $.ajax({
+        xhrFields: {
+          withCredentials: true,
+        },
+        url: url,
+        method: "POST",
+        data: { bankAccount: $(".accountNum").val() , bankCode : bankCode },
+        success: function (jsonStr) {
+          location.href = "./StockAdd.html";
+        },error: function (xhr){
+          console.log(xhr.status)
+        }
+      })
+    }
   });
-  //--StockAdd2폼 서브밋 되었을 때 할 일 END--
+  //--등록하기 버튼 눌렀을 때 할 일 END--
 
   //--계좌 조회하기를 눌렀을때 할 일 START--
-  $(".a").click(function () {
-    let url = backUrl + "/account/info.do";
+  $(".aa").click(function () {
+    let url = backUrl + "account/read";
     $.ajax({
-      url: url,
-      method: "post",
-      success: function (jsonStr) {
-        if (jsonStr) {
-          let mname = jsonStr.m.mname;
-          let bankAccount = jsonStr.bankAccount;
-          let bankCode = jsonStr.bankCode;
-          $("#ex1>.mname").html("이름: " + mname);
-          $("#ex1>.bankAccount").html("계좌번호: " + bankAccount);
-          $("#ex1>.bankCode").html("은행이름: " + bankCode);
-        }
+      xhrFields: {
+        withCredentials: true,
       },
-      error: function (xhr) {},
+      url: url,
+      method: "GET",
+      success: function (jsonStr) {
+        let bankName = jsonStr.bankCode;
+        if(bankName == "004"){
+          bankName = "국민은행";
+        }else if(bankName == "021"){
+          bankName = "신한은행";
+        }else if(bankName == "020"){
+          bankName = "우리은행";
+        }else if(bankName == "005"){
+          bankName = "하나은행";
+        }else if(bankName == "003"){
+          bankName = "기업은행";
+        }else if(bankName == "010"){
+          bankName = "농협은행";
+        }else if(bankName == "023"){
+          bankName = "SC은행";
+        }else if(bankName == "071"){
+          bankName = "우체국은행";
+        }else if(bankName == "027"){
+          bankName = "한국시티은행";
+        }
+        
+        $('.bankName').html("은행명: "+bankName);
+        $('.bankNum').html("계좌번호: "+jsonStr.bankAccount);
+        $('.mname').html('');
+        $('.close').html('');
+      },error: function (xhr){
+        $('.next').html('');
+      }
     });
   });
   //--계좌 조회하기를 눌렀을때 할 일 END--

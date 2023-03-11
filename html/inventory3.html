@@ -32,7 +32,7 @@
                     aria-current="page"
                     class="menu_link"
                   >
-                    구매 내역
+                    반송 내역
                   </a>
                 </li>
                 <li class="menu_item">
@@ -83,22 +83,22 @@
             <div class="auction_tab">
               <a href="./inventory.html" style="color: black">
                 <div class="tab_box">
-                  <div class="count_end">0</div>
-                  <div class="title_end">판매 입찰</div>
+                  <div class="count_start">0</div>
+                  <div class="title_start">판매 입찰</div>
                 </div></a
               >
             </div>
             <div class="auction_tab">
                 <a href="./inventory2.html" style="color: black">
               <div class="tab_box">
-                <div class="count_end">0</div>
-                <div class="title_end">진행중</div>
+                <div class="count_ing">0</div>
+                <div class="title_ing">진행중</div>
               </div>
             </div>
             <div class="auction_tab" style="border-bottom: 2px solid black">
               <div class="tab_box">
                 <div
-                  class="count_ing"
+                  class="count_end"
                   style="font-weight: bold; color: #f15746"
                 >
                   0
@@ -135,23 +135,31 @@
                   <div class="sBrand">브랜드명</div>
                   <div class="sName">상품명</div>
                   <div class="sizeCategoryName">사이즈</div>
+                  <div style="display: none;" class="sNum"></div>
                 </div>
                 <div class="item_area pEndDate">2023/03/16</div>
                 <div class="item_area pStatus">상태</div>
                 <div class="pNum" style="display: none"></div>
               </div>
             </div>
-
+            <div class="center">
+              <div class="pagination"></div>
+              <div class="pagecount"></div>
+            </div>
             <a href="./shoplist.html"
             ><button id="shop">SHOP 바로가기</button></a
           >
           </div>
+
+        </div>
         </div>
         <!-- modal window start -->
         <div id="popup_background">
             <div id="popup">
                <p id="ask">작성하시겠습니까?</p>
                 <div class="btn_confirm">
+                  <button id="re_btn" style="display: none;">재등록</button>
+                  <button id="no_btn" style="display: none;">아니오</button>
                     <button id="ok_btn">확인</button>
                 </div>
             </div>

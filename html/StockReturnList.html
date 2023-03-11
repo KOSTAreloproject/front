@@ -5,11 +5,11 @@
     <title>Relo</title>
     <link href="../imgs/logo.png" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="../css/basic.css" />
-    <link rel="stylesheet" href="../css/inventory.css" />
+    <link rel="stylesheet" href="../css/stockReturnList.css" />
     <link rel="stylesheet" href="../css/mypageBasic.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../js/basic.js"></script>
-    <script src="../js/inventory2.js"></script>
+    <script src="../js/StockReturnList.js"></script>
   </head>
 
   <body>
@@ -30,8 +30,9 @@
                     href="./myOrderList.html"
                     aria-current="page"
                     class="menu_link"
+                    style="font-weight: bold"
                   >
-                    반송 내역
+                    배송 내역
                   </a>
                 </li>
                 <li class="menu_item">
@@ -40,7 +41,7 @@
                   </a>
                 </li>
                 <li class="menu_item">
-                  <a href="./inventory.html" class="menu_link"  style="font-weight: bold"> 판매 내역 </a>
+                  <a href="./inventory.html" class="menu_link"> 판매 내역 </a>
                 </li>
                 <li class="menu_item">
                   <a href="./mypageZzimList.html" class="menu_link">
@@ -61,10 +62,7 @@
                   <a href="./address.html" class="menu_link"> 주소록 </a>
                 </li>
                 <li class="menu_item">
-                  <a
-                    href="./account.html"
-                    class="menu_link"
-                  >
+                  <a href="./account.html" class="menu_link">
                     판매 정산 계좌
                   </a>
                 </li>
@@ -75,15 +73,15 @@
         <div class="content_area">
           <div class="content_title">
             <div class="title">
-              <h1>판매 내역</h1>
+              <h1>배송 내역</h1>
             </div>
           </div>
           <div class="auction_tab_list">
             <div class="auction_tab">
-              <a href="./inventory.html" style="color: black">
+              <a href="./myOrderList.html" style="color: black">
                 <div class="tab_box">
-                  <div class="count_start">0</div>
-                  <div class="title_start">판매 입찰</div>
+                  <div class="count_end">0</div>
+                  <div class="title_end">주문 배송</div>
                 </div></a
               >
             </div>
@@ -95,16 +93,8 @@
                 >
                   0
                 </div>
-                <div class="title_ing" style="font-weight: bold">진행중</div>
+                <div class="title_ing" style="font-weight: bold">반송 배송</div>
               </div>
-            </div>
-            <div class="auction_tab">
-              <a href="./inventory3.html" style="color: black">
-                <div class="tab_box">
-                  <div class="count_end">0</div>
-                  <div class="title_end">종료</div>
-                </div></a
-              >
             </div>
           </div>
           <div class="auction_list">
@@ -135,20 +125,19 @@
                   <div class="sName">상품명</div>
                   <div class="sizeCategoryName">사이즈</div>
                 </div>
-                <div class="item_area pStatus">상태</div>
-                <div class="pNum" style="display: none"></div>
+                <div class="item_area srStatus">상태</div>
+                <div class="sNum" style="display: none"></div>
               </div>
             </div>
-            <div class="center">
-              <div class="pagination"></div>
-              <div class="pagecount"></div>
-            </div>
+
             <a href="./shoplist.html"
               ><button id="shop">SHOP 바로가기</button></a
             >
           </div>
-
-        </div>
+          <div class="center">
+            <div class="pagination"></div>
+            <div class="pagecount"></div>
+          </div>
         </div>
       </section>
     </div>

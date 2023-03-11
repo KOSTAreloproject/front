@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/mypageBasic.css" />
     <link rel="stylesheet" href="../css/popup.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="../js/basic.js"></script>
     <script src="../js/inventory.js"></script>
   </head>
@@ -32,7 +35,7 @@
                     aria-current="page"
                     class="menu_link"
                   >
-                    구매 내역
+                    반송 내역
                   </a>
                 </li>
                 <li class="menu_item">
@@ -83,19 +86,19 @@
             <div class="auction_tab" style="border-bottom: 2px solid black">
               <div class="tab_box">
                 <div
-                  class="count_ing"
+                  class="count_start"
                   style="font-weight: bold; color: #f15746"
                 >
                   0
                 </div>
-                <div class="title_ing" style="font-weight: bold">판매 입찰</div>
+                <div class="title_start" style="font-weight: bold">판매 입찰</div>
               </div>
             </div>
             <div class="auction_tab">
               <a href="./inventory2.html" style="color: black">
                 <div class="tab_box">
-                  <div class="count_end">0</div>
-                  <div class="title_end">진행중</div>
+                  <div class="count_ing">0</div>
+                  <div class="title_ing">진행중</div>
                 </div></a
               >
             </div>
@@ -141,15 +144,22 @@
                 <div class="item_area sStatus">상태</div>
                 <div class="sNum" style="display: none"></div>
               </div>
-            </div>
 
+            </div>
+            <div class="center">
+              <div class="pagination"></div>
+              <div class="pagecount"></div>
+            </div>
             <a href="./shoplist.html"
-              ><button id="shop">SHOP 바로가기</button></a
+            ><button id="shop">SHOP 바로가기</button></a
             >
           </div>
+          
+
         </div>
+        
         <!-- modal window start -->
-        <div id="popup_background">
+        <div id="popup_background" style="display: none;">
           <div id="popup">
             <p id="ask">작성하시겠습니까?</p>
             <div class="btn_confirm">
@@ -158,6 +168,7 @@
           </div>
         </div>
         <!-- modal window end -->
+
       </section>
     </div>
     <div id="footer"></div>

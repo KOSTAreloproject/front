@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="../css/basic.css" />
     <link rel="stylesheet" href="../css/inventoryDetail.css" />
     <link rel="stylesheet" href="../css/mypageBasic.css" />
+    <link rel="stylesheet" href="../css/popup.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="../js/basic.js"></script>
     <script src="../js/inventoryDetail.js"></script>
   </head>
@@ -31,7 +34,7 @@
                     aria-current="page"
                     class="menu_link"
                   >
-                    구매 내역
+                    반송 내역
                   </a>
                 </li>
                 <li class="menu_item">
@@ -78,37 +81,73 @@
           </div>
           <div class="inventory">
             <div class="f">
-            <div class="sFile">이미지</div>
-          </div>
+              <div class="sFile">이미지</div>
+            </div>
           <div class="desc">
+            <h5>브랜드</h5>
             <div class="sBrand">상품브랜드</div>
+            <h5>상품이름</h5>
             <div class="sName">상품이름</div>
+            <h5>사이즈</h5>
             <div class="sizeCategoryName">사이즈</div>
           </div>
-            <div class="sOriginPrice">원가</div>
-            <div class="sGrade">등급</div>
-            <div class="sHopeDays">판매 희망일</div>
-            <form method="post">
-              희망판매가 :
-              <input
-                type="number"
-                name="sHopePrice"
-                class="sHopePrice"
-                placeholder="금액을 입력해주세요"  min="1"
-              />
-              원 <br />
-              <p class="maxPrice">※ 최대 000까지</p>
-              판매 정산 계좌 <br/>
-              <div class="bankName">카카오뱅크</div>
-              <div class="bankNum">카카오뱅크</div>
-              <div class="managerComment">comment</div>
+          <div class="ing">
+            <div>
+              <h4>진행상황</h4>
             </div>
-          <div class="choice">
-            <input type="button" value="판매취소" name="cancle" class="cancle"> 
-            <input type="submit" value="신청하기" name="regi" class="regi"> 
-            <input type="button" value="목록으로" onclick="location.href = './inventory.html'"> 
+            <div class="groupIng"> 
+            <div class="ing2">발송완료</div>
+            <div class="ing3">입고완료</div>
+            <div class="ing4" style="font-weight: bold">✔ 검수합격</div>
+            <div class="ing5">입찰중</div>
+            <div class="ing6">입찰완료</div>
+            <div class="ing7">정산완료</div>
           </div>
-        </form>
+          </div> 
+            <h5>원가</h5>
+            <div class="sOriginPrice">원가</div>
+            <h5>comment</h5>
+            <div class="managerComment">comment</div>
+            <h5>검수 내역</h5>
+            <div class="sGrade">등급</div>
+            <h5>경매 기간</h5>
+            <div class="sHopeDays">판매 희망일</div>
+            <div class="jgh">
+              <div class="price">
+              <h5>희망 판매가 </h5>
+              <P style="display: none;color: red;" class="ckPrice">가격이 높습니다. 다시 입력하세요</P>
+              <input type="number"  name="sHopePrice" class="sHopePrice" placeholder="금액을 입력해주세요"  min="1" /> 원 <br />
+              <p class="maxPrice">※ 최대 000까지</p>
+              <p>☞ S급:30% A급:20% B급:10% (원가 기준)</p>
+              <h4>판매 정산 계좌 </h4>
+              <div class="account">
+                <h5>은행명</h5>
+              <div class="bankName">카카오뱅크</div>
+              <h5>계좌번호</h5>
+              <div class="bankNum">카카오뱅크</div>
+            </div>
+              <div class="choice">
+                <input type="button" value="판매취소" name="cancle" class="cancle"> 
+                <input type="button" value="신청하기" name="regi" class="regi" > 
+                <input type="button" value="목록으로" onclick="location.href = './inventory.html'"> 
+              </div>
+            </div>
+           
+            <!-- 모달 -->
+        <!-- modal window start -->
+        <div id="popup_background">
+          <div id="popup">
+            <p id="ask">작성하시겠습니까?</p>
+            <div class="btn_confirm">
+              <button id="ok_btn">확인</button>
+              <button id="cancle_btn">돌아가기</button>
+            </div>
+          </div>
+        </div>
+        <!-- modal window end -->
+
+
+      </div>
         </div>
       </section>
     </div>

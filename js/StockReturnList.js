@@ -1,5 +1,6 @@
 $(() => {
-  //페이지 번호가 클릭되었을 때 할 일 START//
+    showOrder()
+    //페이지 번호가 클릭되었을 때 할 일 START//
   $('div.pagination').on('click', 'span#pagenum:not(.current)', (e) => {
     e.preventDefault();
     let $page = $(e.target).text();
@@ -8,7 +9,6 @@ $(() => {
       $activePageNumber.removeClass('active');
     }
     $(e.target).addClass('active');
-    $(window).scrollTop(0);
     showList(url, $page);
   });
   // -- 페이지 번호가 클릭되었을 때 할 일 END --
@@ -25,7 +25,6 @@ $(() => {
     if ($activePageNumber) {
       $activePageNumber.removeClass('active');
     }
-    $(window).scrollTop(0);
     showList(url, $cp + 1);
   });
   // -- 페이지 다음 버튼을 클릭했을 때 할일 END--
@@ -41,41 +40,48 @@ $(() => {
     if ($activePageNumber) {
       $activePageNumber.removeClass('active');
     }
-    $(window).scrollTop(0);
     showList(url, $cp - 1);
   });
   // -- 페이지 이전 버튼을 클릭했을 때 할일 END--
 
-  let url = backUrl + "stock/listBySstatus/"
+  let url = backUrl + "stockReturn/listById/";
   showList(url,1)
 
   function showList (url,cp){
-    let $origin = $('div.stock').first();
-      $('div.stock').not(':first-child').remove();
+    $(window).scrollTop(0);
+    let $origin = $('div.desc').first();
+      $('div.desc').not(':first-child').remove();
       $origin.show();
 
       $.ajax({
         xhrFields: {
           withCredentials: true,
         },
-        url: url + cp,
-        method: "get",
-        data: { sStatus: 1 },
+        url: url +cp,
+        method: "GET",
         success: function (jsonStr) {
-          console.log(jsonStr)
           let totalPage = jsonStr.totalPageNum;
-          let $origin = $("div.stock").first();
-          let $parent = $("div.StockList");
-          $(jsonStr.list).each((index, s) => {
-            let sizeCategoryName = s.sizeCategoryName;
-            let sName = s.sname;
-            let sColor = s.scolor;
-            let sNum = s.snum;
+          let $parent = $("div.list_area");
+          $(jsonStr.list).each((index, sr) => {
+            let sizeCategoryName = sr.sizeCategoryName;
+            let sName = sr.sname;
+            let srStatus = sr.srStatus;
+            let sBrand = sr.sbrand;
+            let sNum = sr.snum;
     
             let $copy = $origin.clone();
     
-            let $imgObj = $("<img class='sFile'>"); //태그용 객체를 만듬
+            if (srStatus == 0) {
+              srStatus = "배송준비중";
+            }else if (srStatus == 1){
+              srStatus = "배송중";
+            }else if (srStatus == 2){
+              srStatus = "배송완료";
+            }else if (srStatus == 3){
+              srStatus = "반송완료";
+            }
     
+            let $imgObj = $("<img class='sFile'>"); //태그용 객체를 만듬
             // 사진 불러오기
             $.ajax({
               xhrFields: {
@@ -93,17 +99,18 @@ $(() => {
                 console.log(xhr.status);
               },
             });
-    
-            $copy.find("div.sNum").html(sNum);
+            
+            $("div.count_ing").html(jsonStr.list.length);
             $copy.find("div.sFile").empty().append($imgObj);
-            $copy.find("div.sizeCategoryName").html("사이즈: " + sizeCategoryName);
-            $copy.find("div.sName").html("상품명: " + sName);
-            $copy.find("div.sColor").html("색상: " + sColor);
+            $copy.find("div.sName").html(sName);
+            $copy.find("div.sNum").html(sNum);
+            $copy.find("div.sBrand").html(sBrand);
+            $copy.find("div.sizeCategoryName").html(sizeCategoryName);
+            $copy.find("div.srStatus").html(srStatus);
             $parent.append($copy);
           });
           $origin.hide();
-
-           $("div.pagecount").html(totalPage);
+          $("div.pagecount").html(totalPage);
           let $pageGroup = $("div.pagination");
           let pageGroupStr = "";
           let cntPerPage = 5;
@@ -130,19 +137,41 @@ $(() => {
             location.href = "./login.html";
           }
           $("div.head_menu").hide();
-          $("div.stock").hide();
-          $("div.StockList").append(
-            "<div class='empty'>" + xhr.responseJSON.msg + "</div>"
+          $("div.desc").hide();
+          $("div.list_area").append(
+            "<div class='empty'>" + "반송중인 상품이 없습니다" + "</div>"
           );
         },
       });
   }
+    
 
-
-  //--상세보기 클릭되었을 때 할일 START--
-  $("div.StockList").on("click", ".detail", function (e) {
-    let sNum = $(e.target).parents("div.stock").find("div.sNum").html();
-    location.href = "./adminStockDetail.html?sNum=" + sNum;
+  //주문배송 개수 세기 START 
+  function showOrder() {
+    let url = backUrl + "orders/list";
+    $.ajax({
+      url: url,
+      xhrFields: {
+        withCredentials: true,
+      },
+      method: "get",
+      success: function (jsonObj) {
+        if (jsonObj.length != 0) {
+          $("div.count_end").html(jsonObj.length);
+        }
+      },
+      error: function (xhr) {
+        alert(xhr.status);
+      },
+    });
+  }
+  //주문배송 개수 세기 END
+  
+    //--상세보기 클릭되었을 때 할일 START--
+    $("div.list_area").on("click", "div.desc", function (e) {
+      let sNum = $(e.target).parents("div.desc").find("div.sNum").html();
+      location.href = "./StockReturnDetail.html?sNum=" + sNum ;
+    });
+    //--상세보기 클릭되었을 때 할일 END--
   });
-  //--상세보기 클릭되었을 때 할일 END--
-});
+  

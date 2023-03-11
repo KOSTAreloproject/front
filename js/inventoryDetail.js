@@ -1,4 +1,5 @@
 $(() => {
+  $("div#popup_background").hide();
   let url = backUrl + "stock/detailById";
   let sNum = location.search.substring(1).split("=")[1];
   $.ajax({
@@ -9,6 +10,7 @@ $(() => {
     method: "GET",
     data: { sNum: sNum },
     success: function (jsonStr) {
+      console.log(jsonStr)
       let sBrand = jsonStr[0].sbrand;
       let sName = jsonStr[0].sname;
       let sizeCategoryName = jsonStr[0].sizeCategoryName;
@@ -19,15 +21,15 @@ $(() => {
 
       $(".sBrand").html(sBrand);
       $(".sName").html(sName);
-      $(".sizeCategoryName").html("사이즈: " + sizeCategoryName);
-      $(".sGrade").html("상품 등급 : " + sGrade + " 급");
-      $(".sOriginPrice").html("상품 원가 : " + sOriginPrice + "원");
-      $(".managerComment").html("comment : " + managerComment);
-      $(".sHopeDays").html("판매 희망일 : " + sHopeDays + "일");
+      $(".sizeCategoryName").html(sizeCategoryName);
+      $(".sGrade").html(sGrade + " 급");
+      $(".sOriginPrice").html( sOriginPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원");
+      $(".managerComment").html( managerComment);
+      $(".sHopeDays").html(sHopeDays + "일");
 
       //최고 hopePrice 계산
-      $(".maxPrice").html("※ 최대 " + maxPrice(sOriginPrice,sGrade)+"원 까지");
-      $('.sHopePrice').attr("max",maxPrice(sOriginPrice,sGrade));
+      $(".maxPrice").html("※ 최대 " + maxPrice(sOriginPrice,sGrade).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")+"원 까지");
+
 
       $(".sFile").hide();
       let $imgObj = $("<img class='sFile'>"); //태그용 객체를 만듬
@@ -97,24 +99,57 @@ $(() => {
     let maxPrice;
     if(sGrade == "S"){
       maxPrice = sOriginPrice * 1.3;
+      $(" div.price > input").attr("max",maxPrice);
       return maxPrice;
     }else if(sGrade == "A"){
       maxPrice = sOriginPrice * 1.2;
+      $(" div.price > input").attr("max",maxPrice);
       return maxPrice;
     }else if(sGrade == "B"){
       maxPrice = sOriginPrice * 1.1;
+      $(" div.price > input").attr("max",maxPrice);
       return maxPrice;
     }
   }
-  
-  //--판매자 희망판매가 입력 후 sumit되었을 때 할일 START--
-  let $form = $("div.inventory>form");
-  $form.submit((e) => {
-    let sHopePrice = $(".sHopePrice").val();
 
-    if(sHopePrice ==''){
-      alert("상품가격을 입력하세요")
-    }
+    //--모달창 클릭되었을 때 할일 START--
+
+    $("#cancle_btn").click(function (e) {
+      $("div#popup_background").hide();
+    });
+   
+    //--모달창 클릭되었을 때 할일 END--
+
+          //--상한가 체크 START--
+          $(".sHopePrice").on("blur", function() {
+            var inputValue = parseInt($(this).val());
+            var maxValue = parseInt($(this).attr("max"));
+          
+            if (inputValue > maxValue) {
+             
+                $("p.ckPrice").css("display","block")
+             
+              $(this).val("");
+            }else {
+              $("p.ckPrice").css("display","none")
+          }
+          });
+          //--상한가 체크 END--
+
+  //--판매자 희망판매가 입력 후 클릭되었을 때 할일 START--
+
+    $(" div.choice > input.regi").click(function (e) {
+      
+      let sHopePrice = $(".sHopePrice").val();
+      
+      if(sHopePrice ==''){
+        $("div#popup_background").show();
+        $("p#ask").html("상품가격을 입력하세요");
+        $("#ok_btn").hide();
+      }else{
+        $("#ok_btn").show();
+      $("div#popup_background").show();
+      $("p#ask").html("상품을 등록 하시겠습니까?");
 
     let url = backUrl + "stock/editSstatus";
     let sNum = location.search.substring(1).split("=")[1];
@@ -122,44 +157,61 @@ $(() => {
       sNum: sNum,
       sHopePrice:sHopePrice ,
     };
-    $.ajax({
-      xhrFields: {
-        withCredentials: true,
-      },
-      url: url,
-      method: "PUT",
-      data: JSON.stringify(params),
-      contentType: "application/json",
-      success: function () {
-        location.href = frontUrl + "inventory.html";
-      },
-      error: function (xhr) {
-        
-      },
+    $("#ok_btn").click(function (e) {
+      $("div#popup_background").hide();
+      $.ajax({
+        xhrFields: {
+          withCredentials: true,
+        },
+        url: url,
+        method: "PUT",
+        data: JSON.stringify(params),
+        contentType: "application/json",
+        success: function () {
+          location.href = frontUrl + "inventory.html";
+        },
+        error: function (xhr) {
+          
+        },
+      });
+      return false;
     });
     // 기본 이벤트 처리 막기: return false
-    return false;
+  }
   });
-  //--판매자 희망판매가 입력 후 sumit되었을 때 할일 END--
+  //--판매자 희망판매가 입력 후 클릭되었을 때 할일 END--
 
   //--판매자 판매취소 버튼 눌렀을 때 할일 START--
   $('.cancle').on('click',function(e){
+    $("div#popup_background").show();
+      $("p#ask").html("상품등록을 정말 취소 하시겠습니까?");
+      $("#ok_btn").show();
     let url = backUrl + "stock/editSstatus5";
     let sNum = location.search.substring(1).split("=")[1];
-    $.ajax({
-      xhrFields: {
-        withCredentials: true,
-      },
-      url: url,
-      method: "PUT",
-      data: JSON.stringify(sNum),
-      contentType: "application/json",
-      success: function () {
-        location.href = frontUrl + "inventory.html";
-      },
-      error: function (xhr) {
-      },
+
+    $("#ok_btn").click(function (e) {
+      $("div#popup_background").hide();
+      $.ajax({
+        xhrFields: {
+          withCredentials: true,
+        },
+        url: url,
+        method: "PUT",
+        data: JSON.stringify(sNum),
+        contentType: "application/json",
+        success: function (flag) {
+          if(flag){
+          $("div#popup_background").hide();
+          location.href = frontUrl + "inventory.html";
+          }else{
+            location.href = frontUrl + "address.html";
+          }
+        }, 
+        error: function (xhr) {
+        },
+      });
     });
   });
   //--판매자 판매취소 버튼 눌렀을 때 할일 END--
+
 });

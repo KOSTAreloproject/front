@@ -19,13 +19,13 @@ $(()=>{
         let sNum = jsonStr[0].snum;
         let pEndDate = jsonStr[0].pEndDate;
 
-        $(".pEndDate").html("종료일: "+pEndDate);
+        $(".pEndDate").html(pEndDate);
         $(".sBrand").html(sBrand);
         $(".sName").html(sName);
-        $(".sizeCategoryName").html("사이즈: " + sizeCategoryName);
-        $(".sGrade").html("검수 내역 : " + sGrade + " 급");
-        $(".sHopePrice").html("경매가 : " + sHopePrice + "원");
-        $(".sHopeDays").html("판매 희망일 : " + sHopeDays + "일");
+        $(".sizeCategoryName").html(sizeCategoryName);
+        $(".sGrade").html( sGrade + " 급");
+        $(".sHopePrice").html(sHopePrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원");
+        $(".sHopeDays").html(sHopeDays + "일");
   
         $(".sFile").hide();
         let $imgObj = $("<img class='sFile'>"); //태그용 객체를 만듬
