@@ -38,6 +38,10 @@ div.head_menu {
   font-weight: bold;
 }
 
+img {
+  border-radius: 10px;
+  margin-top: 13px;
+}
 div.auction_box {
   width: 18.5%;
   text-align: center;
