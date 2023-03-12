@@ -31,6 +31,7 @@ $(() => {
           //복제본 만들어서 list에 추가
           for (let obj of list) {
             let anum = obj.anum;
+            let mnum = obj.mnum;
             let aprice = obj.aprice;
             let atime = obj.aTime;
             // let pendDate = obj.pEndDate;
@@ -59,6 +60,22 @@ $(() => {
             $copy.find("div.size_name").html(sizeCategoryName);
             $copy.find("div.a_price").html(aprice);
             $copy.find("div.o_date").html(atime);
+
+            let $btnObj = $(
+              "<input type='button' value='구매요청' class='buy'>"
+            );
+            $btnObj.attr("data-sname", sname);
+            $btnObj.attr("data-mnum", mnum);
+            $btnObj.attr("data-price", aprice);
+            let $divObj = $("<div></div>");
+            $divObj.append($btnObj);
+
+            $copy.find("div.o_date").append($divObj);
+            // $copy.find("div.end_s_grade").css("{padding:30px 4px 39px !important}");
+            // $copy.find("div.end_a_price").css("{padding:30px 4px 39px !important}")
+            // $copy.find("div.end_a_date").css("{padding:30px 4px 39px !important}")
+            // $copy.find("div.status").css("{padding:30px 4px 39px !important}")
+            //div.end_a_price,div.end_a_date,div.status
 
             $parent.append($copy);
             imgShow(snum, "img_" + snum);
@@ -116,6 +133,69 @@ $(() => {
     });
   }
   //--상품 이미지 띄우기 END--
+
+  //--구매요청 버튼 클릭시 START
+  $(document).on("click", "input.buy", (e) => {
+    let sname = $(e.target).attr("data-sname");
+    let mnum = $(e.target).attr("data-mnum");
+    let aprice = $(e.target).attr("data-price");
+    console.log(sname);
+    $.ajax({
+      xhrFields: {
+        withCredentials: true,
+      },
+      url: backUrl + "member/pay-request",
+      method: "post",
+      data: JSON.stringify({
+        mnum: mnum,
+        aprice: aprice,
+        sname: sname,
+      }),
+      contentType: "application/json",
+      success: function (result) {
+        showToast("결제 요청 이메일 발송 완료.");
+      },
+      error: function (xhr) {
+        console.log(xhr.status);
+      },
+    });
+  });
+  //--구매요청 버튼 클릭시 END
+
+  //--토스트 알람 START--
+  let msgTimer = 0;
+  function showToast(msg, slot) {
+    clearToast();
+    let toast = $("#toast");
+
+    if (slot == "top") {
+      toast.css("top", "33px");
+      toast.css("bottom", "");
+    } else if (slot == "bottom") {
+      toast.css("top", "");
+      toast.css("bottom", "-13px");
+    } else {
+      toast.css("top", "50%");
+      toast.css("bottom", "");
+    }
+
+    toast.children().html(msg);
+    setTimeout(function () {
+      toast.fadeIn(500, function () {
+        msgTimer = setTimeout(function () {
+          toast.fadeOut(500);
+        }, 1000);
+      });
+    }, 200);
+  }
+
+  function clearToast() {
+    if (msgTimer != 0) {
+      clearTimeout(msgTimer);
+      msgTimer = 0;
+    }
+  }
+  //--토스트 알람 END--
 
   let url = backUrl + "award/list/paging/";
 

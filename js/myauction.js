@@ -278,21 +278,21 @@ $(() => {
   });
   //--최근 7일 버튼 클릭 event END--
 
-  //--END page 날짜 클릭 최대기간 6개월 제한 START--
-  // $(document).on("change", "input.days", (e) => {
-  //   let $divObj = $(e.target);
-  //   // let $
-  //   console.log($divObj);
-  //   alert("날짜 제한");
-  //   // $('input.start_end_day').attr('min', $now2)
-  //   // $('input.start_end_day').attr('max', $now)
-  // });
-  //--END page 날짜 클릭 최대기간 6개월 제한 END--
+  // --start_day 가 end_day 보다 빠르지 않도록 제한 START
+  $(document).on("change", "input.days", (e) => {
+    let $name = $(e.target).attr("class");
+    // let $
+    console.log($name);
+    alert("날짜 제한");
+    // $('input.start_end_day').attr('min', $now2)
+    // $('input.start_end_day').attr('max', $now)
+  });
+  // --start_day 가 end_day 보다 빠르지 않도록 제한 END--
 
   //--상품 클릭 되었을 때 START--
   $(document).on("click", "img.prod_img", (e) => {
     //클릭한 상품번호 얻어오는 부분
-    let prodNo = $(e.target).attr("data-pnum"); //어디까지 찾느냐 div.product 까지
+    let prodNo = $(e.target).attr("data-pnum");
     location.href = "./shopproductdetail.html?pNum=" + prodNo;
   });
   //--상품 클릭 되었을 때 END--

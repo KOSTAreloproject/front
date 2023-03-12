@@ -61,6 +61,18 @@ $(() => {
             $copy.find("div.a_price").html(aprice);
             $copy.find("div.o_date").html(dCompleteDay);
 
+            let $btnObj = $(
+              "<input type='button' value='구매확정 요청' class='buy'>"
+            );
+            $btnObj.attr("data-sname", sname);
+            $btnObj.attr("data-mnum", mnum);
+            $btnObj.attr("data-price", aprice);
+            $btnObj.attr("data-date", dCompleteDay);
+            let $divObj = $("<div></div>");
+            $divObj.append($btnObj);
+
+            $copy.find("div.o_date").append($divObj);
+
             $parent.append($copy);
             imgShow(snum, "img_" + snum);
           }
@@ -117,6 +129,71 @@ $(() => {
     });
   }
   //--상품 이미지 띄우기 END--
+
+  //--구매확정 요청 버튼 클릭시 START
+  $(document).on("click", "input.buy", (e) => {
+    let sname = $(e.target).attr("data-sname");
+    let mnum = $(e.target).attr("data-mnum");
+    let aprice = $(e.target).attr("data-price");
+    let day = $(e.target).attr("data-date");
+    console.log(sname);
+    $.ajax({
+      xhrFields: {
+        withCredentials: true,
+      },
+      url: backUrl + "member/pay-confirm",
+      method: "post",
+      data: JSON.stringify({
+        mnum: mnum,
+        aprice: aprice,
+        sname: sname,
+        dCompleteDay: day,
+      }),
+      contentType: "application/json",
+      success: function (result) {
+        showToast("구매 확정 요청 이메일 발송 완료.");
+      },
+      error: function (xhr) {
+        console.log(xhr.status);
+      },
+    });
+  });
+  //--구매요청 버튼 클릭시 END
+
+  //--토스트 알람 START--
+  let msgTimer = 0;
+  function showToast(msg, slot) {
+    clearToast();
+    let toast = $("#toast");
+
+    if (slot == "top") {
+      toast.css("top", "33px");
+      toast.css("bottom", "");
+    } else if (slot == "bottom") {
+      toast.css("top", "");
+      toast.css("bottom", "-13px");
+    } else {
+      toast.css("top", "50%");
+      toast.css("bottom", "");
+    }
+
+    toast.children().html(msg);
+    setTimeout(function () {
+      toast.fadeIn(500, function () {
+        msgTimer = setTimeout(function () {
+          toast.fadeOut(500);
+        }, 1000);
+      });
+    }, 200);
+  }
+
+  function clearToast() {
+    if (msgTimer != 0) {
+      clearTimeout(msgTimer);
+      msgTimer = 0;
+    }
+  }
+  //--토스트 알람 END--
 
   let url = backUrl + "orders/list/confirm/";
 

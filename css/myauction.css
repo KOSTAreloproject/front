@@ -183,7 +183,6 @@ button#shop {
   font-size: 12px;
   margin-top: 80px;
   cursor: pointer;
-  margin-right: 85px;
 }
 
 /* 경매 종료 css START */
@@ -248,7 +247,6 @@ div.list_end_area > div.end_desc:hover {
 div.center,
 div.end_center {
   text-align: center;
-  width: 80%;
   padding-top: 50px;
 }
 
