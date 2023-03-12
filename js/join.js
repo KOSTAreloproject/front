@@ -373,7 +373,6 @@ $(() => {
         $('.join_term').css('margin-top', '');
         $('#verify').hide();
         alert('본인인증 성공');
-        alert(varify_result);
       },
       error: function () {
         alert('본인인증 실패');

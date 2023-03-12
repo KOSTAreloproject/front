@@ -145,3 +145,7 @@ i {
   color: #fff;
   cursor: default;
 }
+
+#tel_input_error {
+  margin-left: -103px;
+}
