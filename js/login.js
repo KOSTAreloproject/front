@@ -79,7 +79,7 @@ $(() => {
         pwd: $pwd,
       },
       success: function () {
-        alert('로그인됨');
+        alert('로그인 성공');
         location.href = document.referrer;
       },
       error: function (xhr) {

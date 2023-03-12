@@ -77,7 +77,7 @@ $(() => {
 
   // -- 수정 버튼 클릭시 할 일 start --
   $('#edit').click(function () {
-    location.href = './noticeeditform.html?' + nNum;
+    location.href = './noticeeditform.html?' + nNum + '&' + checkType;
   });
   // -- 수정 버튼 클릭시 할 일 end --
 
@@ -91,7 +91,7 @@ $(() => {
       method: 'delete',
       success: function () {
         alert('삭제되었습니다.');
-        location.href = './noticelist.html';
+        location.href = './noticelist.html?' + checkType;
       },
       error: function () {
         alert('삭제 취소되었습니다.');
@@ -99,4 +99,10 @@ $(() => {
     });
   });
   // -- 삭제 버튼 클릭시 할 일 end --
+
+  // -- 목록보기 버튼 클릭시 start --
+  $('#show_list').click(function () {
+    $(this).attr('href', './noticelist.html?' + checkType);
+  });
+  // -- 목록보기 버튼 클릭시 end --
 });

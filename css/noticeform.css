@@ -7,9 +7,17 @@ div.content_area {
   padding-left: 100px;
   padding-right: 100px;
 }
+
 div.label_textdiv {
   text-align: center;
   margin-bottom: 20px;
+  border-bottom: 2px solid #000000;
+}
+
+.label_txt {
+  position: relative;
+  top: -60px;
+  float: left;
 }
 
 hr {
@@ -23,11 +31,12 @@ div.filter_box {
   width: 100%;
   height: 50px;
   margin-left: 20px;
-  margin-bottom: 20px;
   display: block;
 }
 
 div.title_box > div.label_title {
+  position: relative;
+  left: -120px;
   width: 10%;
   padding-top: 10px;
   float: left;
@@ -38,6 +47,8 @@ div.title.box > div.title_item {
 }
 
 input.title {
+  position: relative;
+  left: -120px;
   outline: none;
   border: none;
   border-bottom: 2px solid #000000;
@@ -77,6 +88,7 @@ div.filter_items > .filter {
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
+  margin-right: 6px;
 }
 
 .selected {
@@ -99,6 +111,8 @@ div.complete_box {
   margin-top: 50px;
 }
 div.btn_complete {
+  position: relative;
+  top: -25px;
   text-align: center;
 }
 
@@ -106,7 +120,8 @@ div.btn_complete {
 .cancle {
   display: block;
   width: 70px;
-  line-height: 30px;
+  height: 35px;
+  line-height: 33px;
   color: #fff;
   font-size: 13px;
   background-color: #000000;

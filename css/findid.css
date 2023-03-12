@@ -11,7 +11,7 @@ body {
 #wrapper {
   position: relative;
   margin-top: 110px;
-  left: 15%;
+  left: 20%;
   display: inline-block;
   /* margin-left: 120px; */
 }
@@ -23,7 +23,7 @@ body {
   font-weight: lighter;
 }
 
-h3 {
+.label {
   font-size: 13px;
   text-align: left;
   margin-top: 20px;

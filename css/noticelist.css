@@ -1,6 +1,6 @@
 .content_area {
   position: relative;
-  left: 10%;
+  left: 20%;
 }
 
 #big_title {
@@ -13,7 +13,8 @@
 .filter {
   display: block;
   width: 60px;
-  line-height: 25px;
+  height: 30px;
+  line-height: 28px;
   color: #000000;
   font-size: 13px;
   background-color: #fff;
@@ -62,7 +63,7 @@ input:focus {
 /* 검색 버튼 start */
 #search_btn {
   position: relative;
-  margin-left: 10px;
+  left: 10px;
   border: none;
   width: 55px;
   height: 30px;
@@ -141,7 +142,7 @@ a[name='checked'] {
 div.center {
   /* text-align: center; */
   position: relative;
-  left: 13%;
+  left: 105px;
   width: 80%;
   padding-top: 50px;
 }
