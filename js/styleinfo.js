@@ -222,7 +222,11 @@ $(() => {
       url: backUrl+"member/img/"+repWriteMnum,
       method: "post",
       success: function (result) {
+        let resultSize = result.size;
         let repBlobStr = URL.createObjectURL(result);
+        if(resultSize < 1){
+          $('img#repImg_'+repWriteMnum).attr('src',  '../imgs/defaultProfileImg.png');
+        }
         $('img#repImg_'+repWriteMnum).attr('src', repBlobStr);
       },
       error: function (jsonObj) {
