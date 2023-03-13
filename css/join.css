@@ -51,15 +51,41 @@ input:focus {
 
 #announcement {
   font-size: 12px;
+  margin-top: 15px;
 }
 
-.announcement_boundary {
-  height: 50px;
-  background-color: rgba(215, 215, 215, 0.2);
-  border-radius: 3px;
-  padding: 7px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+.tel_btn {
+  display: inline-flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 13px;
+  border-radius: 10px;
+  border: 1px solid #22222280;
+  background-color: #fff;
+  color: #222222cc;
+  cursor: pointer;
+}
+
+#tel_auth {
+  position: relative;
+  top: -40px;
+  left: 73%;
+  width: 100px;
+  height: 30px;
+  line-height: 28px;
+}
+
+#verify {
+  display: none;
+}
+
+#confirm {
+  position: relative;
+  top: -39px;
+  left: 85%;
+  width: 50px;
+  height: 30px;
+  line-height: 28px;
 }
 
 .checkbox_item {
@@ -118,7 +144,8 @@ i {
   background-color: #ebebeb;
   color: #fff;
   cursor: default;
-  /* color: #fff; */
-  /* cursor: pointer; */
-  /* background-color: #000000; */
+}
+
+#tel_input_error {
+  margin-left: -103px;
 }

@@ -1,6 +1,6 @@
 .content_area {
   position: relative;
-  left: 13%;
+  left: 17%;
 }
 
 #label_txt {
@@ -15,7 +15,10 @@
 
 /* 수정&삭제 버튼 start */
 div.btn_edit {
+  position: relative;
+  left: -30px;
   display: inline-block;
+  width: 130px;
   margin-bottom: -15px;
   margin-left: 700px;
 }
@@ -23,8 +26,9 @@ div.btn_edit {
 #edit,
 #del {
   float: right;
-  width: 40px;
-  line-height: 30px;
+  width: 50px;
+  height: 35px;
+  line-height: 33px;
   color: #fff;
   text-align: center;
   font-size: 13px;
@@ -32,6 +36,7 @@ div.btn_edit {
   border-radius: 10px;
   margin-right: 10px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 #edit:active,
@@ -53,6 +58,7 @@ div.btn_edit {
 }
 
 #summernote {
+  border-radius: 10px;
   width: 800px;
   background-color: #fafafa;
 }
@@ -65,11 +71,12 @@ div.btn_list {
 /* '목록보기' 버튼 start */
 #show_list {
   position: relative;
-  left: 30%;
+  left: 26%;
   margin-top: 30px;
   display: block;
   width: 80px;
-  line-height: 30px;
+  height: 35px;
+  line-height: 34px;
   color: #000000;
   font-size: 16px;
   background-color: #fff;

@@ -331,9 +331,60 @@ $(() => {
   });
   // span 태그 사이 글 클릭시 체크박스 클릭 end --
 
+  // -- 휴대폰 인증번호 보내기 start --
+  $('#tel_auth').click(function () {
+    let $req_val = {
+      tel: $('#input_tel')
+        .val()
+        .replace(/[^0-9]/g, ''),
+    };
+    $.ajax({
+      url: backUrl + 'member/phoneAuth',
+      xhrFields: {
+        withCredentials: true,
+      },
+      method: 'post',
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify($req_val),
+      success: function () {
+        alert('인증번호가 발송되었습니다.');
+        $('.join_term').css('margin-top', '50px');
+        $('#verify').show();
+      },
+    });
+    return false;
+  });
+  // -- 휴대폰 인증번호 보내기 end --
+
+  // -- 휴대폰 인증번호 일치한지 확인하기 start --
+  let varify_result = null;
+  $('#confirm').click(function () {
+    let $req_val = { code: $('#input_tel_auth').val() };
+    $.ajax({
+      url: backUrl + 'member/phoneAuthOk',
+      xhrFields: {
+        withCredentials: true,
+      },
+      method: 'post',
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify($req_val),
+      success: function (result) {
+        varify_result = result;
+        $('.join_term').css('margin-top', '');
+        $('#verify').hide();
+        alert('본인인증 성공');
+      },
+      error: function () {
+        alert('본인인증 실패');
+      },
+    });
+    return false;
+  });
+  // -- 휴대폰 인증번호 일치한지 확인하기 end --
+
   // -- 가입하기 버튼 활성화 start --
   $('input').on('blur', function () {
-    if ($('input[name=ok]').length == 6) {
+    if ($('input[name=ok]').length == 6 && varify_result == true) {
       $('#join_btn').attr('disabled', false);
       $('#join_btn').css('background-color', '#000000');
       $('#join_btn').css('cursor', 'pointer');

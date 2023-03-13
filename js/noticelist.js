@@ -2,6 +2,7 @@ $(() => {
   let checkType = location.search.split('?')[1];
   if (checkType == 1) {
     $('#notice_write').show();
+    $('#notice_write').attr('href', './noticeform.html?' + checkType);
   } else {
     $('#notice_write').hide();
   }

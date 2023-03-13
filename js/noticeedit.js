@@ -1,5 +1,7 @@
 $(() => {
-  let nNum = window.location.search.split('?')[1];
+  let rawNNum = window.location.search.split('?')[1];
+  let nNum = rawNNum.split('&')[0];
+  let checkType = location.search.split('&')[1];
   let arr = ['서비스', '작업', '업데이트', '이벤트'];
 
   // 제목 및 카테고리 번호, 이전글, 다음글에 대한 정보 불러오기
@@ -44,6 +46,11 @@ $(() => {
     $('#popup').show();
   });
 
+  $('.cancle').click(function () {
+    alert('작성된 내용은 저장되지 않습니다.');
+    location.href = './noticelist.html?' + checkType;
+  });
+
   $('#cancle_btn').click(function (e) {
     e.preventDefault();
     $('#popup_background').hide();
@@ -79,7 +86,7 @@ $(() => {
       processData: false,
       success: function (data) {
         alert('수정됨');
-        location.href = './noticelist.html';
+        location.href = './noticelist.html?' + checkType;
       },
     });
     return false;

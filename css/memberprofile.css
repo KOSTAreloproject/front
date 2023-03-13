@@ -1,5 +1,8 @@
 .content_area {
+  position: relative;
   display: inline-block;
+  left: -40px;
+  top: -25px;
 }
 
 input[type='text'] {
@@ -64,9 +67,9 @@ input[type='text'] {
 }
 
 .profile_btn_box {
-  position: absolute;
+  position: relative;
   padding-left: 6px;
-  top: 62%;
+  top: -15px;
 }
 
 .btn {
@@ -154,19 +157,19 @@ input[type='text'] {
 
 #btn_modify0 {
   position: relative;
-  top: -22%;
+  top: -50px;
   left: 8%;
 }
 
 #btn_modify1 {
   position: relative;
-  bottom: 17.5%;
+  top: -50px;
   left: 8%;
 }
 
 #btn_modify2 {
   position: relative;
-  bottom: 26%;
+  top: -55px;
   left: 8%;
 }
 

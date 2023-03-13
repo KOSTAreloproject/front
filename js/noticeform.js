@@ -1,6 +1,8 @@
 $(() => {
+  let checkType = location.search.split('?')[1];
+
   $('#summernote').summernote({
-    width: 1135,
+    width: 1016,
     height: 400, // 에디터 높이
     minHeight: 300, // 최소 높이
     maxHeight: null, // 최대 높이
@@ -78,7 +80,7 @@ $(() => {
         alert('작성됨');
         $('#popup_background').hide();
         $('#popup').hide();
-        location.href = './noticelist.html';
+        location.href = './noticelist.html?' + checkType;
       },
     });
     return false;
@@ -94,7 +96,7 @@ $(() => {
   //-- 작성 취소 버튼 클릭시 start --
 
   $('.cancle').click(function (e) {
-    location.href = './noticelist.html';
+    location.href = './noticelist.html?' + checkType;
   });
 
   $('#cancle_btn').click(function () {
