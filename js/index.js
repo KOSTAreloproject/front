@@ -178,7 +178,7 @@ showzlist(zurl,0)
       url: url,
       method: 'get', 
       success: function (jsonObj) {
-        console.log(jsonObj)
+       
         let list = jsonObj.list
        
         let $origin = $('div.styleboardlist').first()
@@ -203,7 +203,7 @@ showzlist(zurl,0)
       $copy
         .find("span.styleId")
         .html("")
-        .append($profileObj)
+         .append($profileObj)
          .append('<span class="profileId">'+id+'</span>')
            $copy.find("span.stylelike").html('<span class="material-icons" id="likes">' +
         "sentiment_satisfied_alt"
@@ -258,9 +258,9 @@ showzlist(zurl,0)
           let resultSize = result.size;
           let profBlobStr = URL.createObjectURL(result);
           if(resultSize < 1){
-            $('img#profile').attr('src',  '../imgs/defaultProfileImg.png');
+            $('#m_'+mnum).attr('src',  '../imgs/defaultProfileImg.png');
           }else{
-            $('img#profile').attr('src', profBlobStr);
+            $('#m_'+mnum).attr('src', profBlobStr);
           }
         },
         error: function (jsonObj) {
