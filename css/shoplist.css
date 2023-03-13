@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
 header{
   z-index: 2;
 }
@@ -78,8 +80,6 @@ div.filter img{
   height: 20px;
 }
 div.shop{
-  
-  text-align: center;
   display: inline-block;
   margin-left: 120px;
   margin-top: 30px;
@@ -90,6 +90,7 @@ div.shop{
 div.shoplist{
  text-align: left;
  width: 220px;
+ padding-left : 5%;
  padding-bottom: 3%;
  display: inline-block;
  cursor: pointer;
@@ -102,7 +103,6 @@ div.sbrand>p.sbrandtext{
   font-size: 17px;
   font-weight: 700;
 }
-
 
 div.aprice1{
   font-size:17px;
