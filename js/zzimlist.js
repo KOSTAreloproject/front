@@ -19,12 +19,13 @@ $(() => {
             let totalPage = jsonObj.totalpage
             let totalCount = jsonObj.totalcnt
             if(totalCount == undefined){
-               let $copy = $origin.clone();
+              let $copy = $origin.clone();
               let $divObj = $("<div></div>");
               $divObj.html("관심상품 내역이 없습니다.");
               $divObj.addClass("zero_zzim");
               $copy.empty().append($divObj);
               $parent.append($copy);
+              $("div.pagination").hide();
             }
             $(jsonObj.list).each((index, w) => {
                 let pNum = w.pnum
