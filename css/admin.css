@@ -30,7 +30,7 @@ div.StockList {
 }
 
 #info2 {
-  margin-right: 200px;
+  margin-right: 280px;
 }
 
 div.StockDetail {
@@ -50,6 +50,7 @@ div.StockList > div.stock {
 
 div.StockList > div.stock > div.info {
   padding-top: 15px;
+  width: 260px;
 }
 
 div.StockList > div.stock > div.detailpage {

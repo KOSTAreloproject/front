@@ -33,6 +33,18 @@ $(() => {
     },
     error: function (xhr) {
       console.log(xhr.status);
+      $(".content_registration").hide()
+      $(".content_area>.update").hide()
+      $(".content_registration2").show()
+      $("div.registration_btn_box>.update").html("계좌 등록")
+      $("div.registration_btn_box").on("click", function (e) {
+        if ($(".accountNum").val() == "") {
+          $("p.input_error").css("display", "block");
+        } else {
+          $("div#popup_background").show();
+          $("p#ask").html("계좌를 등록하시겠습니까?");
+        }
+      });
     },
   });
 
