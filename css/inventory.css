@@ -61,7 +61,7 @@ div.item_area {
 }
 
 div.item_areas {
-  width: 20%;
+  width: 30%;
   text-align: center;
   display: inline-block;
   margin-right: -4px;
@@ -225,3 +225,10 @@ div.pagecount {
   display: none;
 }
 
+#wrapper > section > div.content_area > div:nth-child(5) > div.head_menu > div:nth-child(2){
+  padding-left: 90px;
+}
+
+#wrapper > section > div.content_area > div:nth-child(5) > div.head_menu > div:nth-child(3){
+  margin-left: 95px;
+}
