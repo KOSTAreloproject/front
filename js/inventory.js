@@ -82,6 +82,8 @@ function showList (url,cp){
             sStatus = "검수완료";
           } else if (sStatus == 3) {
             sStatus = "판매등록 대기중";
+          } else if (sStatus == 5) {
+            sStatus = "반송처리";
           }
           if (sGrade == "null") {
             sGrade = "-";
@@ -165,6 +167,9 @@ function showList (url,cp){
     } else if (sStatus == "판매등록 대기중") {
       $("div#popup_background").show();
       $("p#ask").html("관리자가 상품을 등록중입니다.");
+    } else if (sStatus == "반송처리") {
+      $("div#popup_background").show();
+      $("p#ask").html("상품 불합격으로 인한 반송처리되었습니다");
     }
   });
   //--상세보기 클릭되었을 때 할일 END--
