@@ -181,8 +181,14 @@ $(() => {
   function autotenderrefresh() {
     window.setInterval(tdrefresh, 1000*10);
   }
-  
+
   //상품 입찰하기--START//
+  $('#tsubmit').on('keydown', function(e) {
+    if(e.keyCode == 13) {
+      e.preventDefault();
+    }
+  });
+
   $("#tsubmit").click((e) => {
     e.preventDefault();
     let url = backUrl + "auction/add"
