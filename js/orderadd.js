@@ -1,4 +1,25 @@
 $(() => {
+  //--상품 이미지 띄우기 START--
+  function imgShow(num, id) {
+    $.ajax({
+      xhrFields: {
+        responseType: "blob",
+        withCredentials: true,
+        cache: false,
+      },
+      url: backUrl + "stock/img/" + num,
+      method: "get",
+      success: function (result) {
+        let blobStr = URL.createObjectURL(result);
+        $("img#" + id).attr("src", blobStr);
+      },
+      error: function (xhr) {
+        console.log(xhr.status);
+      },
+    });
+  }
+  //--상품 이미지 띄우기 END--
+
   //--결제 관련 정보 띄우기 START
   function showInfo(url) {
     let nowData = window.location.search.split("?")[1];
@@ -64,6 +85,7 @@ $(() => {
 
         let $imgObj = $("<img>");
         $imgObj.attr("id", "img_" + snum);
+        $imgObj.attr("class", "data_img");
         $imgObj.attr("width", "130px");
 
         $("span#s_img").empty().append($imgObj);
@@ -74,6 +96,7 @@ $(() => {
         $("span#prod_grade").html(sgrade);
         $("span#price").html(apriceStr + " 원");
         $("span#price").attr("data-anum", aNum);
+
         imgShow(snum, "img_" + snum);
 
         $("div#buyerName").html(name);
@@ -100,27 +123,6 @@ $(() => {
     });
   }
   //--결제 관련 정보 띄우기 END
-
-  //--상품 이미지 띄우기 START--
-  function imgShow(num, id) {
-    $.ajax({
-      xhrFields: {
-        responseType: "blob",
-        withCredentials: true,
-        cache: false,
-      },
-      url: backUrl + "stock/img/" + num,
-      method: "get",
-      success: function (result) {
-        let blobStr = URL.createObjectURL(result);
-        $("img#" + id).attr("src", blobStr);
-      },
-      error: function (xhr) {
-        console.log(xhr.status);
-      },
-    });
-  }
-  //--상품 이미지 띄우기 END--
 
   showInfo(backUrl + "auction/pay");
 

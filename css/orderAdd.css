@@ -6,6 +6,7 @@ section {
   width: 100%;
 }
 div.orderArea {
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 10%);
   margin-left: 40px;
   padding: 20px 30px;
   float: left;
@@ -15,6 +16,7 @@ div.orderArea {
   border-radius: 10px;
 }
 div.payArea {
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 10%);
   margin-right: 40px;
   padding: 20px 30px;
   float: right;
@@ -260,3 +262,6 @@ div.change_address_popup {
   max-width: 300px;
   text-align: center;
 } */
+img.data_img {
+  border-radius: 10px;
+}
