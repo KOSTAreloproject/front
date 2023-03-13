@@ -279,14 +279,14 @@ $(() => {
     } else $('input[name=chk]').prop('checked', false);
   });
 
-  $('input[name=chk]').click(function () {
-    var total = $('input[name=chk]').length;
-    var checked = $('input[name=chk]:checked').length;
+  // $('input[name=chk]').click(function () {
+  //   var total = $('input[name=chk]').length;
+  //   var checked = $('input[name=chk]:checked').length;
 
-    if (total != checked) {
-      $('#cbx_chkAll').prop('checked', false);
-    } else $('#cbx_chkAll').prop('checked', true);
-  });
+  //   if (total != checked) {
+  //     $('#cbx_chkAll').prop('checked', false);
+  //   } else $('#cbx_chkAll').prop('checked', true);
+  // });
 
   $('#agree_big2').click(function () {
     if ($('#agree_big2').is(':checked'))
@@ -308,6 +308,11 @@ $(() => {
   // span 태그 사이 글 클릭시 체크박스 클릭 start --
   $('#term1').click(function () {
     $('#cbx_chkAll').click();
+    if ($('#cbx_chkAll').prop('checked') == true) {
+      $('#cbx_chkAll').prop('checked', true);
+    } else {
+      $('#cbx_chkAll').prop('checked', false);
+    }
   });
 
   $('#agree_use').click(function () {
@@ -370,6 +375,7 @@ $(() => {
       data: JSON.stringify($req_val),
       success: function (result) {
         varify_result = result;
+        console.log(varify_result);
         $('.join_term').css('margin-top', '');
         $('#verify').hide();
         alert('본인인증 성공');
@@ -384,7 +390,8 @@ $(() => {
 
   // -- 가입하기 버튼 활성화 start --
   $('input').on('blur', function () {
-    if ($('input[name=ok]').length == 6 && varify_result == true) {
+    console.log($('#cbx_chkAll').prop('checked'));
+    if ($('#cbx_chkAll').prop('checked') == true && varify_result == true) {
       $('#join_btn').attr('disabled', false);
       $('#join_btn').css('background-color', '#000000');
       $('#join_btn').css('cursor', 'pointer');
@@ -398,7 +405,7 @@ $(() => {
 
   // -- 가입 요청 start --
   $('#join_btn').click(function () {
-    if (!$('#cbx_chkAll').is(':checked') || !$('#agree_big2').is(':checked')) {
+    if (!$('#cbx_chkAll').is(':checked')) {
       return;
     }
     let $req_val = {
