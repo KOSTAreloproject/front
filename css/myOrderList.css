@@ -129,7 +129,8 @@ div.delivery_list > div.search_by_day {
   background-color: #fafafa;
 }
 
-div.delivery_list > div.search_by_day > input[type="button"] {
+div.delivery_list > div.search_by_day > input[type="button"],
+input.buy_admin {
   margin-left: 5px;
   color: #000000;
   font-size: 13px;

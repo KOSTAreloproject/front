@@ -417,6 +417,7 @@ $(() => {
               });
           } else {
             alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+            endCancelPay();
           }
         }
       );
@@ -433,5 +434,11 @@ $(() => {
       location.href = frontUrl + "orderEnd.html?" + anum + "&" + price;
     }
   }
-  //--상품 이미지 띄우기 END--
+  //--결제 완료시 페이지 이동 END--
+
+  //--결제 실패시 페이지 이동 START--
+  function endCancelPay() {
+    location.href = frontUrl + "index.html";
+  }
+  //--결제 실패시 페이지 이동 END--
 });

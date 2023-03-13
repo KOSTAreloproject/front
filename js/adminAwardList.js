@@ -43,14 +43,22 @@ $(() => {
             let scolor = obj.scolor;
             let sgrade = obj.sgrade;
 
-            aprice = aprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
             let $imgObj = $("<img>");
             $imgObj.attr("id", "img_" + snum);
             $imgObj.attr("width", "130px");
             $imgObj.attr("class", "prod_img");
             $imgObj.attr("data-pnum", pnum);
 
+            let $btnObj = $(
+              "<input type='button' value='구매요청' class='buy_admin'>"
+            );
+            $btnObj.attr("data-sname", sname);
+            // $btnObj.attr("data-mnum", mnum);
+            $btnObj.attr("data-price", aprice);
+            $btnObj.attr("data-mnum", mnum);
+            let $divObj = $("<div></div>");
+
+            aprice = aprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             let $copy = $origin.clone();
             $copy.attr("id", pnum);
             $copy.find("div.s_img").empty().append($imgObj);
@@ -61,13 +69,6 @@ $(() => {
             $copy.find("div.a_price").html(aprice);
             $copy.find("div.o_date").html(atime);
 
-            let $btnObj = $(
-              "<input type='button' value='구매요청' class='buy'>"
-            );
-            $btnObj.attr("data-sname", sname);
-            $btnObj.attr("data-mnum", mnum);
-            $btnObj.attr("data-price", aprice);
-            let $divObj = $("<div></div>");
             $divObj.append($btnObj);
 
             $copy.find("div.o_date").append($divObj);
@@ -135,7 +136,7 @@ $(() => {
   //--상품 이미지 띄우기 END--
 
   //--구매요청 버튼 클릭시 START
-  $(document).on("click", "input.buy", (e) => {
+  $(document).on("click", "input.buy_admin", (e) => {
     let sname = $(e.target).attr("data-sname");
     let mnum = $(e.target).attr("data-mnum");
     let aprice = $(e.target).attr("data-price");
@@ -153,7 +154,7 @@ $(() => {
       }),
       contentType: "application/json",
       success: function (result) {
-        showToast("결제 요청 이메일 발송 완료.");
+        alert("결제 요청 이메일 발송 완료.");
       },
       error: function (xhr) {
         console.log(xhr.status);
@@ -161,41 +162,6 @@ $(() => {
     });
   });
   //--구매요청 버튼 클릭시 END
-
-  //--토스트 알람 START--
-  let msgTimer = 0;
-  function showToast(msg, slot) {
-    clearToast();
-    let toast = $("#toast");
-
-    if (slot == "top") {
-      toast.css("top", "33px");
-      toast.css("bottom", "");
-    } else if (slot == "bottom") {
-      toast.css("top", "");
-      toast.css("bottom", "-13px");
-    } else {
-      toast.css("top", "50%");
-      toast.css("bottom", "");
-    }
-
-    toast.children().html(msg);
-    setTimeout(function () {
-      toast.fadeIn(500, function () {
-        msgTimer = setTimeout(function () {
-          toast.fadeOut(500);
-        }, 1000);
-      });
-    }, 200);
-  }
-
-  function clearToast() {
-    if (msgTimer != 0) {
-      clearTimeout(msgTimer);
-      msgTimer = 0;
-    }
-  }
-  //--토스트 알람 END--
 
   let url = backUrl + "award/list/paging/";
 
