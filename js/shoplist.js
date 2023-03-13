@@ -10,23 +10,51 @@ $(()=>{
   let cd = 'prodCate='+nNum
   //shop버튼으로 직접 페이지 이동했을때 전체 목록으로 보여주기 한 조건 변수 초기화//
   let condition = ''
+  let pluscondition = ''
   //--검색 모달에서 접근했을 경우 목록 보여주기 START--//
-  if(nNum != undefined){
-    $('input[name=prodCate]').prop('checked',false)
-    $('input[value='+nNum+']').prop('checked',true)
-    showlist(url,start,cd)
-    $('div.more>button').click(function(){
-      start += 15
-      showlist(url, start, cd)
-    })
-  //--검색 모달에서 접근했을 경우 목록 보여주기 START--//
-  //--SHOP 버튼으로 접근했을 경우 목록 보여주기 START--//  
-} else{
-  showlist(url,start,condition)
-  $('div.more>button').click(function(){
-    start += 15
-    showlist(url, start, condition)
-  })
+  let currentPlusCondition = '';
+
+$('input[name="prodCate"]').change(function() {
+  $('input[name="prodCate"]').not(this).prop('checked', false);
+  start = 0;
+  condition = 'prodCate=' + $(this).val();
+  currentPlusCondition = '';
+  showlist(url, start, condition);
+  $(window).scrollTop(0);
+});
+
+$("a").click(function(e) {
+  e.preventDefault();
+  start = 0;
+  $sortcondition = $(e.target).attr("id");
+  if ($sortcondition == 'no') {
+    currentPlusCondition = '&tender=' + $sortcondition;
+  } else {
+    currentPlusCondition = '&sort=' + $sortcondition;
+  }
+  pluscondition = condition + currentPlusCondition;
+  showlist(url, start, pluscondition);
+  $(window).scrollTop(0);
+});
+
+if (nNum != undefined) {
+  $('input[name=prodCate]').prop('checked', false);
+  $('input[value=' + nNum + ']').prop('checked', true);
+  condition = 'prodCate=' + nNum;
+  currentPlusCondition = '';
+  showlist(url, start, condition);
+  $('div.more>button').click(function() {
+    start += 15;
+    pluscondition = condition + currentPlusCondition;
+    showlist(url, start, pluscondition);
+  });
+} else {
+  showlist(url, start, condition);
+  $('div.more>button').click(function() {
+    start += 15;
+    pluscondition = condition + currentPlusCondition;
+    showlist(url, start, pluscondition);
+  });
 }
 //--SHOP 버튼으로 접근했을 경우 목록 보여주기 END--//  
 //--페이지 로딩시 상품목록 출력하기(최신순) START--//
@@ -36,7 +64,7 @@ function showlist(url, start, condition) {
   if(start ==0){
     $("div.shoplist").not(":first-child").remove()
   }
-  console.log(url + start + condition)
+  
   $origin.show()
   $.ajax({
     xhrFields: { 
@@ -127,21 +155,22 @@ $('input[name="prodCate"]').change(function() {
 })
 ////--1차필터 (왼쪽상단) 체크 또는 텍스트 클릭시 필터(왼쪽 prodCate) 조건 한개만 선택되게 하기 END--//
 //--2차필터 (정렬조건) 조건 선택시 목록 정렬 START--//
-$("a").click(function(e){
-    e.preventDefault()
-    start = 0
-    $sortcondition = $(e.target).attr("id")
-    if($sortcondition == 'no'){
-      pluscondition = condition+'&tender='+$sortcondition
-      showlist(url, start, pluscondition)
-       $(window).scrollTop(0);
-    }else{
-      pluscondition = condition+'&sort='+$sortcondition
-      showlist(url, start, pluscondition)
-       $(window).scrollTop(0);
-    }
-})
-//--2차필터 (정렬조건) 조건 선택시 목록 정렬 END--//
+// $("a").click(function(e){
+//     e.preventDefault()
+//     start = 0
+//     $sortcondition = $(e.target).attr("id")
+//     if($sortcondition == 'no'){
+//       pluscondition = condition+'&tender='+$sortcondition
+//       showlist(url, start, pluscondition)
+//        $(window).scrollTop(0);
+//       }
+//     else{
+//       pluscondition = condition+'&sort='+$sortcondition
+//       showlist(url, start, pluscondition)
+//        $(window).scrollTop(0);
+//     }
+// })
+// //--2차필터 (정렬조건) 조건 선택시 목록 정렬 END--//
 //--정렬조건 버튼 클릭했을때 보여주기 START--//
 $('button.sorttitle,div.sortnav>img').click(function(e){
     e.preventDefault()

@@ -93,6 +93,7 @@ section.slideshow button.slick-next:before {
  
 }
 div.zzim {
+  padding-left:45px;
   width: 100%;
   height: auto;
   text-align: center;
@@ -149,6 +150,7 @@ div.dimg>img{
   border-radius: 3%;
 }
 div.deadline {
+  padding-left:30px;	
   width: 100%;
   height: auto;
   text-align: center;
@@ -172,6 +174,7 @@ div.dmoreview {
 }
 
 div.styleboard {
+  padding-left:30px;	
   width: 100%;
   height: auto;
   text-align: center;

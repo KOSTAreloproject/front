@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
 header{
   z-index: 2;
 }
@@ -11,13 +13,13 @@ h1{
   padding-bottom: 20px;
 }
 div.sortnav{
-  right:12% ;
+  right:9% ;
   position: absolute;
   z-index:1;
 }
 div.sortlist{
   width: 400px;
-  right:12% ;
+  right:9% ;
   position: absolute;
   display: none;
   border: 1px solid #ebebeb;
@@ -78,8 +80,6 @@ div.filter img{
   height: 20px;
 }
 div.shop{
-  
-  text-align: center;
   display: inline-block;
   margin-left: 120px;
   margin-top: 30px;
@@ -89,7 +89,8 @@ div.shop{
 
 div.shoplist{
  text-align: left;
- width: 220px;
+ width: 230px;
+ padding-left : 5%;
  padding-bottom: 3%;
  display: inline-block;
  cursor: pointer;
@@ -102,7 +103,6 @@ div.sbrand>p.sbrandtext{
   font-size: 17px;
   font-weight: 700;
 }
-
 
 div.aprice1{
   font-size:17px;

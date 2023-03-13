@@ -253,9 +253,15 @@ showzlist(zurl,0)
         },
         url: backUrl+"member/img/"+mnum,
         method: "post",
+         
         success: function (result) {
-          let blobStr = URL.createObjectURL(result);
-          $('img#m_'+mnum).attr('src', blobStr);
+          let resultSize = result.size;
+          let profBlobStr = URL.createObjectURL(result);
+          if(resultSize < 1){
+            $('img#profile').attr('src',  '../imgs/defaultProfileImg.png');
+          }else{
+            $('img#profile').attr('src', profBlobStr);
+          }
         },
         error: function (jsonObj) {
           console.log(jsonObj.responseJSON.msg);
