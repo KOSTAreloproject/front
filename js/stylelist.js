@@ -280,8 +280,14 @@ $(() => {
         url: backUrl+"member/img/"+mnum,
         method: "post",
         success: function (result) {
+          let resultSize = result.size;
           let blobStr = URL.createObjectURL(result);
-          $('img#m_'+mnum).attr('src', blobStr);
+          if (resultSize < 1){
+            console.log(typeof resultSize);
+            $('img#m_'+mnum).attr('src', '../imgs/defaultProfileImg.png');        
+          }else{
+            $('img#m_'+mnum).attr('src', blobStr);          
+          }
         },
         error: function (jsonObj) {
           console.log(jsonObj.msg);

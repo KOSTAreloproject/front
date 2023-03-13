@@ -110,8 +110,13 @@ $(() => {
         url: backUrl+"member/img/"+stylemNum,
         method: "post",
         success: function (result) {
+          let resultSize = result.size;
           let profBlobStr = URL.createObjectURL(result);
-          $('img#profile').attr('src', profBlobStr);
+          if(resultSize < 1){
+            $('img#profile').attr('src',  '../imgs/defaultProfileImg.png');
+          }else{
+            $('img#profile').attr('src', profBlobStr);
+          }
         },
         error: function (jsonObj) {
           console.log(jsonObj.msg);
@@ -336,7 +341,7 @@ $(() => {
           'styleNum':styleNum,
           'userId': styleId,  
           'hashList': hashTotalName,
-          // 'img' : blobStr,
+          // 'img' : {src : blobStr},
           'replyCnt' : replyCnt,
           'Cnt': styleCnt,
           'likes':styleLikes 
@@ -393,10 +398,11 @@ $(() => {
         })
           
   // --댓글 삭제 버튼 클릭 END--
-
+  let repEditNum;
+  let $repedit;
   //--댓글 수정 버튼 클릭 START--    
   $(document).on("click", "input[class='edit']", function () {
-    let repEditNum = $(this).attr("id").split("_")[1];
+    repEditNum = $(this).attr("id").split("_")[1];
     $("div.repBtn_"+repEditNum).hide();
     let replyEditStr = '<div id = "replyEditForm">';
     replyEditStr += '<input type="text" id="reply_id" value="'+loginId+'"hidden><br/>';
@@ -410,9 +416,10 @@ $(() => {
     replyEditStr +=
     '<input type="button" id="editFormDel" class="editFormDel" value="취소">';
     replyEditStr += '</div>'
-    let $repedit = $("div.repeditForm_"+repEditNum);
+    $repedit = $("div.repeditForm_"+repEditNum);
     $repedit.html(replyEditStr);
-    
+  })
+    //--댓글 수정하기 폼 버튼 취소클릭 END--
     //--댓글 수정하기 폼 버튼 클릭 START--
     let replyContentEdit;
     $(document).on("click", "input[class='editFm']", function () {
@@ -442,8 +449,7 @@ $(() => {
       $("div.repBtn_"+repEditNum).show();
       $repedit.html("");
     });
-    //--댓글 수정하기 폼 버튼 취소클릭 END--
-  });
+
   //--댓글 수정 버튼 클릭 END--
   //--답글달기 버튼 클릭 START--
   $("div.repList").on('click','.re_replyWrite', function(e) {
