@@ -169,7 +169,7 @@ function showList (url,cp){
       $("p#ask").html("관리자가 상품을 등록중입니다.");
     } else if (sStatus == "반송처리") {
       $("div#popup_background").show();
-      $("p#ask").html("상품 불합격으로 인한 반송처리되었습니다");
+      $("p#ask").html("상품이 반송처리 되었습니다");
     }
   });
   //--상세보기 클릭되었을 때 할일 END--
