@@ -140,7 +140,7 @@ $(() => {
   //비밀번호 정규식 검사
   function validatePassword(strPassword) {
     const reg_password =
-      /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+      /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%/^&+=]).*$/;
     if (!reg_password.test('' + strPassword)) {
       return false;
     }
