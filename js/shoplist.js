@@ -64,7 +64,7 @@ function showlist(url, start, condition) {
   if(start ==0){
     $("div.shoplist").not(":first-child").remove()
   }
-  alert(url + start + condition)
+  
   $origin.show()
   $.ajax({
     xhrFields: { 
