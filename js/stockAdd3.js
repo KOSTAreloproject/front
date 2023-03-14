@@ -38,4 +38,29 @@ $(() => {
     }
   }
   // -- 동의하기 버튼 활성화 end --
+
+  
+  $("#join_btn").on("click", function () {
+    let checkCnt = $('input[type=checkbox]:checked').length;
+    if (checkCnt < 3) {
+      alert("이용약관에 모두 동의해주세요")
+      return;
+    }
+    let url = backUrl + "stock/check";
+    $.ajax({
+      xhrFields: {
+        withCredentials: true,
+      },
+      url: url,
+      method: "GET",
+      data: {ck:checkCnt},
+      success: function (jsonStr) {
+        location.href = "./StockAdd2.html";
+      },error: function (xhr){
+        alert("이용약관에 모두 동의해주세요")
+      }
+    })
+
+  })
+
 });
